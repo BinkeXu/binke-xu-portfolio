@@ -210,7 +210,7 @@ While this is a personal portfolio, suggestions and feedback are welcome:
 - **Email**: Binkexu@gmail.com
 - **LinkedIn**: [linkedin.com/in/binke-xu-/](https://www.linkedin.com/in/binke-xu-/)
 - **Location**: Wellington, New Zealand
-
+- **Website**: https://binkexu.github.io/binke-xu-portfolio
 ---
 
 **Built with ❤️ using React.js and modern web technologies**
