@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/binke-xu-portfolio/static/css/main.c7a1017d.css",
+    "main.js": "/binke-xu-portfolio/static/js/main.266d7c8c.js",
+    "static/js/453.2291aba8.chunk.js": "/binke-xu-portfolio/static/js/453.2291aba8.chunk.js",
+    "static/media/cicd.png": "/binke-xu-portfolio/static/media/cicd.dee4ae58dd0a5da592d2.png",
+    "static/media/Python.png": "/binke-xu-portfolio/static/media/Python.033def8fdd635454ce6b.png",
+    "static/media/git.png": "/binke-xu-portfolio/static/media/git.c6def746ae98db4cf73f.png",
+    "static/media/Pandas.png": "/binke-xu-portfolio/static/media/Pandas.ab804e31cf944bbe8d26.png",
+    "static/media/React.png": "/binke-xu-portfolio/static/media/React.e648a71158884495e955.png",
+    "static/media/sql.png": "/binke-xu-portfolio/static/media/sql.28d6a583a4e0fe79a21f.png",
+    "static/media/java.png": "/binke-xu-portfolio/static/media/java.371ef4e457f524448997.png",
+    "static/media/TensorFlow.png": "/binke-xu-portfolio/static/media/TensorFlow.833474f315a686f99e45.png",
+    "static/media/node-js.png": "/binke-xu-portfolio/static/media/node-js.e62c2b90c81b52692e60.png",
+    "static/media/Agile.png": "/binke-xu-portfolio/static/media/Agile.42344a1cd670347d1069.png",
+    "static/media/azure.png": "/binke-xu-portfolio/static/media/azure.c1c133ec1eb98218ce66.png",
+    "static/media/opencv.png": "/binke-xu-portfolio/static/media/opencv.e31208093a17607c214b.png",
+    "static/media/numpy.png": "/binke-xu-portfolio/static/media/numpy.54dc2dc0aafddd45de46.png",
+    "static/media/Firebase.png": "/binke-xu-portfolio/static/media/Firebase.c4f13648b56c5a89cb54.png",
+    "static/media/React Native.png": "/binke-xu-portfolio/static/media/React Native.4e511ddd3a7e2a7adcd7.png",
+    "static/media/PostgreSQL.png": "/binke-xu-portfolio/static/media/PostgreSQL.ba628df4785bc11af809.png",
+    "static/media/linkedin.png": "/binke-xu-portfolio/static/media/linkedin.63b96b9ea7fdfd7a5ee0.png",
+    "index.html": "/binke-xu-portfolio/index.html",
+    "main.c7a1017d.css.map": "/binke-xu-portfolio/static/css/main.c7a1017d.css.map",
+    "main.266d7c8c.js.map": "/binke-xu-portfolio/static/js/main.266d7c8c.js.map",
+    "453.2291aba8.chunk.js.map": "/binke-xu-portfolio/static/js/453.2291aba8.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c7a1017d.css",
+    "static/js/main.266d7c8c.js"
+  ]
+}
