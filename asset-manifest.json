@@ -1,10 +1,11 @@
 {
   "files": {
-    "main.css": "/binke-xu-portfolio/static/css/main.c7a1017d.css",
-    "main.js": "/binke-xu-portfolio/static/js/main.266d7c8c.js",
+    "main.css": "/binke-xu-portfolio/static/css/main.d73057d5.css",
+    "main.js": "/binke-xu-portfolio/static/js/main.92098997.js",
     "static/js/453.2291aba8.chunk.js": "/binke-xu-portfolio/static/js/453.2291aba8.chunk.js",
     "static/media/cicd.png": "/binke-xu-portfolio/static/media/cicd.dee4ae58dd0a5da592d2.png",
     "static/media/Python.png": "/binke-xu-portfolio/static/media/Python.033def8fdd635454ce6b.png",
+    "static/media/My-photo.jpg": "/binke-xu-portfolio/static/media/My-photo.2e81dbd73bc890b5f975.jpg",
     "static/media/git.png": "/binke-xu-portfolio/static/media/git.c6def746ae98db4cf73f.png",
     "static/media/Pandas.png": "/binke-xu-portfolio/static/media/Pandas.ab804e31cf944bbe8d26.png",
     "static/media/React.png": "/binke-xu-portfolio/static/media/React.e648a71158884495e955.png",
@@ -21,12 +22,12 @@
     "static/media/PostgreSQL.png": "/binke-xu-portfolio/static/media/PostgreSQL.ba628df4785bc11af809.png",
     "static/media/linkedin.png": "/binke-xu-portfolio/static/media/linkedin.63b96b9ea7fdfd7a5ee0.png",
     "index.html": "/binke-xu-portfolio/index.html",
-    "main.c7a1017d.css.map": "/binke-xu-portfolio/static/css/main.c7a1017d.css.map",
-    "main.266d7c8c.js.map": "/binke-xu-portfolio/static/js/main.266d7c8c.js.map",
+    "main.d73057d5.css.map": "/binke-xu-portfolio/static/css/main.d73057d5.css.map",
+    "main.92098997.js.map": "/binke-xu-portfolio/static/js/main.92098997.js.map",
     "453.2291aba8.chunk.js.map": "/binke-xu-portfolio/static/js/453.2291aba8.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c7a1017d.css",
-    "static/js/main.266d7c8c.js"
+    "static/css/main.d73057d5.css",
+    "static/js/main.92098997.js"
   ]
 }
