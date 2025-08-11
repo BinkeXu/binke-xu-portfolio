@@ -1,5 +1,6 @@
 import React from 'react';
 import './Home.css';
+import myPhoto from '../img/My photo.jpg';
 
 /**
  * Home Component - Main Landing Page
@@ -50,11 +51,11 @@ const Home = () => {
           <div className="profile-section">
             {/* Profile Image */}
             {/* 
-              Currently displays initials "BX" as a placeholder
-              Can be replaced with an actual profile photo
+              Displays the user's actual profile photo
+              Responsive and optimized for all screen sizes
             */}
             <div className="profile-image">
-              <div className="profile-placeholder">BX</div>
+              <img src={myPhoto} alt="Binke Xu - AI and Software Engineering Professional" className="profile-photo" />
             </div>
             
             {/* Hero Text Content */}
