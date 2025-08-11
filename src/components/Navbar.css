@@ -1,3 +1,13 @@
+/* ========================================
+   NAVBAR COMPONENT STYLES - Navbar.css
+   ========================================
+   
+   This file contains all styles for the navigation bar component.
+   The navbar is fixed at the top and provides navigation between different sections.
+   ======================================== */
+
+/* Navigation Bar Container */
+/* Fixed positioning at the top of the viewport for consistent navigation access */
 .navbar {
   position: fixed;
   top: 0;
@@ -5,11 +15,13 @@
   right: 0;
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(102, 126, 234, 0.1);
   z-index: 1000;
   transition: all 0.3s ease;
 }
 
+/* Navbar Content Wrapper */
+/* Centers the navbar content and provides consistent spacing */
 .navbar-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -20,89 +32,164 @@
   height: 80px;
 }
 
-.navbar-brand h2 {
-  color: #2c3e50;
-  font-size: 1.8rem;
-  font-weight: 700;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+/* Brand/Logo Section */
+/* Contains the portfolio owner's name as the main brand identifier */
+.navbar-brand {
+  display: flex;
+  align-items: center;
 }
 
+/* Brand Text Styling */
+/* Professional typography for the portfolio owner's name */
+.brand-text {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #2c3e50;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.brand-text:hover {
+  color: #667eea;
+}
+
+/* Navigation Menu Container */
+/* Contains all navigation links in a horizontal list */
 .navbar-nav {
   display: flex;
   list-style: none;
-  gap: 0;
+  margin: 0;
+  padding: 0;
+  gap: 10px;
 }
 
+/* Individual Navigation Items */
+/* Each navigation link container */
 .nav-item {
   margin: 0;
 }
 
+/* Navigation Links */
+/* Styling for individual navigation buttons/links */
 .nav-link {
   background: none;
   border: none;
   padding: 12px 20px;
-  color: #7f8c8d;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 500;
+  color: #7f8c8d;
   cursor: pointer;
+  border-radius: 25px;
   transition: all 0.3s ease;
-  position: relative;
-  border-radius: 6px;
+  text-decoration: none;
+  display: block;
 }
 
+/* Navigation Link Hover Effects */
+/* Visual feedback when hovering over navigation items */
 .nav-link:hover {
   color: #667eea;
   background: rgba(102, 126, 234, 0.1);
+  transform: translateY(-1px);
 }
 
+/* Active Navigation State */
+/* Highlights the currently active section for user orientation */
 .nav-link.active {
   color: #667eea;
-  background: rgba(102, 126, 234, 0.1);
+  background: rgba(102, 126, 234, 0.15);
+  font-weight: 600;
 }
 
-.nav-link.active::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 20px;
-  height: 3px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border-radius: 2px;
+/* Active Link Hover */
+/* Maintains active state styling during hover */
+.nav-link.active:hover {
+  background: rgba(102, 126, 234, 0.2);
 }
 
-/* Responsive design */
+/* Responsive Design for Navigation */
+/* Mobile-first approach with progressive enhancement */
+
+/* Tablet devices (768px and below) */
 @media (max-width: 768px) {
+  /* Adjust navbar height for mobile devices */
   .navbar-container {
     height: 70px;
-    padding: 0 15px;
   }
   
-  .navbar-brand h2 {
+  /* Reduce brand text size for smaller screens */
+  .brand-text {
     font-size: 1.5rem;
   }
   
-  .navbar-nav {
-    gap: 5px;
+  /* Adjust navigation link padding for touch devices */
+  .nav-link {
+    padding: 10px 16px;
+    font-size: 0.9rem;
   }
   
-  .nav-link {
-    padding: 10px 15px;
-    font-size: 14px;
+  /* Reduce gap between navigation items */
+  .navbar-nav {
+    gap: 8px;
   }
 }
 
+/* Mobile devices (480px and below) */
 @media (max-width: 480px) {
+  /* Further reduce navbar height for small mobile devices */
+  .navbar-container {
+    height: 60px;
+    padding: 0 15px;
+  }
+  
+  /* Optimize brand text for very small screens */
+  .brand-text {
+    font-size: 1.3rem;
+  }
+  
+  /* Adjust navigation for small mobile screens */
+  .nav-link {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+  }
+  
+  /* Minimize gaps for compact mobile layout */
   .navbar-nav {
-    gap: 2px;
+    gap: 5px;
+  }
+}
+
+/* Very small mobile devices (320px and below) */
+@media (max-width: 320px) {
+  /* Extreme mobile optimization */
+  .navbar-container {
+    padding: 0 10px;
+  }
+  
+  .brand-text {
+    font-size: 1.2rem;
   }
   
   .nav-link {
-    padding: 8px 12px;
-    font-size: 13px;
+    padding: 6px 10px;
+    font-size: 0.8rem;
   }
 }
+
+/* Accessibility Enhancements */
+/* Focus states for keyboard navigation */
+.nav-link:focus {
+  outline: 2px solid #667eea;
+  outline-offset: 2px;
+}
+
+/* Smooth transitions for all interactive elements */
+.nav-link,
+.brand-text {
+  transition: all 0.3s ease;
+}
+
+/* ========================================
+   END OF NAVBAR STYLES
+   ======================================== */
+

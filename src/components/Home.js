@@ -1,7 +1,30 @@
 import React from 'react';
 import './Home.css';
 
+/**
+ * Home Component - Main Landing Page
+ * 
+ * This component serves as the homepage of the portfolio website.
+ * It includes a hero section, about me section, and education details.
+ * 
+ * Features:
+ * - Professional hero section with profile image
+ * - About Me section with key statistics
+ * - Education section with degree details
+ * - Functional CV download button
+ * - Responsive design for all devices
+ */
 const Home = () => {
+  /**
+   * Handles CV download functionality
+   * Creates a temporary download link and triggers the file download
+   * 
+   * Technical Details:
+   * - Creates a temporary <a> element
+   * - Sets the href to the CV file in the public folder
+   * - Triggers the download automatically
+   * - Cleans up the temporary element after download
+   */
   const handleDownloadCV = () => {
     // Create a link element to trigger the download
     const link = document.createElement('a');
@@ -14,12 +37,31 @@ const Home = () => {
 
   return (
     <div className="home">
+      {/* Hero Section */}
+      {/* 
+        The main introduction section featuring:
+        - Profile image placeholder
+        - Name and title
+        - Professional description
+        - Call-to-action button (CV download)
+      */}
       <section className="hero">
         <div className="hero-content">
           <div className="profile-section">
+            {/* Profile Image */}
+            {/* 
+              Currently displays initials "BX" as a placeholder
+              Can be replaced with an actual profile photo
+            */}
             <div className="profile-image">
               <div className="profile-placeholder">BX</div>
             </div>
+            
+            {/* Hero Text Content */}
+            {/* 
+              Contains the main introduction text and download button
+              Structured for optimal readability and user engagement
+            */}
             <div className="hero-text">
               <h1>Binke Xu</h1>
               <p className="subtitle">Master of Science in Artificial Intelligence</p>
@@ -27,18 +69,39 @@ const Home = () => {
                 Recent graduate with distinction from Victoria University of Wellington, specializing in AI and software engineering. 
                 Experienced in developing end-to-end solutions from mobile applications to complex AI systems.
               </p>
+              
+              {/* Call-to-Action Button */}
+              {/* 
+                CV download button that allows visitors to download the resume
+                Styled as a secondary button to maintain visual hierarchy
+              */}
               <div className="hero-buttons">
-                <button className="btn btn-secondary" onClick={handleDownloadCV}>Download CV</button>
+                <button className="btn btn-secondary" onClick={handleDownloadCV}>
+                  Download CV
+                </button>
               </div>
             </div>
           </div>
         </div>
       </section>
 
+      {/* About Me Section */}
+      {/* 
+        Provides detailed information about the portfolio owner
+        Includes professional summary and key statistics
+      */}
       <section className="about-me">
         <div className="container">
           <h2>About Me</h2>
           <div className="about-content">
+            {/* About Text */}
+            {/* 
+              Detailed professional description highlighting:
+              - Educational background
+              - Technical expertise
+              - Professional goals
+              - Certifications and achievements
+            */}
             <div className="about-text">
               <p>
                 I am a recent Master of Science graduate in Artificial Intelligence with distinction from Victoria University of Wellington, 
@@ -52,6 +115,12 @@ const Home = () => {
                 and knowledge in a dynamic work environment, tackle challenging projects, and contribute to innovative solutions in the industry.
               </p>
             </div>
+            
+            {/* Key Statistics */}
+            {/* 
+              Visual representation of key achievements and experience
+              Each stat highlights a different aspect of professional background
+            */}
             <div className="stats">
               <div className="stat-item">
                 <h3>2+</h3>
@@ -74,10 +143,20 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Education Section */}
+      {/* 
+        Displays educational background and achievements
+        Includes both Master's and Bachelor's degree information
+      */}
       <section className="education">
         <div className="container">
           <h2>Education</h2>
           <div className="education-grid">
+            {/* Master's Degree */}
+            {/* 
+              Master of Science in Artificial Intelligence
+              Highlights research focus and academic achievements
+            */}
             <div className="education-card">
               <div className="education-header">
                 <h3>Master of Science in Artificial Intelligence</h3>
@@ -97,6 +176,11 @@ const Home = () => {
               </div>
             </div>
 
+            {/* Bachelor's Degree */}
+            {/* 
+              Bachelor of Engineering in Software Engineering
+              Shows foundational education and key coursework
+            */}
             <div className="education-card">
               <div className="education-header">
                 <h3>Bachelor of Engineering in Software Engineering</h3>

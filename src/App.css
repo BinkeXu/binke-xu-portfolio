@@ -1,52 +1,127 @@
-/* Reset and base styles */
+/* ========================================
+   GLOBAL STYLES - App.css
+   ========================================
+   
+   This file contains global styles that apply to the entire application.
+   It includes CSS reset, base typography, utility classes, and responsive adjustments.
+   ======================================== */
+
+/* CSS Reset and Base Styles */
+/* Removes default browser styling for consistent appearance across browsers */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* Root element styles */
+/* Sets base font and color variables for consistent theming */
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   line-height: 1.6;
   color: #333;
-  background-color: #f8f9fa;
 }
 
+/* Code font styling */
+/* Ensures code elements use monospace font for better readability */
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Main Application Container */
+/* Wraps the entire application content */
 .App {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
+/* Main Content Area */
+/* Contains the dynamic content that changes based on navigation */
 .main-content {
   flex: 1;
-  padding-top: 80px; /* Account for fixed navbar */
+  margin-top: 80px; /* Accounts for fixed navbar height */
 }
 
-/* Button styles */
+/* Container Utility Class */
+/* Provides consistent max-width and centering for content sections */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Section Headers */
+/* Consistent styling for all main section titles across the website */
+h1, h2, h3, h4, h5, h6 {
+  color: #2c3e50;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* Main section titles (h2) */
+/* Standardized styling for section headers with consistent spacing */
+h2 {
+  font-size: 2.5rem;
+  margin-bottom: 60px;
+  text-align: center;
+  font-weight: 700;
+}
+
+/* Subsection titles (h3) */
+/* Styling for subsection headers within main sections */
+h3 {
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+  color: #34495e;
+}
+
+/* Paragraph styling */
+/* Base text styling for consistent readability */
+p {
+  margin-bottom: 20px;
+  line-height: 1.7;
+  color: #555;
+}
+
+/* Button Styles */
+/* Global button styling system for consistent UI elements */
+
+/* Base button styles */
 .btn {
   display: inline-block;
-  padding: 12px 24px;
+  padding: 12px 30px;
   border: none;
-  border-radius: 6px;
-  font-size: 16px;
+  border-radius: 25px;
+  font-size: 1rem;
   font-weight: 500;
   text-decoration: none;
   cursor: pointer;
   transition: all 0.3s ease;
   text-align: center;
+  min-width: 120px;
 }
 
+/* Primary button variant */
+/* Main call-to-action buttons with gradient background */
 .btn-primary {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
 }
 
+/* Secondary button variant */
+/* Secondary actions with outline style */
 .btn-secondary {
   background: transparent;
   color: #667eea;
@@ -56,73 +131,160 @@ body {
 .btn-secondary:hover {
   background: #667eea;
   color: white;
+  transform: translateY(-2px);
 }
 
-.btn-outline {
-  background: transparent;
+/* Button active states */
+/* Visual feedback when buttons are clicked */
+.btn:active {
+  transform: translateY(0);
+}
+
+/* Link Styling */
+/* Global link styling for consistent navigation experience */
+a {
   color: #667eea;
-  border: 1px solid #667eea;
-  padding: 8px 16px;
-  font-size: 14px;
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 
-.btn-outline:hover {
-  background: #667eea;
-  color: white;
+a:hover {
+  color: #5a6fd8;
 }
 
-/* Section headers */
-section {
-  padding: 80px 20px;
-}
-
-section h2 {
-  font-size: 2.5rem;
+/* List Styling */
+/* Consistent list appearance across all components */
+ul, ol {
   margin-bottom: 20px;
-  text-align: center;
-  color: #2c3e50;
-  font-weight: 700;
+  padding-left: 20px;
 }
 
-section > p {
-  text-align: center;
-  font-size: 1.2rem;
-  color: #7f8c8d;
-  margin-bottom: 60px;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+li {
+  margin-bottom: 8px;
+  line-height: 1.6;
 }
 
-/* Responsive design */
+/* Image Styling */
+/* Global image styling for consistent appearance */
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Section Spacing */
+/* Consistent spacing between major sections for visual harmony */
+section {
+  padding: 80px 0;
+}
+
+/* Responsive Design Adjustments */
+/* Mobile-first responsive design with progressive enhancement */
+
+/* Tablet devices (768px and below) */
 @media (max-width: 768px) {
-  .main-content {
-    padding-top: 70px;
+  /* Adjust container padding for smaller screens */
+  .container {
+    padding: 0 15px;
+  }
+  
+  /* Reduce section padding for mobile */
+  section {
+    padding: 60px 0;
+  }
+  
+  /* Adjust heading sizes for mobile */
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 40px;
+  }
+  
+  h3 {
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+  }
+  
+  /* Adjust button sizing for touch devices */
+  .btn {
+    padding: 14px 28px;
+    font-size: 1.1rem;
+    min-width: 140px;
+  }
+}
+
+/* Mobile devices (480px and below) */
+@media (max-width: 480px) {
+  /* Further reduce spacing for small mobile devices */
+  .container {
+    padding: 0 10px;
   }
   
   section {
-    padding: 60px 15px;
+    padding: 40px 0;
   }
   
-  section h2 {
-    font-size: 2rem;
+  /* Optimize headings for very small screens */
+  h2 {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
   }
   
+  h3 {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+  }
+  
+  /* Ensure buttons are touch-friendly on small screens */
   .btn {
-    padding: 10px 20px;
-    font-size: 14px;
+    padding: 16px 32px;
+    font-size: 1.2rem;
+    min-width: 160px;
   }
 }
 
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
+/* Utility Classes */
+/* Helper classes for common styling needs */
+
+/* Text alignment utilities */
+.text-center {
+  text-align: center;
 }
 
-/* Focus styles for accessibility */
-button:focus,
-input:focus,
-textarea:focus {
-  outline: 2px solid #667eea;
-  outline-offset: 2px;
+.text-left {
+  text-align: left;
 }
+
+.text-right {
+  text-align: right;
+}
+
+/* Margin utilities */
+.mb-0 { margin-bottom: 0; }
+.mb-1 { margin-bottom: 10px; }
+.mb-2 { margin-bottom: 20px; }
+.mb-3 { margin-bottom: 30px; }
+.mb-4 { margin-bottom: 40px; }
+
+/* Padding utilities */
+.p-0 { padding: 0; }
+.p-1 { padding: 10px; }
+.p-2 { padding: 20px; }
+.p-3 { padding: 30px; }
+.p-4 { padding: 40px; }
+
+/* Display utilities */
+.d-none { display: none; }
+.d-block { display: block; }
+.d-flex { display: flex; }
+.d-grid { display: grid; }
+
+/* Flexbox utilities */
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.align-center { align-items: center; }
+.flex-column { flex-direction: column; }
+
+/* ========================================
+   END OF GLOBAL STYLES
+   ======================================== */
+

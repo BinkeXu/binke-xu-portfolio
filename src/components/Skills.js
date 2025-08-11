@@ -142,9 +142,9 @@ const Skills = () => {
 
         <section className="skills-section">
           <h3>Soft Skills</h3>
-          <div className="skills-tags">
+          <div className="soft-skills-list">
             {softSkills.map((skill, index) => (
-              <span key={index} className="skill-tag">{skill}</span>
+              <span key={index} className="soft-skill-tag">{skill}</span>
             ))}
           </div>
         </section>
