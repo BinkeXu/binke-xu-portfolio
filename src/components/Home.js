@@ -1,6 +1,6 @@
 import React from 'react';
 import './Home.css';
-import myPhoto from '../img/My photo.jpg';
+import myPhoto from '../img/My-photo.jpg';
 
 /**
  * Home Component - Main Landing Page
@@ -27,13 +27,30 @@ const Home = () => {
    * - Cleans up the temporary element after download
    */
   const handleDownloadCV = () => {
-    // Create a link element to trigger the download
-    const link = document.createElement('a');
-    link.href = '/Binke_Xu_CV.pdf'; // CV file in public folder
-    link.download = 'Binke_Xu_CV.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    try {
+      // Get the correct base path for GitHub Pages
+      const basePath = process.env.PUBLIC_URL || '';
+      const cvPath = `${basePath}/Binke_Xu_CV.pdf`;
+      
+      // Create a link element to trigger the download
+      const link = document.createElement('a');
+      link.href = cvPath;
+      link.download = 'Binke_Xu_CV.pdf';
+      link.target = '_blank'; // Open in new tab as fallback
+      
+      // Add to DOM, click, and remove
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      
+      console.log('CV download initiated successfully');
+    } catch (error) {
+      console.error('Error downloading CV:', error);
+      // Fallback: open in new tab
+      const basePath = process.env.PUBLIC_URL || '';
+      const fallbackUrl = `${basePath}/Binke_Xu_CV.pdf`;
+      window.open(fallbackUrl, '_blank');
+    }
   };
 
   return (
@@ -55,7 +72,18 @@ const Home = () => {
               Responsive and optimized for all screen sizes
             */}
             <div className="profile-image">
-              <img src={myPhoto} alt="Binke Xu - AI and Software Engineering Professional" className="profile-photo" />
+              <img 
+                src={myPhoto || `${process.env.PUBLIC_URL || ''}/logo192.png`} 
+                alt="Binke Xu - AI and Software Engineering Professional" 
+                className="profile-photo"
+                onError={(e) => {
+                  console.error('Error loading profile image:', e);
+                  console.log('Trying fallback image...');
+                  const basePath = process.env.PUBLIC_URL || '';
+                  e.target.src = `${basePath}/logo192.png`; // Fallback to default logo
+                  e.target.onerror = null; // Prevent infinite loop
+                }}
+              />
             </div>
             
             {/* Hero Text Content */}
