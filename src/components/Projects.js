@@ -39,8 +39,25 @@ const Projects = () => {
         "Team collaboration and project management",
         "Complex system architecture design"
       ]
-    }
-  ];
+    },
+    {
+      title: "Home IoT Device Dashboard",
+      type: "Individual Project",
+      year: "2020",
+      description: "An Ionic React web app that visualizes activity data from MQTT in real time.",
+      technologies: ["React", "Ionic", "TypeScript", "MQTT (Paho over WebSocket)", "Socket.IO", "Chart.js", "Node.js", "Express"],
+      features: [
+        "Real-time activity dashboard across rooms (living, kitchen, dining, toilet, bedroom)",
+        "Live charts (bar, pie) and per-room battery status",
+        "Desktop notification on 5-minute inactivity"
+      ],
+      highlights: [
+        "Implemented end-to-end data flow: MQTT → React (Paho) → Socket.IO server → live UI updates",
+        "Built responsive Ionic UI with routing and chart visualizations",
+        "Lightweight Node/Express Socket.IO relay to broadcast updates across pages"
+      ],
+      codeLink: "https://github.com/BinkeXu/IoT-React"
+    }];
 
   const workExperience = [
     {
@@ -57,6 +74,57 @@ const Projects = () => {
       ]
     }
   ];
+
+  const handleViewCode = (codeLink) => {
+    const isValidLink = typeof codeLink === 'string' && codeLink.trim().length > 0;
+    if (isValidLink) {
+      try {
+        window.open(codeLink, '_blank', 'noopener,noreferrer');
+        return;
+      } catch (error) {
+        // fallthrough to popup
+      }
+    }
+
+    const popup = window.open('', 'CodeLinkPending', 'width=520,height=360');
+    if (popup) {
+      popup.document.write(`
+        <!doctype html>
+        <html lang="en">
+          <head>
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <title>Code Link Coming Soon</title>
+            <style>
+              body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 24px; background: #f7fafc; color: #1a202c; }
+              .card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; box-shadow: 0 6px 20px rgba(0,0,0,0.06); }
+              h1 { font-size: 18px; margin: 0 0 12px; }
+              p { margin: 0 0 16px; line-height: 1.5; }
+              .actions { display: flex; gap: 10px; }
+              .btn { appearance: none; border: 0; padding: 10px 14px; border-radius: 10px; cursor: pointer; font-weight: 600; }
+              .primary { background: linear-gradient(135deg, #6b8afd, #5cc6ff); color: #fff; }
+              .secondary { background: #edf2f7; color: #1a202c; }
+              a { color: inherit; text-decoration: none; }
+            </style>
+          </head>
+          <body>
+            <div class="card">
+              <h1>Code link will be added soon</h1>
+              <p>This project's repository link hasn't been provided yet. Please check back later, or view my GitHub profile in the meantime.</p>
+              <div class="actions">
+                <a class="btn primary" href="https://github.com/BinkeXu" target="_blank" rel="noopener noreferrer">Open GitHub Profile</a>
+                <button class="btn secondary" onclick="window.close()">Close</button>
+              </div>
+            </div>
+          </body>
+        </html>
+      `);
+      popup.document.close();
+    } else {
+      // As a final fallback
+      alert('Code link will be added soon.');
+    }
+  };
 
   return (
     <div className="projects" data-reveal>
@@ -133,7 +201,15 @@ const Projects = () => {
                   </ul>
                 </div>
 
-                
+                <div className="project-actions">
+                  <button
+                    className="btn btn-secondary"
+                    onClick={() => handleViewCode(project.codeLink)}
+                    aria-label={`View code for ${project.title}`}
+                  >
+                    View Code
+                  </button>
+                </div>
               </div>
             ))}
           </div>
