@@ -10,14 +10,14 @@
 /* Main wrapper for all home page content */
 .home {
   min-height: 100vh;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  background: var(--bg);
 }
 
 /* Hero Section */
 /* Main introduction section with profile image and call-to-action */
 .hero {
   padding: 120px 0 80px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #588fe2 0%, #9806ec 100%);
   color: white;
   position: relative;
   overflow: hidden;
@@ -129,7 +129,7 @@
 /* Detailed information about the portfolio owner */
 .about-me {
   padding: 80px 0;
-  background: white;
+  background: var(--surface);
 }
 
 /* About Content Layout */
@@ -146,7 +146,7 @@
 .about-text p {
   font-size: 1.1rem;
   line-height: 1.8;
-  color: #555;
+  color: var(--muted);
   margin-bottom: 25px;
 }
 
@@ -163,9 +163,9 @@
 .stat-item {
   text-align: center;
   padding: 30px 20px;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  background: var(--surface);
   border-radius: 15px;
-  border: 1px solid rgba(102, 126, 234, 0.1);
+  border: 1px solid var(--border);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -179,7 +179,7 @@
 .stat-item h3 {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #667eea;
+  color: var(--primary);
   margin-bottom: 10px;
 }
 
@@ -187,7 +187,7 @@
 /* Text explaining what the statistic represents */
 .stat-item p {
   font-size: 1rem;
-  color: #7f8c8d;
+  color: var(--muted);
   margin: 0;
   font-weight: 500;
 }
@@ -196,7 +196,7 @@
 /* Academic background and achievements */
 .education {
   padding: 80px 0;
-  background: #f8f9fa;
+  background: var(--bg);
 }
 
 /* Education Grid Layout */
@@ -211,11 +211,11 @@
 /* Education Card */
 /* Individual degree information container */
 .education-card {
-  background: white;
+  background: var(--surface);
   padding: 40px;
   border-radius: 15px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-  border-left: 4px solid #667eea;
+  box-shadow: var(--card-shadow);
+  border-left: 4px solid var(--primary);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -239,7 +239,7 @@
 /* Degree name and specialization */
 .education-header h3 {
   font-size: 1.5rem;
-  color: #2c3e50;
+  color: var(--text);
   margin: 0;
   font-weight: 600;
   flex: 1;
@@ -249,7 +249,7 @@
 /* Education Period */
 /* Time frame for degree completion */
 .education-period {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #588fe2 0%, #9806ec 100%);
   color: white;
   padding: 8px 16px;
   border-radius: 20px;
@@ -262,7 +262,7 @@
 /* University name and location */
 .education-institution {
   font-size: 1.1rem;
-  color: #667eea;
+  color: var(--primary);
   font-weight: 600;
   margin-bottom: 15px;
 }
@@ -280,7 +280,7 @@
 /* Coursework and research information */
 .education-details p {
   font-weight: 600;
-  color: #2c3e50;
+  color: var(--text);
   margin-bottom: 15px;
 }
 
@@ -291,15 +291,15 @@
 
 .education-details li {
   padding: 8px 0;
-  border-bottom: 1px solid #ecf0f1;
-  color: #555;
+  border-bottom: 1px solid var(--border);
+  color: var(--muted);
   position: relative;
   padding-left: 20px;
 }
 
 .education-details li:before {
   content: '•';
-  color: #667eea;
+  color: var(--primary);
   font-weight: bold;
   position: absolute;
   left: 0;

@@ -63,7 +63,7 @@ const Home = () => {
         - Professional description
         - Call-to-action button (CV download)
       */}
-      <section className="hero">
+      <section className="hero" data-reveal>
         <div className="hero-content">
           <div className="profile-section">
             {/* Profile Image */}
@@ -119,7 +119,7 @@ const Home = () => {
         Provides detailed information about the portfolio owner
         Includes professional summary and key statistics
       */}
-      <section className="about-me">
+      <section className="about-me" data-reveal>
         <div className="container">
           <h2>About Me</h2>
           <div className="about-content">
@@ -177,7 +177,7 @@ const Home = () => {
         Displays educational background and achievements
         Includes both Master's and Bachelor's degree information
       */}
-      <section className="education">
+      <section className="education" data-reveal>
         <div className="container">
           <h2>Education</h2>
           <div className="education-grid">

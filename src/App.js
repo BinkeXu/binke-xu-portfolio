@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './App.css';
 
 // Import all page components
@@ -28,6 +28,26 @@ function App() {
   // State to track which section is currently active
   // This enables the navigation highlighting and component switching
   const [currentSection, setCurrentSection] = useState('home');
+
+  // Scroll-reveal observer setup
+  const ioRef = useRef(null);
+  useEffect(() => {
+    const elements = document.querySelectorAll('[data-reveal]');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15, rootMargin: '0px 0px -50px 0px' }
+    );
+    elements.forEach((el) => observer.observe(el));
+    ioRef.current = observer;
+    return () => observer.disconnect();
+  }, [currentSection]);
 
   /**
    * Renders the appropriate component based on the current section

@@ -42,11 +42,11 @@ const Publications = () => {
   ];
 
   return (
-    <div className="publications">
+    <div className="publications" data-reveal>
       <div className="container">
-        <h2 className="publications-title">Publications & Research</h2>
+        <h2 className="publications-title" data-reveal>Publications & Research</h2>
         
-        <section className="stats-section">
+        <section className="stats-section" data-reveal>
           <div className="stats-grid">
             <div className="stat-card">
               <h3>2</h3>
@@ -63,7 +63,7 @@ const Publications = () => {
           </div>
         </section>
 
-        <section className="publications-section">
+        <section className="publications-section" data-reveal>
           <h3>Academic Publications</h3>
           <div className="publications-list">
             {publications.map((pub, index) => (
@@ -86,7 +86,7 @@ const Publications = () => {
           </div>
         </section>
 
-        <section className="research-areas-section">
+        <section className="research-areas-section" data-reveal>
           <h3>Research Areas</h3>
           <div className="research-tags">
             {researchAreas.map((area, index) => (

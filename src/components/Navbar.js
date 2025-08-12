@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Navbar.css';
 
 /**
@@ -18,6 +18,17 @@ import './Navbar.css';
  * - Mobile-friendly design
  */
 const Navbar = ({ currentSection, setCurrentSection }) => {
+  const [theme, setTheme] = useState(() => {
+    const saved = typeof window !== 'undefined' ? localStorage.getItem('theme') : null;
+    return saved || 'light';
+  });
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    try { localStorage.setItem('theme', theme); } catch {}
+  }, [theme]);
+
+  const toggleTheme = () => setTheme(prev => (prev === 'light' ? 'dark' : 'light'));
   // Navigation items configuration
   // Each item has an id (for state management) and display label
   const navigationItems = [
@@ -69,6 +80,16 @@ const Navbar = ({ currentSection, setCurrentSection }) => {
             </li>
           ))}
         </ul>
+
+        {/* Theme Toggle */}
+        <button
+          className="theme-toggle"
+          onClick={toggleTheme}
+          aria-label="Toggle dark and light theme"
+          title={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
+        >
+          {theme === 'light' ? '🌙' : '☀️'}
+        </button>
       </div>
     </nav>
   );

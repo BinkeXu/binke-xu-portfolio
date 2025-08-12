@@ -127,21 +127,43 @@ const Skills = () => {
     <div className="skills">
       <div className="container">
         <h2>Skills & Expertise</h2>
-        
-        <section className="skills-section">
-          <h3>Technical Skills</h3>
-          <div className="skills-grid">
-            {technicalSkills.map((skill, index) => (
-              <div key={index} className="skill-item">
-                <div className="skill-icon">{skill.icon}</div>
-                <div className="skill-name">{skill.name}</div>
-              </div>
-            ))}
-          </div>
-        </section>
 
-        <section className="skills-section">
-          <h3>Soft Skills</h3>
+        {/* Two-column panels for core capabilities */}
+        <div className="skills-layout">
+          <section className="skills-panel" data-reveal>
+            <div className="panel-header">
+              <h3>Technical Skills</h3>
+            </div>
+            <div className="panel-grid skills-grid">
+              {technicalSkills.map((skill, index) => (
+                <div key={index} className="skill-item">
+                  <div className="skill-icon">{skill.icon}</div>
+                  <div className="skill-name">{skill.name}</div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section className="skills-panel" data-reveal>
+            <div className="panel-header">
+              <h3>Tools & Technologies</h3>
+            </div>
+            <div className="panel-grid tools-grid">
+              {toolsTechnologies.map((tool, index) => (
+                <div key={index} className="tool-card">
+                  <div className="tool-icon">{tool.icon}</div>
+                  <div className="tool-name">{tool.name}</div>
+                </div>
+              ))}
+            </div>
+          </section>
+        </div>
+
+        {/* Full-width panels */}
+        <section className="skills-panel" data-reveal>
+          <div className="panel-header">
+            <h3>Soft Skills</h3>
+          </div>
           <div className="soft-skills-list">
             {softSkills.map((skill, index) => (
               <span key={index} className="soft-skill-tag">{skill}</span>
@@ -149,27 +171,17 @@ const Skills = () => {
           </div>
         </section>
 
-        <section className="skills-section">
-          <h3>Tools & Technologies</h3>
-          <div className="tools-grid">
-            {toolsTechnologies.map((tool, index) => (
-              <div key={index} className="tool-card">
-                <div className="tool-icon">{tool.icon}</div>
-                <div className="tool-name">{tool.name}</div>
-              </div>
-            ))}
+        <section className="skills-panel" data-reveal>
+          <div className="panel-header">
+            <h3>Certifications</h3>
           </div>
-        </section>
-
-        <section className="skills-section">
-          <h3>Certifications</h3>
           <div className="certifications-grid">
             {certifications.map((cert, index) => (
               <div key={index} className="certification-card">
                 <div className="cert-header">
                   <h4>{cert.name}</h4>
-                  <button 
-                    className="credential-button" 
+                  <button
+                    className="credential-button"
                     onClick={() => handleShowCredential(cert.credentialUrl)}
                   >
                     Show Credential

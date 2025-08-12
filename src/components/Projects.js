@@ -7,7 +7,7 @@ const Projects = () => {
       title: "Chatroom App",
       type: "Individual Project",
       year: "2021",
-      description: "Independently conceptualized and executed a personal project from the research to the development phase.",
+      description: "End-to-end Android chat app enabling real-time, multi-user communication on a local network.",
       technologies: ["React Native", "Firebase", "Android", "Real-time Communication"],
       features: [
         "Real-time, multi-user communication within a local network environment",
@@ -25,7 +25,7 @@ const Projects = () => {
       title: "Rocket Mission Control System",
       type: "Group Project",
       year: "2020",
-      description: "Collaborated with a 6-member team over two trimesters to develop a rocket control system.",
+      description: "Web control system enabling telemetry flow across simulation, avionics, and rocket subsystems.",
       technologies: ["Node.js", "React", "GitLab", "Flight Simulation", "Avionics"],
       features: [
         "Seamless communication and data transmission among flight simulation, avionics, and rocket systems",
@@ -59,11 +59,11 @@ const Projects = () => {
   ];
 
   return (
-    <div className="projects">
+    <div className="projects" data-reveal>
       <div className="container">
         <h2>Projects & Experience</h2>
         
-        <section className="work-experience-section">
+        <section className="work-experience-section" data-reveal>
           <h3>Work Experience</h3>
           <div className="experience-list">
             {workExperience.map((exp, index) => (
@@ -90,7 +90,7 @@ const Projects = () => {
           </div>
         </section>
 
-        <section className="projects-section">
+        <section className="projects-section" data-reveal>
           <h3>Engineering Projects</h3>
           <div className="projects-grid">
             {projects.map((project, index) => (
@@ -104,6 +104,7 @@ const Projects = () => {
                 </div>
                 
                 <p className="project-description">{project.description}</p>
+                
                 
                 <div className="project-technologies">
                   <h5>Technologies Used:</h5>
@@ -131,6 +132,8 @@ const Projects = () => {
                     ))}
                   </ul>
                 </div>
+
+                
               </div>
             ))}
           </div>

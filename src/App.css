@@ -16,6 +16,30 @@
 
 /* Root element styles */
 /* Sets base font and color variables for consistent theming */
+:root {
+  /* Light theme tokens */
+  --bg: #ffffff;
+  --text: #333333;
+  --muted: #555555;
+  --primary: #667eea;
+  --primary-2: #764ba2;
+  --surface: #ffffff;
+  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --border: rgba(102, 126, 234, 0.1);
+}
+
+[data-theme="dark"] {
+  /* Dark theme tokens */
+  --bg: #0f1221;
+  --text: #e6e8f0;
+  --muted: #b7bdd2;
+  --primary: #8aa4ff;
+  --primary-2: #8c6ad8;
+  --surface: #171a2b;
+  --card-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
+  --border: rgba(138, 164, 255, 0.15);
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -23,7 +47,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.6;
-  color: #333;
+  color: var(--text);
+  background: var(--bg);
 }
 
 /* Code font styling */
@@ -46,6 +71,18 @@ code {
 .main-content {
   flex: 1;
   margin-top: 80px; /* Accounts for fixed navbar height */
+}
+
+/* Scroll reveal base */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 600ms ease, transform 600ms ease;
+}
+
+[data-reveal].revealed {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Container Utility Class */
@@ -86,7 +123,7 @@ h3 {
 p {
   margin-bottom: 20px;
   line-height: 1.7;
-  color: #555;
+  color: var(--muted);
 }
 
 /* Button Styles */
@@ -110,7 +147,7 @@ p {
 /* Primary button variant */
 /* Main call-to-action buttons with gradient background */
 .btn-primary {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-2) 100%);
   color: white;
   box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
 }
@@ -124,8 +161,8 @@ p {
 /* Secondary actions with outline style */
 .btn-secondary {
   background: transparent;
-  color: #667eea;
-  border: 2px solid #667eea;
+  color: var(--primary);
+  border: 2px solid var(--primary);
 }
 
 .btn-secondary:hover {

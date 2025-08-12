@@ -1,6 +1,6 @@
 .projects {
   padding: 80px 0;
-  background-color: #f8f9fa;
+  background-color: var(--bg);
 }
 
 .projects .container {
@@ -12,13 +12,13 @@
 .projects h2 {
   text-align: center;
   margin-bottom: 60px;
-  color: #2c3e50;
+  color: var(--text);
   font-size: 2.5rem;
   font-weight: 700;
 }
 
 .projects h3 {
-  color: #34495e;
+  color: var(--text);
   font-size: 1.8rem;
   margin-bottom: 30px;
   font-weight: 600;
@@ -36,10 +36,10 @@
 }
 
 .experience-card {
-  background: white;
+  background: var(--surface);
   border-radius: 12px;
   padding: 30px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--card-shadow);
   border-left: 4px solid #3498db;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -54,7 +54,7 @@
 }
 
 .experience-header h4 {
-  color: #2c3e50;
+  color: var(--text);
   font-size: 1.4rem;
   margin-bottom: 10px;
   font-weight: 600;
@@ -81,14 +81,14 @@
 }
 
 .experience-description {
-  color: #555;
+  color: var(--muted);
   line-height: 1.6;
   margin-bottom: 20px;
   font-size: 1rem;
 }
 
 .achievements h5 {
-  color: #2c3e50;
+  color: var(--text);
   font-size: 1.1rem;
   margin-bottom: 15px;
   font-weight: 600;
@@ -100,7 +100,7 @@
 }
 
 .achievements li {
-  color: #555;
+  color: var(--muted);
   line-height: 1.6;
   margin-bottom: 8px;
   padding-left: 20px;
@@ -127,10 +127,10 @@
 }
 
 .project-card {
-  background: white;
+  background: var(--surface);
   border-radius: 12px;
   padding: 30px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--card-shadow);
   border-left: 4px solid #e74c3c;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -145,7 +145,7 @@
 }
 
 .project-header h4 {
-  color: #2c3e50;
+  color: var(--text);
   font-size: 1.4rem;
   margin-bottom: 10px;
   font-weight: 600;
@@ -155,7 +155,7 @@
   display: flex;
   gap: 15px;
   font-size: 0.9rem;
-  color: #7f8c8d;
+  color: var(--muted);
 }
 
 .project-type {
@@ -174,7 +174,7 @@
 }
 
 .project-description {
-  color: #555;
+  color: var(--muted);
   line-height: 1.6;
   margin-bottom: 20px;
   font-size: 1rem;
@@ -189,7 +189,7 @@
 .project-technologies h5,
 .project-features h5,
 .project-highlights h5 {
-  color: #2c3e50;
+  color: var(--text);
   font-size: 1.1rem;
   margin-bottom: 15px;
   font-weight: 600;
@@ -218,7 +218,7 @@
 
 .project-features li,
 .project-highlights li {
-  color: #555;
+  color: var(--muted);
   line-height: 1.6;
   margin-bottom: 8px;
   padding-left: 20px;
@@ -232,6 +232,32 @@
   font-weight: bold;
   position: absolute;
   left: 0;
+}
+
+/* Case study extras */
+.project-impact {
+  background: rgba(102, 126, 234, 0.08);
+  border: 1px solid var(--border);
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 16px;
+}
+
+.impact-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--primary);
+  background: rgba(102, 126, 234, 0.12);
+  padding: 4px 10px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+}
+
+.project-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
 }
 
 /* Responsive Design */

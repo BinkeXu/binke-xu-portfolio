@@ -6,7 +6,7 @@
 .contact h2 {
   text-align: center;
   margin-bottom: 60px;
-  color: #2c3e50;
+  color: var(--text);
   font-size: 2.5rem;
   font-weight: 700;
 }
@@ -49,9 +49,9 @@
   justify-content: flex-start;
   gap: 20px;
   padding: 25px;
-  background: white;
+  background: var(--surface);
   border-radius: 15px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--card-shadow);
   transition: transform 0.3s ease;
   width: 500px;
   height: 100px;
@@ -98,7 +98,7 @@
 }
 
 .info-details h4 {
-  color: #2c3e50;
+  color: var(--text);
   font-size: 1.2rem;
   margin-bottom: 5px;
   font-weight: 600;
@@ -106,7 +106,7 @@
 
 .info-details p,
 .info-details a {
-  color: #7f8c8d;
+  color: var(--muted);
   font-size: 1rem;
   margin: 0;
   text-decoration: none;
@@ -198,14 +198,14 @@
 
 /* Contact Form Section */
 .contact-form-section {
-  background: white;
+  background: var(--surface);
   padding: 40px;
   border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--card-shadow);
 }
 
 .contact-form-section h3 {
-  color: #2c3e50;
+  color: var(--text);
   font-size: 1.8rem;
   margin-bottom: 30px;
   font-weight: 600;
@@ -223,7 +223,7 @@
 }
 
 .form-group label {
-  color: #2c3e50;
+  color: var(--text);
   font-weight: 600;
   font-size: 1rem;
 }
@@ -277,15 +277,15 @@
 
 /* Contact Footer */
 .contact-footer {
-  background: white;
+  background: var(--surface);
   padding: 30px 40px;
   border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--card-shadow);
   text-align: center;
 }
 
 .contact-footer p {
-  color: #5a6c7d;
+  color: var(--muted);
   margin-bottom: 10px;
   font-size: 1rem;
 }

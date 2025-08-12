@@ -1,6 +1,6 @@
 .publications {
   padding: 80px 0;
-  background-color: #f8f9fa;
+  background-color: var(--bg);
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -14,7 +14,7 @@
 .publications-title {
   text-align: center;
   margin-bottom: 60px;
-  color: #2c3e50;
+  color: var(--text);
   font-size: 2.5rem;
   font-weight: 700;
 }
@@ -38,12 +38,12 @@
 }
 
 .stat-card {
-  background: white;
+  background: var(--surface);
   padding: 20px 15px;
   border-radius: 15px;
   text-align: center;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(102, 126, 234, 0.1);
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--border);
   transition: transform 0.3s ease;
 }
 
@@ -53,13 +53,13 @@
 
 .stat-card h3 {
   font-size: 2.5rem;
-  color: #667eea;
+  color: var(--primary);
   margin-bottom: 8px;
   font-weight: 700;
 }
 
 .stat-card p {
-  color: #7f8c8d;
+  color: var(--muted);
   font-weight: 500;
   font-size: 1rem;
   margin: 0;
@@ -72,11 +72,11 @@
 }
 
 .publication-card {
-  background: white;
+  background: var(--surface);
   padding: 20px;
   border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(102, 126, 234, 0.1);
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--border);
   transition: transform 0.3s ease;
 }
 
@@ -93,7 +93,7 @@
 }
 
 .publication-header h4 {
-  color: #2c3e50;
+  color: var(--text);
   font-size: 1.4rem;
   margin: 0;
   font-weight: 600;
@@ -116,7 +116,7 @@
 .publication-authors,
 .publication-journal,
 .publication-year {
-  color: #5a6c7d;
+  color: var(--muted);
   margin-bottom: 8px;
   font-size: 1rem;
   line-height: 1.5;
@@ -124,7 +124,7 @@
 
 .publication-year {
   margin-bottom: 0;
-  color: #667eea;
+  color: var(--primary);
   font-weight: 600;
 }
 
@@ -139,7 +139,7 @@
 }
 
 .publication-abstract {
-  color: #5a6c7d;
+  color: var(--muted);
   margin-bottom: 25px;
   line-height: 1.6;
   font-size: 1rem;
@@ -157,7 +157,7 @@
 }
 
 .research-areas-section h3 {
-  color: #2c3e50;
+  color: var(--text);
   font-size: 1.8rem;
   margin-bottom: 30px;
   font-weight: 600;

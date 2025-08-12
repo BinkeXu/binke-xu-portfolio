@@ -10,7 +10,7 @@
 /* Main wrapper for all skills page content */
 .skills {
   padding: 80px 0;
-  background-color: #f8f9fa;
+  background-color: var(--bg);
 }
 
 /* Skills Content Container */
@@ -26,7 +26,7 @@
 .skills h2 {
   text-align: center;
   margin-bottom: 60px;
-  color: #2c3e50;
+  color: var(--text);
   font-size: 2.5rem;
   font-weight: 700;
 }
@@ -41,7 +41,7 @@
 /* Subsection titles for each skills category */
 .skills-section h3 {
   font-size: 2rem;
-  color: #2c3e50;
+  color: var(--text);
   margin-bottom: 40px;
   text-align: center;
   font-weight: 600;
@@ -60,10 +60,10 @@
 /* Individual Skill Item */
 /* Container for each technical skill with icon and name */
 .skill-item {
-  background: #f8f9fa;
+  background: var(--surface);
   padding: 25px 20px;
   border-radius: 12px;
-  border: 1px solid rgba(102, 126, 234, 0.1);
+  border: 1px solid var(--border);
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
@@ -109,7 +109,7 @@
 .skill-name {
   font-size: 0.9rem;
   font-weight: 600;
-  color: #2c3e50;
+  color: var(--text);
   margin: 0;
 }
 
@@ -155,10 +155,10 @@
 /* Tool Card */
 /* Individual tool/technology display container */
 .tool-card {
-  background: white;
+  background: var(--surface);
   padding: 25px 20px;
   border-radius: 12px;
-  border: 1px solid rgba(102, 126, 234, 0.1);
+  border: 1px solid var(--border);
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
@@ -204,7 +204,7 @@
 .tool-name {
   font-size: 0.9rem;
   font-weight: 600;
-  color: #2c3e50;
+  color: var(--text);
   margin: 0;
 }
 
@@ -221,11 +221,11 @@
 /* Certification Card */
 /* Individual certification information container */
 .certification-card {
-  background: white;
+  background: var(--surface);
   padding: 25px;
   border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-  border-left: 4px solid #667eea;
+  box-shadow: var(--card-shadow);
+  border-left: 4px solid var(--primary);
   position: relative;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -247,7 +247,7 @@
 /* Certification Title */
 /* Name of the certification */
 .cert-header h4 {
-  color: #2c3e50;
+  color: var(--text);
   font-size: 1.1rem;
   margin: 0;
   font-weight: 600;
@@ -284,7 +284,7 @@
 /* Certification Description */
 /* Brief description of the certification */
 .certification-card p {
-  color: #555;
+  color: var(--muted);
   margin-bottom: 15px;
   line-height: 1.6;
 }
@@ -386,3 +386,73 @@
 /* ========================================
    END OF SKILLS STYLES
    ======================================== */
+
+/* ====================
+   Skills layout refresh
+   ==================== */
+
+/* Two-column panel layout to reduce visual scattering */
+.skills-layout {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+.skills-panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: var(--card-shadow);
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.skills-panel h3 {
+  font-size: 1.4rem;
+  color: var(--text);
+  margin: 0;
+  font-weight: 700;
+}
+
+/* Tighter section spacing for legacy sections */
+.skills-section { margin-bottom: 40px; }
+.skills-section h3 { margin-bottom: 20px; }
+
+/* Grid refinements to keep content compact inside panels */
+.skills-grid { margin: 0; }
+.tools-grid { margin: 0; }
+
+/* Card density adjustments */
+.skill-item { padding: 20px 16px; cursor: default; }
+.tool-card { padding: 20px 16px; }
+
+/* Softer container width for chips */
+.soft-skills-list { max-width: 900px; margin: 0 auto 10px auto; }
+
+/* Certification grid width */
+.certifications-grid { grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); margin: 0; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .skills-layout { grid-template-columns: 1fr; gap: 20px; }
+  .skills-grid,
+  .tools-grid { grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 12px; }
+  .soft-skills-list { gap: 10px; }
+  .certifications-grid { grid-template-columns: 1fr; gap: 20px; }
+  .skill-icon, .tool-icon { margin-bottom: 10px; }
+}
+
+@media (max-width: 480px) {
+  .skills-grid,
+  .tools-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .skill-item, .tool-card { padding: 16px 12px; }
+  .certification-card { padding: 16px; }
+  .soft-skill-tag { padding: 8px 14px; }
+}
