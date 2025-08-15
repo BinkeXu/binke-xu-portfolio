@@ -57,6 +57,29 @@ const Projects = () => {
         "Lightweight Node/Express Socket.IO relay to broadcast updates across pages"
       ],
       codeLink: "https://github.com/BinkeXu/IoT-React"
+    },{
+      title: "COVID-19 World Map",
+      type: "Individual Project",
+      year: "2021",
+      description: "Interactive web application visualizing global COVID-19 statistics on an interactive world map with real-time data exploration and comprehensive country analytics.",
+      technologies: ["React", "TypeScript", "react-simple-maps", "styled-components", "PapaParse", "CSV Processing"],
+      features: [
+        "Interactive world map with color-coded countries based on COVID-19 case density",
+        "Real-time tooltips showing detailed statistics on hover",
+        "Comprehensive country data panels with cases, deaths, vaccinations, and population metrics",
+        "Zoom and pan capabilities with smooth map navigation",
+        "Population-adjusted metrics (per-million calculations) for fair country comparisons",
+        "Vaccination progress visualization with color-coded progress bars",
+        "Responsive design optimized for desktop and mobile devices"
+      ],
+      highlights: [
+        "Full-stack data visualization with robust CSV parsing and error handling",
+        "Type-safe development with comprehensive TypeScript interfaces",
+        "Modern glassmorphism UI design with smooth animations and transitions",
+        "Efficient data processing with memoized country statistics aggregation",
+        "Professional-grade error handling and fallback systems for production use"
+      ],
+      codeLink: "https://github.com/BinkeXu/covid-world-map"
     }];
 
   const workExperience = [
