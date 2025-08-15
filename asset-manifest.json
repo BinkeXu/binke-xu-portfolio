@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/binke-xu-portfolio/static/css/main.8adbf933.css",
-    "main.js": "/binke-xu-portfolio/static/js/main.9c6958b0.js",
+    "main.css": "/binke-xu-portfolio/static/css/main.b5789c86.css",
+    "main.js": "/binke-xu-portfolio/static/js/main.b8ed7a99.js",
     "static/js/453.2291aba8.chunk.js": "/binke-xu-portfolio/static/js/453.2291aba8.chunk.js",
     "static/media/cicd.png": "/binke-xu-portfolio/static/media/cicd.dee4ae58dd0a5da592d2.png",
     "static/media/Python.png": "/binke-xu-portfolio/static/media/Python.033def8fdd635454ce6b.png",
@@ -22,12 +22,12 @@
     "static/media/PostgreSQL.png": "/binke-xu-portfolio/static/media/PostgreSQL.ba628df4785bc11af809.png",
     "static/media/linkedin.png": "/binke-xu-portfolio/static/media/linkedin.63b96b9ea7fdfd7a5ee0.png",
     "index.html": "/binke-xu-portfolio/index.html",
-    "main.8adbf933.css.map": "/binke-xu-portfolio/static/css/main.8adbf933.css.map",
-    "main.9c6958b0.js.map": "/binke-xu-portfolio/static/js/main.9c6958b0.js.map",
+    "main.b5789c86.css.map": "/binke-xu-portfolio/static/css/main.b5789c86.css.map",
+    "main.b8ed7a99.js.map": "/binke-xu-portfolio/static/js/main.b8ed7a99.js.map",
     "453.2291aba8.chunk.js.map": "/binke-xu-portfolio/static/js/453.2291aba8.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.8adbf933.css",
-    "static/js/main.9c6958b0.js"
+    "static/css/main.b5789c86.css",
+    "static/js/main.b8ed7a99.js"
   ]
 }
