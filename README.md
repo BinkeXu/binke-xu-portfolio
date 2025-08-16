@@ -4,8 +4,9 @@ A modern, responsive personal portfolio website built with React.js showcasing a
 
 ## 🌟 Features
 
+- **Welcome Landing Page**: Beautiful glassmorphism design with typewriter effect
 - **Responsive Design**: Mobile-first approach with modern UI/UX
-- **Multi-Section Layout**: Home, Skills, Projects, Publications, and Contact sections
+- **Multi-Section Layout**: Welcome, Home, Skills, Projects, Publications, and Contact sections
 - **Professional Styling**: Clean, modern design with consistent spacing and typography
 - **Interactive Elements**: Hover effects, smooth transitions, and professional animations
 - **Logo Integration**: Real technology logos for skills and tools
@@ -23,6 +24,8 @@ A modern, responsive personal portfolio website built with React.js showcasing a
 - **gh-pages** - GitHub Pages deployment
 - **React Router** - Navigation between sections
 - **Modern CSS** - Flexbox, Grid, CSS Variables, and animations
+- **Google Fonts** - Artistic typography (Tangerine, Cinzel, Playfair Display)
+- **CSS Animations** - Keyframe animations and transitions
 
 ## 📁 Project Structure
 
@@ -34,6 +37,8 @@ my-website/
 │   └── Binke_Xu_CV.pdf   # CV file for download
 ├── src/                   # Source code
 │   ├── components/        # React components
+│   │   ├── Welcome.js     # Welcome landing page with glassmorphism
+│   │   ├── Welcome.css    # Welcome page styles and animations
 │   │   ├── Home.js        # Home page component
 │   │   ├── Skills.js      # Skills and expertise
 │   │   ├── Projects.js    # Work experience and projects
@@ -54,7 +59,15 @@ my-website/
 
 ## 🎯 Website Sections
 
-### 1. **Home Section**
+### 1. **Welcome Section** 🌟
+- **Glassmorphism Design**: Beautiful frosted glass effect with backdrop blur
+- **Typewriter Effect**: Dynamic text animation that types out the welcome message
+- **Artistic Typography**: Elegant fonts (Tangerine, Cinzel, Playfair Display)
+- **Gradient Background**: Golden to orange gradient with animated elements
+- **One-Time Landing**: Displays only on first visit, then navigates to main site
+- **Responsive Design**: Optimized for all screen sizes
+
+### 2. **Home Section**
 - Professional introduction and hero section
 - About Me with key statistics
 - Education details (Master's and Bachelor's degrees)
@@ -121,12 +134,21 @@ npm run deploy
 
 ## 🎨 Design Features
 
+### Welcome Page Features
+- **Glassmorphism**: Semi-transparent backgrounds with backdrop blur effects
+- **Typewriter Animation**: Dynamic text typing effect with blinking cursor
+- **Artistic Fonts**: Google Fonts integration for elegant typography
+- **Gradient Backgrounds**: Beautiful color transitions (#dfb34d to #f74a06)
+- **Floating Elements**: Subtle animated background decorations
+- **Responsive Typography**: Font sizes that adapt to screen sizes
+
 ### Color Scheme
 - **Primary**: #667eea (Blue)
 - **Secondary**: #764ba2 (Purple)
 - **Text**: #2c3e50 (Dark Blue)
 - **Background**: #f8f9fa (Light Gray)
 - **Accent**: #BFECFF, #C6E7FF (Light Blue)
+- **Welcome Background**: #dfb34d to #f74a06 (Golden to Orange gradient)
 
 ### Typography
 - **Headings**: Modern, bold fonts with consistent sizing
@@ -160,6 +182,13 @@ npm run deploy
 2. Add CSS file for styling
 3. Import and add to `App.js`
 4. Update navigation in `Navbar.js`
+
+### Welcome Page Customization
+- **Fonts**: Update `@import` URL in `Welcome.css` and modify `font-family` properties
+- **Colors**: Change background gradients and text colors in CSS variables
+- **Animations**: Modify `@keyframes` for timing and effects
+- **Layout**: Adjust padding, margins, and positioning in CSS classes
+- **Typewriter Speed**: Change animation duration in responsive media queries
 
 ### Modifying Content
 - **Skills**: Update arrays in `Skills.js`

@@ -1,0 +1,324 @@
+/* ========================================
+   WELCOME PAGE STYLES - Welcome.css
+   ========================================
+   
+   This file contains all styles for the welcome/landing page.
+   Features: Glassmorphism background, typewriter effect, artistic fonts,
+   responsive design, and smooth animations.
+   
+   To modify this page:
+   - Change fonts: Update @import URL and font-family properties
+   - Adjust colors: Modify background gradients and text colors
+   - Change animations: Update @keyframes and animation properties
+   - Modify layout: Adjust padding, margins, and positioning
+   ======================================== */
+
+/* Import Artistic Google Fonts from Google Fonts
+   Available fonts: Dancing Script, Playfair Display, Cinzel, Great Vibes
+   To add new fonts: Visit https://fonts.google.com/ and update this URL */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:wght@400;700;900&family=Cinzel:wght@400;600;700&family=Great+Vibes&display=swap');
+
+/* Main Container - Full viewport height with gradient background */
+.welcome-container {
+  min-height: 100vh; /* Full viewport height */
+  background: linear-gradient(135deg, #dfb34d 0%, #e29734 50%, #f74a06 100%); /* Golden to orange gradient */
+  display: flex;
+  align-items: center; /* Center content vertically */
+  justify-content: center; /* Center content horizontally */
+  padding: 20px; /* Spacing around content */
+  position: relative; /* For absolute positioning of children */
+  overflow: hidden; /* Hide overflow for background animations */
+}
+
+/* Glassmorphism Effect - Creates frosted glass appearance over background
+   To adjust: Change background opacity, blur amount, or border properties */
+.welcome-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.08); /* White overlay with 8% opacity */
+  backdrop-filter: blur(30px); /* Modern browsers blur effect */
+  -webkit-backdrop-filter: blur(15px); /* Safari compatibility */
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Subtle white border */
+  z-index: 1; /* Above background, below content */
+}
+
+/* Background Decoration Elements - Animated floating elements for visual interest
+   To modify: Change animation duration, opacity, or size of elements */
+
+/* Large floating background element with rotation animation */
+.welcome-container::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%; /* Larger than container for movement effect */
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  animation: float 20s ease-in-out infinite; /* 20 second rotation cycle */
+  z-index: 0; /* Behind glassmorphism layer */
+}
+
+/* Central pulsing element for subtle background movement */
+.welcome-container .floating-element {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+  transform: translate(-50%, -50%);
+  animation: pulse 15s ease-in-out infinite; /* 15 second pulse cycle */
+  z-index: 0; /* Behind glassmorphism layer */
+}
+
+/* Content Layout - Centers and positions the welcome content */
+.welcome-content {
+  position: relative;
+  z-index: 2; /* Above background elements */
+  text-align: center; /* Center all text content */
+}
+
+/* Welcome Card Container - Holds title, subtitle, and button
+   To adjust layout: Modify padding, max-width, or positioning */
+.welcome-card {
+  background: transparent; /* No background - shows glassmorphism */
+  padding: 60px 40px; /* Internal spacing: 60px top/bottom, 40px left/right */
+  max-width: 1600px; /* Maximum width for ultra-wide screens */
+  width: 100%; /* Responsive width */
+  position: relative;
+  z-index: 2; /* Above background elements */
+}
+
+/* Main Welcome Title - Large, artistic font with multiple effects
+   To customize: Change font-family, size, colors, or animations */
+.welcome-title {
+  font-family: 'Tangerine', serif; /* Elegant cursive font - change in @import above */
+  font-size: 6rem; /* Large size for impact - adjust for different screens */
+  font-weight: 400; /* Normal weight for elegant appearance */
+  color: #ffffff; /* White text color */
+  
+  /* Text shadow for depth and readability */
+  text-shadow: 
+    0 2px 10px rgba(0, 0, 0, 0.3), /* Dark shadow for contrast */
+    0 0 20px rgba(255, 255, 255, 0.2); /* White glow effect */
+  
+  /* Spacing and positioning */
+  margin-bottom: 20px; /* Space below title */
+  margin-top: -40px; /* Move title up for better positioning */
+  line-height: 1.1; /* Tight line height for large text */
+  letter-spacing: 0.02em; /* Slight letter spacing for elegance */
+  
+  /* Gradient text effect - creates metallic appearance */
+  background: linear-gradient(45deg, #ffffff, #f0f0f0, #ffffff);
+  -webkit-background-clip: text; /* Safari support */
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  
+  /* Multiple animations combined */
+  animation: titleGlow 3s ease-in-out infinite alternate; /* Glow effect */
+  
+  /* Typewriter effect properties */
+  overflow: hidden; /* Hide text during typing animation */
+  border-right: 3px solid #ffffff; /* Blinking cursor */
+  white-space: nowrap; /* Prevent text wrapping */
+  animation: typing 4s steps(40, end), blink-caret 0.75s step-end infinite; /* Typewriter + cursor */
+}
+
+/* Welcome Subtitle - Secondary text below main title
+   To customize: Change font, size, color, or styling */
+.welcome-subtitle {
+  font-family: 'Cinzel', serif; /* Elegant serif font for contrast */
+  font-size: 1.4rem; /* Medium size for hierarchy */
+  font-weight: 400; /* Normal weight */
+  color: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow for readability */
+  margin-bottom: 25px; /* Space below subtitle */
+  letter-spacing: 0.1em; /* Wide letter spacing for elegance */
+  text-transform: uppercase; /* All caps for formal appearance */
+  font-style: italic; /* Italic for style variation */
+}
+
+.welcome-decoration {
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+  margin: 0 auto;
+  border-radius: 2px;
+  position: relative;
+}
+
+.welcome-decoration::before,
+.welcome-decoration::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+
+.welcome-decoration::before {
+  left: -20px;
+}
+
+.welcome-decoration::after {
+  right: -20px;
+}
+
+/* Enter Website Button - Call-to-action button with glassmorphism effect
+   To customize: Change colors, size, font, or hover effects */
+.enter-website-btn {
+  /* Button appearance */
+  background: rgba(255, 255, 255, 0.2); /* Semi-transparent white background */
+  border: 2px solid rgba(255, 255, 255, 0.3); /* Subtle white border */
+  color: #ffffff; /* White text */
+  border-radius: 50px; /* Rounded pill shape */
+  
+  /* Typography */
+  font-family: 'Playfair Display', serif; /* Elegant serif font */
+  font-size: 1.3rem; /* Medium size for readability */
+  font-weight: 600; /* Semi-bold weight */
+  letter-spacing: 0.05em; /* Slight letter spacing */
+  text-transform: uppercase; /* All caps for emphasis */
+  
+  /* Layout and spacing */
+  padding: 18px 35px; /* Internal spacing: 18px top/bottom, 35px left/right */
+  margin-top: 30px; /* Space above button */
+  
+  /* Interactive properties */
+  cursor: pointer; /* Hand cursor on hover */
+  transition: all 0.4s ease; /* Smooth transitions for all changes */
+  
+  /* Glassmorphism effect */
+  backdrop-filter: blur(10px); /* Modern browsers blur */
+  -webkit-backdrop-filter: blur(10px); /* Safari compatibility */
+  
+  /* Text enhancement */
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+}
+
+.enter-website-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* ========================================
+   ANIMATION KEYFRAMES
+   ========================================
+   These animations create the dynamic effects on the welcome page.
+   To modify: Change duration, timing, or effect properties
+   ======================================== */
+
+/* Title Glow Animation - Creates pulsing brightness and shadow effect
+   To adjust: Change brightness values, shadow size, or timing */
+@keyframes titleGlow {
+  0% {
+    filter: brightness(1) drop-shadow(0 0 5px rgba(255, 255, 255, 0.3)); /* Normal brightness, small glow */
+  }
+  100% {
+    filter: brightness(1.1) drop-shadow(0 0 15px rgba(255, 255, 255, 0.5)); /* Brighter, larger glow */
+  }
+}
+
+/* Typewriter Effect Animations - Creates typing and cursor blinking effects
+   To adjust: Change width values, timing, or cursor appearance */
+
+/* Typing Animation - Text appears from left to right */
+@keyframes typing {
+  from { width: 0; } /* Start with no width (invisible text) */
+  to { width: 100%; } /* End with full width (visible text) */
+}
+
+/* Cursor Blink Animation - Creates blinking cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent; } /* Cursor invisible */
+  50% { border-color: #ffffff; } /* Cursor visible */
+}
+
+/* Background Animation Keyframes - Subtle movement for visual interest
+   To adjust: Change movement distance, rotation, timing, or opacity */
+
+/* Float Animation - Creates gentle floating movement with rotation
+   To modify: Change translateY values, rotation degrees, or timing */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg); /* Start and end position */
+  }
+  33% {
+    transform: translateY(-20px) rotate(120deg); /* Move up and rotate */
+  }
+  66% {
+    transform: translateY(20px) rotate(240deg); /* Move down and rotate */
+  }
+}
+
+/* Pulse Animation - Creates breathing effect with scale and opacity
+   To modify: Change scale values, opacity, or timing */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.5; /* Start and end opacity */
+    transform: translate(-50%, -50%) scale(1); /* Normal size */
+  }
+  50% {
+    opacity: 0.8; /* Peak opacity */
+    transform: translate(-50%, -50%) scale(1.1); /* Slightly larger */
+  }
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ========================================
+   These media queries ensure the welcome page looks great on all devices.
+   To modify: Adjust breakpoints, font sizes, or spacing for different screens
+   ======================================== */
+
+/* Tablet and Small Desktop (max-width: 768px) */
+@media (max-width: 768px) {
+  /* Adjust title for medium screens */
+  .welcome-title {
+    font-size: 4.5rem; /* Smaller font size for medium screens */
+    padding: 0 10px; /* Add horizontal padding */
+    margin-top: -30px; /* Adjust vertical position */
+    animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite; /* Faster typing for medium screens */
+  }
+  
+  /* Adjust subtitle for medium screens */
+  .welcome-subtitle {
+    font-size: 1.2rem; /* Smaller subtitle for medium screens */
+  }
+  
+  /* Adjust card container for medium screens */
+  .welcome-card {
+    padding: 40px 30px; /* Reduced padding for medium screens */
+    margin: 0 20px; /* Add horizontal margins */
+  }
+}
+
+/* Mobile Devices (max-width: 480px) */
+@media (max-width: 480px) {
+  /* Adjust title for small screens */
+  .welcome-title {
+    font-size: 3.5rem; /* Even smaller font size for mobile */
+    margin-top: -20px; /* Adjust vertical position for mobile */
+    animation: typing 2.5s steps(40, end), blink-caret 0.75s step-end infinite; /* Fastest typing for mobile */
+  }
+  
+  /* Adjust subtitle for small screens */
+  .welcome-subtitle {
+    font-size: 1.1rem; /* Smallest subtitle for mobile */
+  }
+  
+  /* Adjust card container for small screens */
+  .welcome-card {
+    padding: 30px 20px; /* Minimal padding for mobile */
+  }
+}
