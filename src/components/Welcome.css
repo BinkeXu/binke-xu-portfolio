@@ -21,7 +21,7 @@
 /* Main Container - Full viewport height with gradient background */
 .welcome-container {
   min-height: 100vh; /* Full viewport height */
-  background: linear-gradient(135deg, #dfb34d 0%, #e29734 50%, #f74a06 100%); /* Golden to orange gradient */
+  background: linear-gradient(135deg, #e2e1dd 0%, #868684 50%, #666463 100%); 
   display: flex;
   align-items: center; /* Center content vertically */
   justify-content: center; /* Center content horizontally */

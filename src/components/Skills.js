@@ -19,7 +19,28 @@ import agileLogo from '../logos/Agile.png';
 import cicdLogo from '../logos/cicd.png';
 import firebaseLogo from '../logos/Firebase.png';
 
+/**
+ * Skills Component
+ * 
+ * This component displays the portfolio owner's technical skills, tools, soft skills,
+ * and professional certifications in an organized, visually appealing layout.
+ * 
+ * Features:
+ * - Technical skills with logo icons
+ * - Tools and technologies showcase
+ * - Soft skills display
+ * - Professional certifications with verification links
+ * - Responsive grid layouts
+ * - Interactive credential verification
+ * 
+ * @returns {JSX.Element} The skills and expertise page component
+ */
 const Skills = () => {
+  /**
+   * Technical Skills Data
+   * Core programming languages and frameworks with their respective logo icons
+   * Each skill includes a name and an imported logo image
+   */
   const technicalSkills = [
     { 
       name: 'Python', 
@@ -59,12 +80,22 @@ const Skills = () => {
     },
   ];
 
+  /**
+   * Soft Skills Data
+   * Non-technical skills and competencies that complement technical expertise
+   * These skills are displayed as tags without icons
+   */
   const softSkills = [
     'Problem Solving', 'Critical Thinking', 'Project Management', 
     'Team Collaboration', 'Research & Analysis', 'Communication',
     'Agile/Scrum', 'CI/CD Pipelines'
   ];
 
+  /**
+   * Tools and Technologies Data
+   * Additional tools, libraries, and platforms used in development
+   * Each tool includes a name and an imported logo image
+   */
   const toolsTechnologies = [
     { 
       name: 'GitLab', 
@@ -104,6 +135,11 @@ const Skills = () => {
     },
   ];
 
+  /**
+   * Professional Certifications Data
+   * Microsoft Azure certifications with verification links
+   * Each certification includes name, year, description, and credential URL
+   */
   const certifications = [
     {
       name: 'Microsoft Azure Fundamentals (AZ-900)',
@@ -119,8 +155,14 @@ const Skills = () => {
     }
   ];
 
+  /**
+   * Handles credential verification link clicks
+   * Opens the Microsoft credential verification page in a new tab
+   * 
+   * @param {string} url - The credential verification URL
+   */
   const handleShowCredential = (url) => {
-    window.open(url, '_blank');
+    window.open(url, '_blank'); // Open in new tab to maintain user's current page
   };
 
   return (
@@ -128,8 +170,13 @@ const Skills = () => {
       <div className="container">
         <h2>Skills & Expertise</h2>
 
-        {/* Two-column panels for core capabilities */}
+        {/* Two-column layout for core technical capabilities */}
         <div className="skills-layout">
+          {/* Technical Skills Panel */}
+          {/* 
+            Displays core programming languages and frameworks
+            Each skill is shown with its logo icon and name
+          */}
           <section className="skills-panel" data-reveal>
             <div className="panel-header">
               <h3>Technical Skills</h3>
@@ -144,6 +191,11 @@ const Skills = () => {
             </div>
           </section>
 
+          {/* Tools & Technologies Panel */}
+          {/* 
+            Shows additional development tools and platforms
+            Includes libraries, frameworks, and development methodologies
+          */}
           <section className="skills-panel" data-reveal>
             <div className="panel-header">
               <h3>Tools & Technologies</h3>
@@ -159,7 +211,13 @@ const Skills = () => {
           </section>
         </div>
 
-        {/* Full-width panels */}
+        {/* Full-width panels for additional skills and certifications */}
+        
+        {/* Soft Skills Panel */}
+        {/* 
+          Displays non-technical competencies and professional skills
+          Skills are shown as interactive tags for better visual appeal
+        */}
         <section className="skills-panel" data-reveal>
           <div className="panel-header">
             <h3>Soft Skills</h3>
@@ -171,6 +229,11 @@ const Skills = () => {
           </div>
         </section>
 
+        {/* Certifications Panel */}
+        {/* 
+          Shows professional certifications with verification links
+          Each certification includes description and year obtained
+        */}
         <section className="skills-panel" data-reveal>
           <div className="panel-header">
             <h3>Certifications</h3>
@@ -180,6 +243,7 @@ const Skills = () => {
               <div key={index} className="certification-card">
                 <div className="cert-header">
                   <h4>{cert.name}</h4>
+                  {/* Credential verification button */}
                   <button
                     className="credential-button"
                     onClick={() => handleShowCredential(cert.credentialUrl)}

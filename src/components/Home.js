@@ -102,10 +102,10 @@ const Home = () => {
               {/* Call-to-Action Button */}
               {/* 
                 CV download button that allows visitors to download the resume
-                Styled as a secondary button to maintain visual hierarchy
+                Styled with custom download-cv class for enhanced visual appeal
               */}
               <div className="hero-buttons">
-                <button className="btn btn-secondary" onClick={handleDownloadCV}>
+                <button className="btn btn-download-cv" onClick={handleDownloadCV}>
                   Download CV
                 </button>
               </div>

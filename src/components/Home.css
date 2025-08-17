@@ -17,7 +17,7 @@
 /* Main introduction section with profile image and call-to-action */
 .hero {
   padding: 120px 0 80px;
-  background: linear-gradient(135deg, #588fe2 0%, #9806ec 100%);
+  background: linear-gradient(135deg, #f8f8f8 0%, #2a2a2b 100%);
   color: white;
   position: relative;
   overflow: hidden;
@@ -129,7 +129,7 @@
 /* Detailed information about the portfolio owner */
 .about-me {
   padding: 80px 0;
-  background: var(--surface);
+  background: var(--bg);
 }
 
 /* About Content Layout */

@@ -15,204 +15,226 @@
 }
 
 /* Root element styles */
-/* Sets base font and color variables for consistent theming */
+/* Sets base font and color variables for consistent theming across the application */
 :root {
-  /* Light theme tokens */
-  --bg: #ffffff;
-  --text: #333333;
-  --muted: #555555;
-  --primary: #667eea;
-  --primary-2: #764ba2;
-  --surface: #ffffff;
-  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --border: rgba(102, 126, 234, 0.1);
+  /* Light theme tokens - used throughout the app for consistent colors */
+  --bg: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); /* Main background gradient */
+  --text: #333333; /* Primary text color */
+  --muted: #555555; /* Secondary/muted text color */
+  --primary: #667eea; /* Primary brand color for buttons and accents */
+  --primary-2: #764ba2; /* Secondary brand color for gradients */
+  --surface: #ffffff; /* Card and surface background color */
+  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Standard card shadow */
+  --border: rgba(102, 126, 234, 0.1); /* Subtle border color */
 }
 
+/* Dark theme variant - can be toggled for dark mode support */
 [data-theme="dark"] {
-  /* Dark theme tokens */
-  --bg: #0f1221;
-  --text: #e6e8f0;
-  --muted: #b7bdd2;
-  --primary: #8aa4ff;
-  --primary-2: #8c6ad8;
-  --surface: #171a2b;
-  --card-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
-  --border: rgba(138, 164, 255, 0.15);
+  /* Dark theme tokens - alternative color scheme */
+  --bg: #0f1221; /* Dark background */
+  --text: #e6e8f0; /* Light text for dark backgrounds */
+  --muted: #b7bdd2; /* Muted text in dark mode */
+  --primary: #8aa4ff; /* Brighter primary for dark mode */
+  --primary-2: #8c6ad8; /* Adjusted secondary for dark mode */
+  --surface: #171a2b; /* Dark surface color */
+  --card-shadow: 0 6px 16px rgba(0, 0, 0, 0.5); /* Stronger shadow for dark mode */
+  --border: rgba(138, 164, 255, 0.15); /* Adjusted border for dark mode */
 }
 
+/* Base body styling */
+/* Sets the foundation for all text and background across the application */
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  line-height: 1.6;
-  color: var(--text);
-  background: var(--bg);
+    sans-serif; /* Modern system font stack for optimal readability */
+  -webkit-font-smoothing: antialiased; /* Smooth font rendering on WebKit browsers */
+  -moz-osx-font-smoothing: grayscale; /* Smooth font rendering on Firefox */
+  line-height: 1.6; /* Comfortable reading line height */
+  color: var(--text); /* Uses CSS variable for consistent text color */
+  background: var(--bg); /* Applies the global background gradient */
+  min-height: 100vh; /* Ensures background covers full viewport height */
 }
 
 /* Code font styling */
-/* Ensures code elements use monospace font for better readability */
+/* Ensures code elements use monospace font for better readability and code-like appearance */
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+    monospace; /* Professional code font stack */
 }
 
 /* Main Application Container */
-/* Wraps the entire application content */
+/* Wraps the entire application content and provides flexbox layout structure */
 .App {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  min-height: 100vh; /* Full viewport height */
+  display: flex; /* Flexbox layout for proper content distribution */
+  flex-direction: column; /* Stack children vertically */
 }
 
 /* Main Content Area */
 /* Contains the dynamic content that changes based on navigation */
 .main-content {
-  flex: 1;
-  margin-top: 80px; /* Accounts for fixed navbar height */
+  flex: 1; /* Takes remaining space after navbar */
+  margin-top: 80px; /* Accounts for fixed navbar height to prevent content overlap */
 }
 
-/* Scroll reveal base */
+/* Scroll reveal animations */
+/* Provides smooth reveal animations for elements as they come into view */
 [data-reveal] {
-  opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 600ms ease, transform 600ms ease;
+  opacity: 0; /* Start invisible */
+  transform: translateY(16px); /* Start slightly below final position */
+  transition: opacity 600ms ease, transform 600ms ease; /* Smooth transition */
 }
 
 [data-reveal].revealed {
-  opacity: 1;
-  transform: translateY(0);
+  opacity: 1; /* Fully visible */
+  transform: translateY(0); /* Final position */
 }
 
 /* Container Utility Class */
-/* Provides consistent max-width and centering for content sections */
+/* Provides consistent max-width and centering for content sections across all pages */
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
+  max-width: 1200px; /* Maximum content width for optimal readability */
+  margin: 0 auto; /* Center content horizontally */
+  padding: 0 20px; /* Consistent horizontal padding */
 }
 
 /* Section Headers */
 /* Consistent styling for all main section titles across the website */
 h1, h2, h3, h4, h5, h6 {
-  color: #2c3e50;
-  font-weight: 600;
-  line-height: 1.2;
+  color: #2c3e50; /* Professional dark blue-gray color */
+  font-weight: 600; /* Semi-bold weight for good hierarchy */
+  line-height: 1.2; /* Tight line height for headings */
 }
 
 /* Main section titles (h2) */
-/* Standardized styling for section headers with consistent spacing */
+/* Standardized styling for section headers with consistent spacing and emphasis */
 h2 {
-  font-size: 2.5rem;
-  margin-bottom: 60px;
-  text-align: center;
-  font-weight: 700;
+  font-size: 2.5rem; /* Large, prominent size */
+  margin-bottom: 60px; /* Generous spacing below */
+  text-align: center; /* Centered alignment for visual balance */
+  font-weight: 700; /* Bold weight for maximum impact */
 }
 
 /* Subsection titles (h3) */
 /* Styling for subsection headers within main sections */
 h3 {
-  font-size: 1.8rem;
-  margin-bottom: 30px;
-  color: #34495e;
+  font-size: 1.8rem; /* Medium size for subsections */
+  margin-bottom: 30px; /* Moderate spacing */
+  color: #34495e; /* Slightly lighter than main headings */
 }
 
 /* Paragraph styling */
-/* Base text styling for consistent readability */
+/* Base text styling for consistent readability across all content */
 p {
-  margin-bottom: 20px;
-  line-height: 1.7;
-  color: var(--muted);
+  margin-bottom: 20px; /* Consistent paragraph spacing */
+  line-height: 1.7; /* Comfortable reading line height */
+  color: var(--muted); /* Uses muted color for body text */
 }
 
 /* Button Styles */
-/* Global button styling system for consistent UI elements */
+/* Global button styling system for consistent UI elements across the application */
 
 /* Base button styles */
+/* Foundation styles that all button variants inherit */
 .btn {
-  display: inline-block;
-  padding: 12px 30px;
-  border: none;
-  border-radius: 25px;
-  font-size: 1rem;
-  font-weight: 500;
-  text-decoration: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-align: center;
-  min-width: 120px;
+  display: inline-block; /* Inline-block for proper sizing */
+  padding: 12px 30px; /* Comfortable padding for touch targets */
+  border: none; /* Remove default border */
+  border-radius: 25px; /* Rounded corners for modern look */
+  font-size: 1rem; /* Readable font size */
+  font-weight: 500; /* Medium weight for good readability */
+  text-decoration: none; /* Remove underline */
+  cursor: pointer; /* Hand cursor on hover */
+  transition: all 0.3s ease; /* Smooth transitions for all properties */
+  text-align: center; /* Center text within button */
+  min-width: 120px; /* Minimum width for consistent button sizing */
 }
 
 /* Primary button variant */
-/* Main call-to-action buttons with gradient background */
+/* Main call-to-action buttons with gradient background for maximum visual impact */
 .btn-primary {
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-2) 100%);
-  color: white;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-2) 100%); /* Brand gradient */
+  color: white; /* White text for contrast */
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3); /* Subtle shadow for depth */
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+  transform: translateY(-2px); /* Slight upward movement on hover */
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4); /* Enhanced shadow on hover */
 }
 
 /* Secondary button variant */
-/* Secondary actions with outline style */
+/* Secondary actions with outline style for less emphasis than primary buttons */
 .btn-secondary {
-  background: transparent;
-  color: var(--primary);
-  border: 2px solid var(--primary);
+  background: transparent; /* Transparent background */
+  color: #050505; /* Changed to red color for text and border */
+  border: 2px solid #050505; /* Changed to red outlined border */
 }
 
 .btn-secondary:hover {
-  background: #667eea;
-  color: white;
-  transform: translateY(-2px);
+  background: #6de0cd; /* Fill with red color on hover */
+  color: white; /* White text for contrast */
+  transform: translateY(-2px); /* Consistent hover animation */
+}
+
+/* Custom Download CV Button Style */
+/* Special styling for the CV download button to make it stand out */
+.btn-download-cv {
+  background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%); /* Green gradient background */
+  color: white; /* White text for contrast */
+  border: 2px solid #27ae60; /* Green border */
+  box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3); /* Green shadow for depth */
+}
+
+.btn-download-cv:hover {
+  background: linear-gradient(135deg, #229954 0%, #27ae60 100%); /* Darker green on hover */
+  border-color: #229954; /* Darker border on hover */
+  transform: translateY(-2px); /* Consistent hover animation */
+  box-shadow: 0 6px 20px rgba(39, 174, 96, 0.4); /* Enhanced shadow on hover */
 }
 
 /* Button active states */
-/* Visual feedback when buttons are clicked */
+/* Visual feedback when buttons are clicked or pressed */
 .btn:active {
-  transform: translateY(0);
+  transform: translateY(0); /* Return to original position */
 }
 
 /* Link Styling */
 /* Global link styling for consistent navigation experience */
 a {
-  color: #667eea;
-  text-decoration: none;
-  transition: color 0.3s ease;
+  color: #667eea; /* Brand color for links */
+  text-decoration: none; /* Remove default underline */
+  transition: color 0.3s ease; /* Smooth color transition on hover */
 }
 
 a:hover {
-  color: #5a6fd8;
+  color: #5a6fd8; /* Darker shade on hover for feedback */
 }
 
 /* List Styling */
 /* Consistent list appearance across all components */
 ul, ol {
-  margin-bottom: 20px;
-  padding-left: 20px;
+  margin-bottom: 20px; /* Consistent spacing below lists */
+  padding-left: 20px; /* Standard left padding for list items */
 }
 
 li {
-  margin-bottom: 8px;
-  line-height: 1.6;
+  margin-bottom: 8px; /* Spacing between list items */
+  line-height: 1.6; /* Readable line height for list content */
 }
 
 /* Image Styling */
 /* Global image styling for consistent appearance */
 img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
+  max-width: 100%; /* Responsive images that scale with container */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 8px; /* Subtle rounded corners */
 }
 
 /* Section Spacing */
 /* Consistent spacing between major sections for visual harmony */
 section {
-  padding: 80px 0;
+  padding: 80px 0; /* Generous vertical padding for breathing room */
 }
 
 /* Responsive Design Adjustments */
@@ -222,30 +244,30 @@ section {
 @media (max-width: 768px) {
   /* Adjust container padding for smaller screens */
   .container {
-    padding: 0 15px;
+    padding: 0 15px; /* Reduced padding for mobile */
   }
   
   /* Reduce section padding for mobile */
   section {
-    padding: 60px 0;
+    padding: 60px 0; /* Less padding on smaller screens */
   }
   
   /* Adjust heading sizes for mobile */
   h2 {
-    font-size: 2rem;
-    margin-bottom: 40px;
+    font-size: 2rem; /* Smaller size for mobile */
+    margin-bottom: 40px; /* Reduced spacing */
   }
   
   h3 {
-    font-size: 1.5rem;
-    margin-bottom: 25px;
+    font-size: 1.5rem; /* Adjusted for mobile */
+    margin-bottom: 25px; /* Reduced spacing */
   }
   
   /* Adjust button sizing for touch devices */
   .btn {
-    padding: 14px 28px;
-    font-size: 1.1rem;
-    min-width: 140px;
+    padding: 14px 28px; /* Larger padding for touch targets */
+    font-size: 1.1rem; /* Slightly larger text */
+    min-width: 140px; /* Wider for better touch interaction */
   }
 }
 
@@ -253,29 +275,29 @@ section {
 @media (max-width: 480px) {
   /* Further reduce spacing for small mobile devices */
   .container {
-    padding: 0 10px;
+    padding: 0 10px; /* Minimal padding for small screens */
   }
   
   section {
-    padding: 40px 0;
+    padding: 40px 0; /* Compact spacing for small mobile */
   }
   
   /* Optimize headings for very small screens */
   h2 {
-    font-size: 1.8rem;
-    margin-bottom: 30px;
+    font-size: 1.8rem; /* Compact size for small mobile */
+    margin-bottom: 30px; /* Minimal spacing */
   }
   
   h3 {
-    font-size: 1.3rem;
-    margin-bottom: 20px;
+    font-size: 1.3rem; /* Small size for mobile */
+    margin-bottom: 20px; /* Compact spacing */
   }
   
   /* Ensure buttons are touch-friendly on small screens */
   .btn {
-    padding: 16px 32px;
-    font-size: 1.2rem;
-    min-width: 160px;
+    padding: 16px 32px; /* Large padding for small screens */
+    font-size: 1.2rem; /* Readable text size */
+    min-width: 160px; /* Wide enough for comfortable touch */
   }
 }
 
@@ -324,4 +346,5 @@ section {
 /* ========================================
    END OF GLOBAL STYLES
    ======================================== */
+
 

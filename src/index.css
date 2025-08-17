@@ -1,13 +1,39 @@
+/* ========================================
+   BASE STYLES - index.css
+   ========================================
+   
+   This file contains the foundational CSS styles that apply to the entire application.
+   It sets up base typography, font smoothing, and code styling that serves as
+   the foundation for all other component styles.
+   
+   Note: Most global styles are now defined in App.css for better organization.
+   This file maintains minimal base styling for the HTML document.
+   ======================================== */
+
+/* Base Body Styling */
+/* 
+  Sets the foundation for all text and layout across the application.
+  Provides consistent font family and removes default browser margins.
+*/
 body {
-  margin: 0;
+  margin: 0; /* Remove default browser margins for consistent spacing */
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    sans-serif; /* Modern system font stack for optimal readability across platforms */
+  -webkit-font-smoothing: antialiased; /* Smooth font rendering on WebKit browsers (Chrome, Safari) */
+  -moz-osx-font-smoothing: grayscale; /* Smooth font rendering on Firefox */
 }
 
+/* Code Element Styling */
+/* 
+  Ensures code elements use monospace fonts for better readability
+  and maintain consistent appearance across different code blocks.
+*/
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+    monospace; /* Professional monospace font stack for code display */
 }
+
+/* ========================================
+   END OF BASE STYLES
+   ======================================== */
