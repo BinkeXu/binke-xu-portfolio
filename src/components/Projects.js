@@ -6,11 +6,12 @@ import './Projects.css';
  * 
  * Displays a comprehensive view of engineering projects and work experience.
  * Features expandable project cards that show condensed information by default
- * and reveal full details on hover or click interaction.
+ * and reveal full details only on click interaction.
  * 
  * Key Features:
- * - Interactive project cards with hover/click expansion
+ * - Interactive project cards with click-only expansion
  * - Single card expansion (only one card expanded at a time)
+ * - Filtering and sorting by year and tech stack
  * - Work experience section with achievements
  * - Code link handling with fallback popup
  * - Responsive design for all screen sizes
@@ -18,35 +19,9 @@ import './Projects.css';
 const Projects = () => {
   // State management for card interactions
   const [expandedCard, setExpandedCard] = useState(null); // Tracks which card is currently expanded
-  const [hoveredCard, setHoveredCard] = useState(null); // Tracks which card is being hovered
+  const [sortBy, setSortBy] = useState('year'); // Default sort by year
+  const [techFilter, setTechFilter] = useState('all'); // Tech stack filter
   const projectsContainerRef = useRef(null); // Reference to the projects grid container
-
-  /**
-   * Handles card hover events
-   * Expands the hovered card only if no card is currently clicked/expanded
-   * @param {number} index - Index of the hovered card
-   */
-  const handleCardHover = (index) => {
-    console.log('Hover on card:', index, 'Current expanded:', expandedCard);
-    setHoveredCard(index);
-    // Only expand on hover if no card is currently clicked
-    if (expandedCard === null) {
-      setExpandedCard(index);
-    }
-  };
-
-  /**
-   * Handles when mouse leaves a card
-   * Collapses the card if no card is currently clicked/expanded
-   */
-  const handleCardLeave = () => {
-    console.log('Leave card, Current expanded:', expandedCard);
-    setHoveredCard(null);
-    // Only collapse on hover leave if no card is clicked
-    if (expandedCard === null) {
-      setExpandedCard(null);
-    }
-  };
 
   /**
    * Handles card click events
@@ -59,11 +34,9 @@ const Projects = () => {
     if (expandedCard === index) {
       // If clicking the same card, collapse it
       setExpandedCard(null);
-      setHoveredCard(null);
     } else {
       // Expand the clicked card and collapse any other expanded card
       setExpandedCard(index);
-      setHoveredCard(null);
     }
   };
 
@@ -76,7 +49,6 @@ const Projects = () => {
     // If clicking on the background (not on a card), collapse all cards
     if (e.target === projectsContainerRef.current || e.target.closest('.projects') === projectsContainerRef.current) {
       setExpandedCard(null);
-      setHoveredCard(null);
     }
   };
 
@@ -88,7 +60,6 @@ const Projects = () => {
     const handleClickOutside = (e) => {
       if (projectsContainerRef.current && !projectsContainerRef.current.contains(e.target)) {
         setExpandedCard(null);
-        setHoveredCard(null);
       }
     };
 
@@ -181,7 +152,32 @@ const Projects = () => {
         "Professional-grade error handling and fallback systems for production use"
       ],
       codeLink: "https://github.com/BinkeXu/covid-world-map"
-    }];
+    },{
+      "title": "E-Commerce Customer Churn Prediction",
+      "type": "Individual Project",
+      "year": "2025",
+      "description": "End-to-end MLOps pipeline for predicting customer churn using machine learning, featuring a production-ready API, interactive web dashboard, and comprehensive monitoring infrastructure.",
+      "technologies": ["Python", "Machine Learning","FastAPI", "Streamlit", "Docker", "Kubernetes", "Prometheus", "Grafana", "LightGBM", "XGBoost", "Scikit-learn", "Pandas", "NumPy"],
+      "features": [
+        "RFM analysis-based feature engineering for customer segmentation",
+        "Multi-algorithm ML pipeline with hyperparameter tuning and cross-validation",
+        "RESTful API with single and batch prediction endpoints",
+        "Interactive Streamlit dashboard for real-time predictions and analytics",
+        "Docker containerization with multi-service orchestration",
+        "Kubernetes deployment manifests for production scaling",
+        "Full monitoring stack with Prometheus metrics and Grafana dashboards",
+        "CI/CD pipeline with GitHub Actions for automated deployment"
+      ],
+      "highlights": [
+        "Complete MLOps implementation from data engineering to production deployment",
+        "Production-ready architecture with proper error handling and monitoring",
+        "Multi-container microservices design with service discovery",
+        "Advanced ML techniques including ensemble methods and feature importance analysis",
+        "Infrastructure as Code with comprehensive Kubernetes and Docker configurations",
+        "Real-time customer churn scoring with actionable business insights"
+      ],codeLink: "https://github.com/BinkeXu/E-Commerce-Customer-Churn-Prediction"
+    }
+    ];
 
   /**
    * Work experience data array
@@ -260,6 +256,68 @@ const Projects = () => {
     }
   };
 
+  /**
+   * Get unique years from projects for sorting
+   */
+  const getUniqueYears = () => {
+    const years = [...new Set(projects.map(project => project.year))];
+    return years.sort((a, b) => parseInt(b) - parseInt(a)); // Sort years descending
+  };
+
+  /**
+   * Get common tech stacks for filtering
+   */
+  const getCommonTechStacks = () => {
+    const allTechs = projects.flatMap(project => project.technologies);
+    const techCount = {};
+    allTechs.forEach(tech => {
+      techCount[tech] = (techCount[tech] || 0) + 1;
+    });
+    
+    // Get techs that appear in at least 2 projects
+    const commonTechs = Object.entries(techCount)
+      .filter(([tech, count]) => count >= 2)
+      .sort(([,a], [,b]) => b - a)
+      .map(([tech]) => tech);
+    
+    // Add important techs that should always be available for filtering
+    const importantTechs = ['Python', 'Machine Learning'];
+    const additionalTechs = importantTechs.filter(tech => !commonTechs.includes(tech));
+    
+    return [...commonTechs, ...additionalTechs];
+  };
+
+  /**
+   * Filter and sort projects based on current filters
+   */
+  const getFilteredAndSortedProjects = () => {
+    let filteredProjects = [...projects];
+    
+    // Apply tech stack filter
+    if (techFilter !== 'all') {
+      filteredProjects = filteredProjects.filter(project => 
+        project.technologies.includes(techFilter)
+      );
+    }
+    
+    // Apply sorting
+    filteredProjects.sort((a, b) => {
+      if (sortBy === 'year') {
+        return parseInt(b.year) - parseInt(a.year); // Descending order
+      } else if (sortBy === 'techStack') {
+        // Sort by number of technologies (descending)
+        return b.technologies.length - a.technologies.length;
+      }
+      return 0;
+    });
+    
+    return filteredProjects;
+  };
+
+  const filteredProjects = getFilteredAndSortedProjects();
+  const uniqueYears = getUniqueYears();
+  const commonTechStacks = getCommonTechStacks();
+
   return (
     <div className="projects" data-reveal>
       <div className="container">
@@ -296,25 +354,57 @@ const Projects = () => {
         {/* Engineering Projects Section */}
         <section className="projects-section" data-reveal>
           <h3>Engineering Projects</h3>
+          
+          {/* Filter Controls */}
+          <div className="filter-controls">
+            <div className="filter-group">
+              <label htmlFor="sort-select">Sort by:</label>
+              <select 
+                id="sort-select"
+                value={sortBy} 
+                onChange={(e) => setSortBy(e.target.value)}
+                className="filter-select"
+              >
+                <option value="year">Year (Newest First)</option>
+                <option value="techStack">Tech Stack Complexity</option>
+              </select>
+            </div>
+            
+            <div className="filter-group">
+              <label htmlFor="tech-filter">Filter by Tech:</label>
+              <select 
+                id="tech-filter"
+                value={techFilter} 
+                onChange={(e) => setTechFilter(e.target.value)}
+                className="filter-select"
+              >
+                <option value="all">All Technologies</option>
+                {commonTechStacks.map(tech => (
+                  <option key={tech} value={tech}>{tech}</option>
+                ))}
+              </select>
+            </div>
+            
+            <div className="filter-info">
+              Showing {filteredProjects.length} of {projects.length} projects
+            </div>
+          </div>
+          
           <div 
             className="projects-grid" 
             ref={projectsContainerRef}
             onClick={handleBackgroundClick}
           >
-            {projects.map((project, index) => {
+            {filteredProjects.map((project, index) => {
               // Determine card state for rendering
               const isExpanded = expandedCard === index;
-              const isHovered = hoveredCard === index;
-              const shouldShowFull = isExpanded || isHovered;
               
-              console.log(`Card ${index}: expanded=${isExpanded}, hovered=${isHovered}, shouldShowFull=${shouldShowFull}`);
+              console.log(`Card ${index}: expanded=${isExpanded}`);
               
               return (
                 <div 
                   key={index} 
-                  className={`project-card ${shouldShowFull ? 'expanded' : ''}`}
-                  onMouseEnter={() => handleCardHover(index)}
-                  onMouseLeave={handleCardLeave}
+                  className={`project-card ${isExpanded ? 'expanded' : ''}`}
                   onClick={(e) => {
                     e.stopPropagation(); // Prevent background click handler from firing
                     handleCardClick(index);
@@ -337,17 +427,17 @@ const Projects = () => {
                   <div className="project-technologies">
                     <h5>Technologies Used:</h5>
                     <div className="tech-tags">
-                      {project.technologies.slice(0, shouldShowFull ? project.technologies.length : 3).map((tech, idx) => (
+                      {project.technologies.slice(0, isExpanded ? project.technologies.length : 3).map((tech, idx) => (
                         <span key={idx} className="tech-tag">{tech}</span>
                       ))}
-                      {!shouldShowFull && project.technologies.length > 3 && (
+                      {!isExpanded && project.technologies.length > 3 && (
                         <span className="tech-tag more-indicator">+{project.technologies.length - 3} more</span>
                       )}
                     </div>
                   </div>
                   
                   {/* Expandable Content - Features and Highlights */}
-                  {shouldShowFull && (
+                  {isExpanded && (
                     <>
                       <div className="project-features">
                         <h5>Key Features:</h5>
@@ -381,8 +471,8 @@ const Projects = () => {
                     >
                       View Code
                     </button>
-                    {!shouldShowFull && (
-                      <span className="expand-hint">Hover or click to see more details</span>
+                    {!isExpanded && (
+                      <span className="expand-hint">Click to see more details</span>
                     )}
                   </div>
                 </div>

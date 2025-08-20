@@ -7,6 +7,8 @@ A modern, responsive personal portfolio website built with React.js showcasing a
 - **Welcome Landing Page**: Beautiful glassmorphism design with typewriter effect
 - **Responsive Design**: Mobile-first approach with modern UI/UX
 - **Multi-Section Layout**: Welcome, Home, Skills, Projects, Publications, and Contact sections
+- **Interactive Project Cards**: Click-to-expand project details with filtering and sorting
+- **Advanced Filtering System**: Sort projects by year and filter by technology stack
 - **Professional Styling**: Clean, modern design with consistent spacing and typography
 - **Interactive Elements**: Hover effects, smooth transitions, and professional animations
 - **Logo Integration**: Real technology logos for skills and tools
@@ -41,9 +43,9 @@ my-website/
 │   │   ├── Welcome.css    # Welcome page styles and animations
 │   │   ├── Home.js        # Home page component
 │   │   ├── Skills.js      # Skills and expertise
-│   │   ├── Projects.js    # Work experience and projects
+│   │   ├── Projects.js    # Work experience and projects with filtering
 │   │   ├── Publications.js # Research publications
-│   │   ├── Contact.js     # Contact information
+│   │   ├── Contact.js     # Contact information with social links
 │   │   └── Navbar.js      # Navigation component
 │   ├── logos/             # Technology logos
 │   │   ├── Python.png     # Python logo
@@ -73,27 +75,54 @@ my-website/
 - Education details (Master's and Bachelor's degrees)
 - Download CV functionality
 
-### 2. **Skills Section**
+### 3. **Skills Section**
 - **Technical Skills**: Python, PyTorch, Java, Node.js, React, SQL, Azure, Git, PostgreSQL
 - **Tools & Technologies**: GitLab, Agile, CI/CD, OpenCV, Pandas, NumPy, TensorFlow, Firebase, React Native
 - **Soft Skills**: Problem Solving, Teamwork, Communication, Adaptability
 - **Certifications**: Microsoft Azure Fundamentals (AZ-900), Azure AI Fundamentals (AI-900)
 
-### 3. **Projects Section**
-- Work experience and engineering projects
-- Project descriptions and technologies used
-- Professional achievements and contributions
+### 4. **Projects Section** 🆕
+- **Interactive Project Cards**: Click to expand and view full project details
+- **Advanced Filtering System**: 
+  - Sort by Year (newest first) or Tech Stack Complexity
+  - Filter by specific technologies (Python, Machine Learning, React, etc.)
+  - Smart tech detection for commonly used technologies
+- **Work Experience**: Professional achievements and research contributions
+- **Project Technologies**: Comprehensive tech stack display with expandable details
+- **Code Links**: Direct GitHub repository access for available projects
 
-### 4. **Publications Section**
+### 5. **Publications Section**
 - IEEE research publications
 - Conference presentations
 - Research areas and collaborations
 - Academic achievements
 
-### 5. **Contact Section**
+### 6. **Contact Section** 🆕
 - Professional contact information
-- Social media links (LinkedIn)
+- **Social Media Integration**: LinkedIn and GitHub profiles
+- **GitHub Profile**: Direct link to [github.com/BinkeXu](https://github.com/BinkeXu)
 - Location and availability details
+- Responsive social media buttons with platform-specific styling
+
+## 🆕 Recent Updates
+
+### Project Filtering & Sorting System
+- **Year-based Sorting**: Projects automatically sorted by year (newest first)
+- **Tech Stack Filtering**: Filter projects by specific technologies
+- **Smart Technology Detection**: Automatically identifies common tech stacks across projects
+- **Always-Available Filters**: Python and Machine Learning always available for filtering
+- **Project Count Display**: Shows filtered results count
+
+### Enhanced User Experience
+- **Click-to-Expand Cards**: Project cards only expand on click (no hover expansion)
+- **Single Card Expansion**: Only one project card expanded at a time
+- **Background Click to Collapse**: Click outside cards to collapse all
+- **Responsive Filter Controls**: Mobile-optimized filter interface
+
+### GitHub Integration
+- **GitHub Profile Link**: Added to contact section
+- **Repository Links**: Direct access to project code
+- **Professional Branding**: Consistent with LinkedIn and other social profiles
 
 ## 🚀 Getting Started
 
@@ -142,6 +171,12 @@ npm run deploy
 - **Floating Elements**: Subtle animated background decorations
 - **Responsive Typography**: Font sizes that adapt to screen sizes
 
+### Project Section Features
+- **Interactive Cards**: Smooth expand/collapse animations
+- **Filter Controls**: Modern dropdown design with hover effects
+- **Tech Tags**: Color-coded technology indicators
+- **Responsive Grid**: Adaptive layout for all screen sizes
+
 ### Color Scheme
 - **Primary**: #667eea (Blue)
 - **Secondary**: #764ba2 (Purple)
@@ -149,6 +184,8 @@ npm run deploy
 - **Background**: #f8f9fa (Light Gray)
 - **Accent**: #BFECFF, #C6E7FF (Light Blue)
 - **Welcome Background**: #dfb34d to #f74a06 (Golden to Orange gradient)
+- **GitHub**: #24292e to #586069 (Dark Gray gradient)
+- **LinkedIn**: #0077b5 to #00a0dc (Blue gradient)
 
 ### Typography
 - **Headings**: Modern, bold fonts with consistent sizing
@@ -174,6 +211,7 @@ npm run deploy
 - Optimized layouts for small screens
 - Responsive images and logos
 - Mobile-first CSS approach
+- **Filter Controls**: Stack vertically on mobile devices
 
 ## 🔧 Customization
 
@@ -182,6 +220,11 @@ npm run deploy
 2. Add CSS file for styling
 3. Import and add to `App.js`
 4. Update navigation in `Navbar.js`
+
+### Project Filtering Customization
+- **Add New Technologies**: Update the `importantTechs` array in `Projects.js`
+- **Modify Filter Logic**: Adjust the `getCommonTechStacks()` function
+- **Change Sort Options**: Add new sorting criteria in `getFilteredAndSortedProjects()`
 
 ### Welcome Page Customization
 - **Fonts**: Update `@import` URL in `Welcome.css` and modify `font-family` properties
@@ -207,6 +250,7 @@ npm run deploy
 - **Efficient CSS**: Minimal CSS with modern properties
 - **Fast Loading**: Optimized React components
 - **SEO Ready**: Semantic HTML structure
+- **Smart Filtering**: Efficient project filtering algorithms
 
 ## 🌐 Browser Support
 
@@ -225,6 +269,7 @@ This project is open source and available under the [MIT License](LICENSE).
 - Victoria University of Wellington
 - Specializing in AI and Software Engineering
 - [LinkedIn Profile](https://www.linkedin.com/in/binke-xu-/)
+- [GitHub Profile](https://github.com/BinkeXu)
 
 ## 🤝 Contributing
 
@@ -238,6 +283,7 @@ While this is a personal portfolio, suggestions and feedback are welcome:
 
 - **Email**: Binkexu@gmail.com
 - **LinkedIn**: [linkedin.com/in/binke-xu-/](https://www.linkedin.com/in/binke-xu-/)
+- **GitHub**: [github.com/BinkeXu](https://github.com/BinkeXu)
 - **Location**: Wellington, New Zealand
 - **Website**: [binkexu.github.io/binke-xu-portfolio/](https://binkexu.github.io/binke-xu-portfolio/)
 ---

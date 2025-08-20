@@ -84,6 +84,12 @@
   border-radius: 50%;
 }
 
+/* Scale down GitHub logo in contact info card */
+.info-item:has(.info-icon img[alt="GitHub"]) .info-icon img {
+  width: 35px;
+  height: 35px;
+}
+
 .info-icon:has(img) {
   background: none;
 }
@@ -148,8 +154,8 @@
 }
 
 .social-logo {
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  height: 32px;
   object-fit: contain;
 }
 
@@ -161,6 +167,33 @@
 .social-link:hover {
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(74, 85, 104, 0.4);
+}
+
+/* GitHub-specific styling */
+.social-link.github {
+  background: linear-gradient(135deg, #24292e 0%, #586069 100%);
+}
+
+.social-link.github:hover {
+  box-shadow: 0 5px 15px rgba(36, 41, 46, 0.4);
+}
+
+/* LinkedIn-specific styling */
+.social-link.linkedin {
+  background: linear-gradient(135deg, #0077b5 0%, #00a0dc 100%);
+}
+
+.social-link.linkedin:hover {
+  box-shadow: 0 5px 15px rgba(0, 119, 181, 0.4);
+}
+
+/* Email-specific styling */
+.social-link.email {
+  background: linear-gradient(135deg, #ea4335 0%, #fbbc05 100%);
+}
+
+.social-link.email:hover {
+  box-shadow: 0 5px 15px rgba(234, 67, 53, 0.4);
 }
 
 /* Availability */

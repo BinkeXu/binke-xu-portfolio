@@ -42,6 +42,99 @@
 }
 
 /* ========================================
+   FILTER CONTROLS STYLES
+   ======================================== */
+
+/* Filter Controls Container */
+/* Wrapper for sorting and filtering controls */
+.filter-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 30px;
+  padding: 20px;
+  background: var(--surface);
+  border-radius: 12px;
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--border);
+}
+
+/* Filter Group */
+/* Individual filter control with label and select */
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 200px;
+}
+
+/* Filter Labels */
+.filter-group label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Filter Select Dropdowns */
+.filter-select {
+  padding: 10px 12px;
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 180px;
+}
+
+.filter-select:hover {
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.filter-select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+/* Filter Info Display */
+.filter-info {
+  margin-left: auto;
+  padding: 8px 16px;
+  background: var(--accent);
+  color: white;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
+  min-width: 120px;
+}
+
+/* Responsive Filter Controls */
+@media (max-width: 768px) {
+  .filter-controls {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+  }
+  
+  .filter-group {
+    min-width: auto;
+  }
+  
+  .filter-info {
+    margin-left: 0;
+    align-self: center;
+  }
+}
+
+/* ========================================
    WORK EXPERIENCE SECTION STYLES
    ======================================== */
 

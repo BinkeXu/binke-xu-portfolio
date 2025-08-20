@@ -1,6 +1,7 @@
 import React from 'react';
 import './Contact.css';
 import linkedinLogo from '../logos/linkedin.png';
+import gitLogo from '../logos/git.png';
 
 /**
  * Contact Component
@@ -10,7 +11,7 @@ import linkedinLogo from '../logos/linkedin.png';
  * 
  * Features:
  * - Contact information display (email, phone, location)
- * - Professional social media links
+ * - Professional social media links (LinkedIn, GitHub)
  * - Direct email and LinkedIn access
  * - Responsive design for all devices
  * - Accessibility-friendly contact methods
@@ -81,12 +82,33 @@ const Contact = () => {
                   </a>
                 </div>
               </div>
+              
+              {/* GitHub Profile */}
+              {/* 
+                Code repository and portfolio link with logo
+                Opens in new tab for better user experience
+              */}
+              <div className="info-item" data-reveal>
+                <div className="info-icon">
+                  <img src={gitLogo} alt="GitHub" />
+                </div>
+                <div className="info-details">
+                  <h4>GitHub</h4>
+                  <a 
+                    href="https://github.com/BinkeXu" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                  >
+                    github.com/BinkeXu
+                  </a>
+                </div>
+              </div>
             </div>
 
             {/* Social Media Links Section */}
             {/* 
               Quick access to professional networking platforms
-              Includes direct email and LinkedIn profile links
+              Includes direct email, LinkedIn, and GitHub profile links
             */}
             <div className="social-links" data-reveal>
               <h4>Connect With Me</h4>
@@ -100,6 +122,17 @@ const Contact = () => {
                 >
                   <img src={linkedinLogo} alt="LinkedIn" className="social-logo" />
                   LinkedIn
+                </a>
+                
+                {/* GitHub Profile Link */}
+                <a 
+                  href="https://github.com/BinkeXu" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="social-link github"
+                >
+                  <img src={gitLogo} alt="GitHub" className="social-logo" />
+                  GitHub
                 </a>
                 
                 {/* Direct Email Link */}
