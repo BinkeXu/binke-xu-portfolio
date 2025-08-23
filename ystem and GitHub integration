@@ -1,0 +1,453 @@
+[1mdiff --git a/README.md b/README.md[m
+[1mindex f990db5..2e851c6 100644[m
+[1m--- a/README.md[m
+[1m+++ b/README.md[m
+[36m@@ -7,6 +7,8 @@[m [mA modern, responsive personal portfolio website built with React.js showcasing a[m
+ - **Welcome Landing Page**: Beautiful glassmorphism design with typewriter effect[m
+ - **Responsive Design**: Mobile-first approach with modern UI/UX[m
+ - **Multi-Section Layout**: Welcome, Home, Skills, Projects, Publications, and Contact sections[m
+[32m+[m[32m- **Interactive Project Cards**: Click-to-expand project details with filtering and sorting[m
+[32m+[m[32m- **Advanced Filtering System**: Sort projects by year and filter by technology stack[m
+ - **Professional Styling**: Clean, modern design with consistent spacing and typography[m
+ - **Interactive Elements**: Hover effects, smooth transitions, and professional animations[m
+ - **Logo Integration**: Real technology logos for skills and tools[m
+[36m@@ -41,9 +43,9 @@[m [mmy-website/[m
+ │   │   ├── Welcome.css    # Welcome page styles and animations[m
+ │   │   ├── Home.js        # Home page component[m
+ │   │   ├── Skills.js      # Skills and expertise[m
+[31m-│   │   ├── Projects.js    # Work experience and projects[m
+[32m+[m[32m│   │   ├── Projects.js    # Work experience and projects with filtering[m
+ │   │   ├── Publications.js # Research publications[m
+[31m-│   │   ├── Contact.js     # Contact information[m
+[32m+[m[32m│   │   ├── Contact.js     # Contact information with social links[m
+ │   │   └── Navbar.js      # Navigation component[m
+ │   ├── logos/             # Technology logos[m
+ │   │   ├── Python.png     # Python logo[m
+[36m@@ -73,27 +75,54 @@[m [mmy-website/[m
+ - Education details (Master's and Bachelor's degrees)[m
+ - Download CV functionality[m
+ [m
+[31m-### 2. **Skills Section**[m
+[32m+[m[32m### 3. **Skills Section**[m
+ - **Technical Skills**: Python, PyTorch, Java, Node.js, React, SQL, Azure, Git, PostgreSQL[m
+ - **Tools & Technologies**: GitLab, Agile, CI/CD, OpenCV, Pandas, NumPy, TensorFlow, Firebase, React Native[m
+ - **Soft Skills**: Problem Solving, Teamwork, Communication, Adaptability[m
+ - **Certifications**: Microsoft Azure Fundamentals (AZ-900), Azure AI Fundamentals (AI-900)[m
+ [m
+[31m-### 3. **Projects Section**[m
+[31m-- Work experience and engineering projects[m
+[31m-- Project descriptions and technologies used[m
+[31m-- Professional achievements and contributions[m
+[31m-[m
+[31m-### 4. **Publications Section**[m
+[32m+[m[32m### 4. **Projects Section** 🆕[m
+[32m+[m[32m- **Interactive Project Cards**: Click to expand and view full project details[m
+[32m+[m[32m- **Advanced Filtering System**:[m[41m [m
+[32m+[m[32m  - Sort by Year (newest first) or Tech Stack Complexity[m
+[32m+[m[32m  - Filter by specific technologies (Python, Machine Learning, React, etc.)[m
+[32m+[m[32m  - Smart tech detection for commonly used technologies[m
+[32m+[m[32m- **Work Experience**: Professional achievements and research contributions[m
+[32m+[m[32m- **Project Technologies**: Comprehensive tech stack display with expandable details[m
+[32m+[m[32m- **Code Links**: Direct GitHub repository access for available projects[m
+[32m+[m
+[32m+[m[32m### 5. **Publications Section**[m
+ - IEEE research publications[m
+ - Conference presentations[m
+ - Research areas and collaborations[m
+ - Academic achievements[m
+ [m
+[31m-### 5. **Contact Section**[m
+[32m+[m[32m### 6. **Contact Section** 🆕[m
+ - Professional contact information[m
+[31m-- Social media links (LinkedIn)[m
+[32m+[m[32m- **Social Media Integration**: LinkedIn and GitHub profiles[m
+[32m+[m[32m- **GitHub Profile**: Direct link to [github.com/BinkeXu](https://github.com/BinkeXu)[m
+ - Location and availability details[m
+[32m+[m[32m- Responsive social media buttons with platform-specific styling[m
+[32m+[m
+[32m+[m[32m## 🆕 Recent Updates[m
+[32m+[m
+[32m+[m[32m### Project Filtering & Sorting System[m
+[32m+[m[32m- **Year-based Sorting**: Projects automatically sorted by year (newest first)[m
+[32m+[m[32m- **Tech Stack Filtering**: Filter projects by specific technologies[m
+[32m+[m[32m- **Smart Technology Detection**: Automatically identifies common tech stacks across projects[m
+[32m+[m[32m- **Always-Available Filters**: Python and Machine Learning always available for filtering[m
+[32m+[m[32m- **Project Count Display**: Shows filtered results count[m
+[32m+[m
+[32m+[m[32m### Enhanced User Experience[m
+[32m+[m[32m- **Click-to-Expand Cards**: Project cards only expand on click (no hover expansion)[m
+[32m+[m[32m- **Single Card Expansion**: Only one project card expanded at a time[m
+[32m+[m[32m- **Background Click to Collapse**: Click outside cards to collapse all[m
+[32m+[m[32m- **Responsive Filter Controls**: Mobile-optimized filter interface[m
+[32m+[m
+[32m+[m[32m### GitHub Integration[m
+[32m+[m[32m- **GitHub Profile Link**: Added to contact section[m
+[32m+[m[32m- **Repository Links**: Direct access to project code[m
+[32m+[m[32m- **Professional Branding**: Consistent with LinkedIn and other social profiles[m
+ [m
+ ## 🚀 Getting Started[m
+ [m
+[36m@@ -142,6 +171,12 @@[m [mnpm run deploy[m
+ - **Floating Elements**: Subtle animated background decorations[m
+ - **Responsive Typography**: Font sizes that adapt to screen sizes[m
+ [m
+[32m+[m[32m### Project Section Features[m
+[32m+[m[32m- **Interactive Cards**: Smooth expand/collapse animations[m
+[32m+[m[32m- **Filter Controls**: Modern dropdown design with hover effects[m
+[32m+[m[32m- **Tech Tags**: Color-coded technology indicators[m
+[32m+[m[32m- **Responsive Grid**: Adaptive layout for all screen sizes[m
+[32m+[m
+ ### Color Scheme[m
+ - **Primary**: #667eea (Blue)[m
+ - **Secondary**: #764ba2 (Purple)[m
+[36m@@ -149,6 +184,8 @@[m [mnpm run deploy[m
+ - **Background**: #f8f9fa (Light Gray)[m
+ - **Accent**: #BFECFF, #C6E7FF (Light Blue)[m
+ - **Welcome Background**: #dfb34d to #f74a06 (Golden to Orange gradient)[m
+[32m+[m[32m- **GitHub**: #24292e to #586069 (Dark Gray gradient)[m
+[32m+[m[32m- **LinkedIn**: #0077b5 to #00a0dc (Blue gradient)[m
+ [m
+ ### Typography[m
+ - **Headings**: Modern, bold fonts with consistent sizing[m
+[36m@@ -174,6 +211,7 @@[m [mnpm run deploy[m
+ - Optimized layouts for small screens[m
+ - Responsive images and logos[m
+ - Mobile-first CSS approach[m
+[32m+[m[32m- **Filter Controls**: Stack vertically on mobile devices[m
+ [m
+ ## 🔧 Customization[m
+ [m
+[36m@@ -183,6 +221,11 @@[m [mnpm run deploy[m
+ 3. Import and add to `App.js`[m
+ 4. Update navigation in `Navbar.js`[m
+ [m
+[32m+[m[32m### Project Filtering Customization[m
+[32m+[m[32m- **Add New Technologies**: Update the `importantTechs` array in `Projects.js`[m
+[32m+[m[32m- **Modify Filter Logic**: Adjust the `getCommonTechStacks()` function[m
+[32m+[m[32m- **Change Sort Options**: Add new sorting criteria in `getFilteredAndSortedProjects()`[m
+[32m+[m
+ ### Welcome Page Customization[m
+ - **Fonts**: Update `@import` URL in `Welcome.css` and modify `font-family` properties[m
+ - **Colors**: Change background gradients and text colors in CSS variables[m
+[36m@@ -207,6 +250,7 @@[m [mnpm run deploy[m
+ - **Efficient CSS**: Minimal CSS with modern properties[m
+ - **Fast Loading**: Optimized React components[m
+ - **SEO Ready**: Semantic HTML structure[m
+[32m+[m[32m- **Smart Filtering**: Efficient project filtering algorithms[m
+ [m
+ ## 🌐 Browser Support[m
+ [m
+[36m@@ -225,6 +269,7 @@[m [mThis project is open source and available under the [MIT License](LICENSE).[m
+ - Victoria University of Wellington[m
+ - Specializing in AI and Software Engineering[m
+ - [LinkedIn Profile](https://www.linkedin.com/in/binke-xu-/)[m
+[32m+[m[32m- [GitHub Profile](https://github.com/BinkeXu)[m
+ [m
+ ## 🤝 Contributing[m
+ [m
+[36m@@ -238,6 +283,7 @@[m [mWhile this is a personal portfolio, suggestions and feedback are welcome:[m
+ [m
+ - **Email**: Binkexu@gmail.com[m
+ - **LinkedIn**: [linkedin.com/in/binke-xu-/](https://www.linkedin.com/in/binke-xu-/)[m
+[32m+[m[32m- **GitHub**: [github.com/BinkeXu](https://github.com/BinkeXu)[m
+ - **Location**: Wellington, New Zealand[m
+ - **Website**: [binkexu.github.io/binke-xu-portfolio/](https://binkexu.github.io/binke-xu-portfolio/)[m
+ ---[m
+[1mdiff --git a/src/components/Contact.css b/src/components/Contact.css[m
+[1mindex 25e47e5..e910c9e 100644[m
+[1m--- a/src/components/Contact.css[m
+[1m+++ b/src/components/Contact.css[m
+[36m@@ -84,6 +84,12 @@[m
+   border-radius: 50%;[m
+ }[m
+ [m
+[32m+[m[32m/* Scale down GitHub logo in contact info card */[m
+[32m+[m[32m.info-item:has(.info-icon img[alt="GitHub"]) .info-icon img {[m
+[32m+[m[32m  width: 35px;[m
+[32m+[m[32m  height: 35px;[m
+[32m+[m[32m}[m
+[32m+[m
+ .info-icon:has(img) {[m
+   background: none;[m
+ }[m
+[36m@@ -148,8 +154,8 @@[m
+ }[m
+ [m
+ .social-logo {[m
+[31m-  width: 24px;[m
+[31m-  height: 24px;[m
+[32m+[m[32m  width: 32px;[m
+[32m+[m[32m  height: 32px;[m
+   object-fit: contain;[m
+ }[m
+ [m
+[36m@@ -163,6 +169,33 @@[m
+   box-shadow: 0 5px 15px rgba(74, 85, 104, 0.4);[m
+ }[m
+ [m
+[32m+[m[32m/* GitHub-specific styling */[m
+[32m+[m[32m.social-link.github {[m
+[32m+[m[32m  background: linear-gradient(135deg, #24292e 0%, #586069 100%);[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m.social-link.github:hover {[m
+[32m+[m[32m  box-shadow: 0 5px 15px rgba(36, 41, 46, 0.4);[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m/* LinkedIn-specific styling */[m
+[32m+[m[32m.social-link.linkedin {[m
+[32m+[m[32m  background: linear-gradient(135deg, #0077b5 0%, #00a0dc 100%);[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m.social-link.linkedin:hover {[m
+[32m+[m[32m  box-shadow: 0 5px 15px rgba(0, 119, 181, 0.4);[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m/* Email-specific styling */[m
+[32m+[m[32m.social-link.email {[m
+[32m+[m[32m  background: linear-gradient(135deg, #ea4335 0%, #fbbc05 100%);[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m.social-link.email:hover {[m
+[32m+[m[32m  box-shadow: 0 5px 15px rgba(234, 67, 53, 0.4);[m
+[32m+[m[32m}[m
+[32m+[m
+ /* Availability */[m
+ .availability h4 {[m
+   color: #2c3e50;[m
+[1mdiff --git a/src/components/Contact.js b/src/components/Contact.js[m
+[1mindex 62f7f26..e29ce93 100644[m
+[1m--- a/src/components/Contact.js[m
+[1m+++ b/src/components/Contact.js[m
+[36m@@ -1,6 +1,7 @@[m
+ import React from 'react';[m
+ import './Contact.css';[m
+ import linkedinLogo from '../logos/linkedin.png';[m
+[32m+[m[32mimport gitLogo from '../logos/git.png';[m
+ [m
+ /**[m
+  * Contact Component[m
+[36m@@ -10,7 +11,7 @@[m [mimport linkedinLogo from '../logos/linkedin.png';[m
+  * [m
+  * Features:[m
+  * - Contact information display (email, phone, location)[m
+[31m- * - Professional social media links[m
+[32m+[m[32m * - Professional social media links (LinkedIn, GitHub)[m
+  * - Direct email and LinkedIn access[m
+  * - Responsive design for all devices[m
+  * - Accessibility-friendly contact methods[m
+[36m@@ -81,12 +82,33 @@[m [mconst Contact = () => {[m
+                   </a>[m
+                 </div>[m
+               </div>[m
+[32m+[m[41m              [m
+[32m+[m[32m              {/* GitHub Profile */}[m
+[32m+[m[32m              {/*[m[41m [m
+[32m+[m[32m                Code repository and portfolio link with logo[m
+[32m+[m[32m                Opens in new tab for better user experience[m
+[32m+[m[32m              */}[m
+[32m+[m[32m              <div className="info-item" data-reveal>[m
+[32m+[m[32m                <div className="info-icon">[m
+[32m+[m[32m                  <img src={gitLogo} alt="GitHub" />[m
+[32m+[m[32m                </div>[m
+[32m+[m[32m                <div className="info-details">[m
+[32m+[m[32m                  <h4>GitHub</h4>[m
+[32m+[m[32m                  <a[m[41m [m
+[32m+[m[32m                    href="https://github.com/BinkeXu"[m[41m [m
+[32m+[m[32m                    target="_blank"[m[41m [m
+[32m+[m[32m                    rel="noopener noreferrer"[m
+[32m+[m[32m                  >[m
+[32m+[m[32m                    github.com/BinkeXu[m
+[32m+[m[32m                  </a>[m
+[32m+[m[32m                </div>[m
+[32m+[m[32m              </div>[m
+             </div>[m
+ [m
+             {/* Social Media Links Section */}[m
+             {/* [m
+               Quick access to professional networking platforms[m
+[31m-              Includes direct email and LinkedIn profile links[m
+[32m+[m[32m              Includes direct email, LinkedIn, and GitHub profile links[m
+             */}[m
+             <div className="social-links" data-reveal>[m
+               <h4>Connect With Me</h4>[m
+[36m@@ -102,6 +124,17 @@[m [mconst Contact = () => {[m
+                   LinkedIn[m
+                 </a>[m
+                 [m
+[32m+[m[32m                {/* GitHub Profile Link */}[m
+[32m+[m[32m                <a[m[41m [m
+[32m+[m[32m                  href="https://github.com/BinkeXu"[m[41m [m
+[32m+[m[32m                  target="_blank"[m[41m [m
+[32m+[m[32m                  rel="noopener noreferrer"[m
+[32m+[m[32m                  className="social-link github"[m
+[32m+[m[32m                >[m
+[32m+[m[32m                  <img src={gitLogo} alt="GitHub" className="social-logo" />[m
+[32m+[m[32m                  GitHub[m
+[32m+[m[32m                </a>[m
+[32m+[m[41m                [m
+                 {/* Direct Email Link */}[m
+                 <a [m
+                   href="mailto:Binkexu@gmail.com" [m
+[1mdiff --git a/src/components/Projects.css b/src/components/Projects.css[m
+[1mindex 01b1026..46520fe 100644[m
+[1m--- a/src/components/Projects.css[m
+[1m+++ b/src/components/Projects.css[m
+[36m@@ -41,6 +41,99 @@[m
+   font-weight: 600; /* Semi-bold weight for hierarchy */[m
+ }[m
+ [m
+[32m+[m[32m/* ========================================[m
+[32m+[m[32m   FILTER CONTROLS STYLES[m
+[32m+[m[32m   ======================================== */[m
+[32m+[m
+[32m+[m[32m/* Filter Controls Container */[m
+[32m+[m[32m/* Wrapper for sorting and filtering controls */[m
+[32m+[m[32m.filter-controls {[m
+[32m+[m[32m  display: flex;[m
+[32m+[m[32m  flex-wrap: wrap;[m
+[32m+[m[32m  align-items: center;[m
+[32m+[m[32m  gap: 20px;[m
+[32m+[m[32m  margin-bottom: 30px;[m
+[32m+[m[32m  padding: 20px;[m
+[32m+[m[32m  background: var(--surface);[m
+[32m+[m[32m  border-radius: 12px;[m
+[32m+[m[32m  box-shadow: var(--card-shadow);[m
+[32m+[m[32m  border: 1px solid var(--border);[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m/* Filter Group */[m
+[32m+[m[32m/* Individual filter control with label and select */[m
+[32m+[m[32m.filter-group {[m
+[32m+[m[32m  display: flex;[m
+[32m+[m[32m  flex-direction: column;[m
+[32m+[m[32m  gap: 8px;[m
+[32m+[m[32m  min-width: 200px;[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m/* Filter Labels */[m
+[32m+[m[32m.filter-group label {[m
+[32m+[m[32m  font-size: 0.9rem;[m
+[32m+[m[32m  font-weight: 600;[m
+[32m+[m[32m  color: var(--text);[m
+[32m+[m[32m  text-transform: uppercase;[m
+[32m+[m[32m  letter-spacing: 0.5px;[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m/* Filter Select Dropdowns */[m
+[32m+[m[32m.filter-select {[m
+[32m+[m[32m  padding: 10px 12px;[m
+[32m+[m[32m  border: 2px solid var(--border);[m
+[32m+[m[32m  border-radius: 8px;[m
+[32m+[m[32m  background: var(--bg);[m
+[32m+[m[32m  color: var(--text);[m
+[32m+[m[32m  font-size: 0.95rem;[m
+[32m+[m[32m  font-weight: 500;[m
+[32m+[m[32m  cursor: pointer;[m
+[32m+[m[32m  transition: all 0.3s ease;[m
+[32m+[m[32m  min-width: 180px;[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m.filter-select:hover {[m
+[32m+[m[32m  border-color: var(--accent);[m
+[32m+[m[32m  transform: translateY(-1px);[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m.filter-select:focus {[m
+[32m+[m[32m  outline: none;[m
+[32m+[m[32m  border-color: var(--accent);[m
+[32m+[m[32m  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m/* Filter Info Display */[m
+[32m+[m[32m.filter-info {[m
+[32m+[m[32m  margin-left: auto;[m
+[32m+[m[32m  padding: 8px 16px;[m
+[32m+[m[32m  background: var(--accent);[m
+[32m+[m[32m  color: white;[m
+[32m+[m[32m  border-radius: 20px;[m
+[32m+[m[32m  font-size: 0.9rem;[m
+[32m+[m[32m  font-weight: 600;[m
+[32m+[m[32m  text-align: center;[m
+[32m+[m[32m  min-width: 120px;[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m/* Responsive Filter Controls */[m
+[32m+[m[32m@media (max-width: 768px) {[m
+[32m+[m[32m  .filter-controls {[m
+[32m+[m[32m    flex-direction: column;[m
+[32m+[m[32m    align-items: stretch;[m
+[32m+[m[32m    gap: 15px;[m
+[32m+[m[32m  }[m
+[32m+[m[41m  [m
+[32m+[m[32m  .filter-group {[m
+[32m+[m[32m    min-width: auto;[m
+[32m+[m[32m  }[m
+[32m+[m[41m  [m
+[32m+[m[32m  .filter-info {[m
+[32m+[m[32m    margin-left: 0;[m
+[32m+[m[32m    align-self: center;[m
+[32m+[m[32m  }[m
+[32m+[m[32m}[m
+[32m+[m
+ /* ========================================[m
+    WORK EXPERIENCE SECTION STYLES[m
+    ======================================== */[m
+[1mdiff --git a/src/components/Projects.js b/src/components/Projects.js[m
+[1mindex 42fbcab..66842db 100644[m
+[1m--- a/src/components/Projects.js[m
+[1m+++ b/src/components/Projects.js[m
+[36m@@ -6,11 +6,12 @@[m [mimport './Projects.css';[m
+  * [m
+  * Displays a comprehensive view of engineering projects and work experience.[m
+  * Features expandable project cards that show condensed information by default[m
+[31m- * and reveal full details on hover or click interaction.[m
+[32m+[m[32m * and reveal full details only on click interaction.[m
+  * [m
+  * Key Features:[m
+[31m- * - Interactive project cards with hover/click expansion[m
+[32m+[m[32m * - Interactive project cards with click-only expansion[m
+  * - Single card expansion (only one card expanded at a time)[m
+[32m+[m[32m * - Filtering and sorting by year and tech stack[m
+  * - Work experience section with achievements[m
+  * - Code link handling with fallback popup[m
+  * - Responsive design for all screen sizes[m
+[36m@@ -18,36 +19,10 @@[m [mimport './Projects.css';[m
+ const Projects = () => {[m
+   // State management for card interactions[m
+   const [expandedCard, setExpandedCard] = useState(null); // Tracks which card is currently expanded[m
+[31m-  const [hoveredCard, setHoveredCard] = useState(null); // Tracks which card is being hovered[m
+[32m+[m[32m  const [sortBy, setSortBy] = useState('year'); // Default sort by year[m
+[32m+[m[32m  const [techFilter, setTechFilter] = useState('all'); // Tech stack filter[m
+   const projectsContainerRef = useRef(null); // Reference to the projects grid container[m
+ [m
+[31m-  /**[m
+[31m-   * Handles card hover events[m
+[31m-   * Expands the hovered card only if no card is currently clicked/expanded[m
+[31m-   * @param {number} index - Index of the hovered card[m
+[31m-   */[m
+[31m-  const handleCardHover = (index) => {[m
+[31m-    console.log('Hover on card:', index, 'Current expanded:', expandedCard);[m
+[31m-    setHoveredCard(index);[m
+[31m-    // Only expand on hover if no card is currently clicked[m
+[31m-    if (expandedCard === null) {[m
+[31m-      setExpandedCard(index);[m
+[31m-    }[m
+[31m-  };[m
+[31m-[m
+[31m-  /**[m
+[31m-   * Handles when mouse leaves a card[m
+[31m-   * Collapses the card if no card is currently clicked/expanded[m
+[31m-   */[m
+[31m-  const handleCardLeave = () => {[m
+[31m-    console.log('Leave card, Current expanded:', expandedCard);[m
+[31m-    setHoveredCard(null);[m
+[31m-    // Only collapse on hover leave if no card is clicked[m
+[31m-    if (expandedCard === null) {[m
+[31m-      setExpandedCard(null);[m
+[31m-    }[m
+[31m-  };[m
+[31m-[m
+   /**[m
+    * Handles card click events[m
+    * Toggles card expansion state - cli

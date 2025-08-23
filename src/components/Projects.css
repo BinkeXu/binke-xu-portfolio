@@ -476,10 +476,33 @@
 /* Container for action buttons and expand hints */
 .project-actions {
   display: flex; /* Flexbox layout for actions */
+  flex-direction: column; /* Stack elements vertically */
   gap: 12px; /* Consistent spacing between elements */
   margin-top: 8px; /* Spacing above actions */
-  align-items: center; /* Vertically center elements */
-  justify-content: space-between; /* Distribute space between elements */
+  align-items: stretch; /* Stretch elements to full width */
+}
+
+/* Action Buttons Container */
+/* Wrapper for the action buttons */
+.action-buttons {
+  display: flex; /* Flexbox layout for buttons */
+  gap: 10px; /* Spacing between buttons */
+  flex-wrap: wrap; /* Allow wrapping on small screens */
+  align-items: center; /* Vertically center buttons */
+}
+
+/* Demo Button Styling */
+/* Override primary button color for demo button */
+.action-buttons .btn-primary {
+  background: linear-gradient(135deg, #87CEEB, #B0E0E6) !important;
+  color: #2c3e50 !important;
+  border: 1px solid #87CEEB;
+}
+
+.action-buttons .btn-primary:hover {
+  background: linear-gradient(135deg, #98D8E8, #C0E8F0) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(135, 206, 235, 0.3);
 }
 
 /* Expand Hint Text */
@@ -543,6 +566,12 @@
   .tech-tags {
     gap: 8px; /* Reduced gap for mobile */
   }
+  
+  /* Stack action buttons vertically on mobile */
+  .action-buttons {
+    flex-direction: column; /* Vertical stacking on mobile */
+    gap: 8px; /* Reduced gap for mobile */
+  }
 }
 
 /* Mobile devices (480px and below) */
@@ -556,6 +585,11 @@
   .experience-card,
   .project-card {
     padding: 15px; /* Minimal padding for small mobile */
+  }
+  
+  /* Optimize action buttons for small mobile */
+  .action-buttons {
+    gap: 6px; /* Minimal gap for small mobile */
   }
   
   /* Optimize headings for very small screens */

@@ -128,7 +128,7 @@ const Projects = () => {
         "Built responsive Ionic UI with routing and chart visualizations",
         "Lightweight Node/Express Socket.IO relay to broadcast updates across pages"
       ],
-      codeLink: "https://github.com/BinkeXu/IoT-React"
+      codeLink: "https://github.com/BinkeXu/IoT-React",
     },{
       title: "COVID-19 World Map",
       type: "Individual Project",
@@ -151,7 +151,7 @@ const Projects = () => {
         "Efficient data processing with memoized country statistics aggregation",
         "Professional-grade error handling and fallback systems for production use"
       ],
-      codeLink: "https://github.com/BinkeXu/covid-world-map"
+      codeLink: "https://github.com/BinkeXu/covid-world-map",
     },{
       "title": "E-Commerce Customer Churn Prediction",
       "type": "Individual Project",
@@ -175,7 +175,8 @@ const Projects = () => {
         "Advanced ML techniques including ensemble methods and feature importance analysis",
         "Infrastructure as Code with comprehensive Kubernetes and Docker configurations",
         "Real-time customer churn scoring with actionable business insights"
-      ],codeLink: "https://github.com/BinkeXu/E-Commerce-Customer-Churn-Prediction"
+      ],
+      codeLink: "https://github.com/BinkeXu/E-Commerce-Customer-Churn-Prediction",
     }
     ];
 
@@ -253,6 +254,21 @@ const Projects = () => {
     } else {
       // As a final fallback
       alert('Code link will be added soon.');
+    }
+  };
+
+  /**
+   * Handles demo link clicks
+   * Opens the live demo in a new tab
+   * @param {string} demoLink - URL to the project's live demo
+   */
+  const handleViewDemo = (demoLink) => {
+    if (typeof demoLink === 'string' && demoLink.trim().length > 0) {
+      try {
+        window.open(demoLink, '_blank', 'noopener,noreferrer');
+      } catch (error) {
+        console.error('Error opening demo link:', error);
+      }
     }
   };
 
@@ -459,18 +475,32 @@ const Projects = () => {
                     </>
                   )}
 
-                  {/* Project Actions - View Code Button and Expand Hint */}
+                  {/* Project Actions - View Code Button, Demo Button, and Expand Hint */}
                   <div className="project-actions">
-                    <button
-                      className="btn btn-secondary"
-                      onClick={(e) => {
-                        e.stopPropagation(); // Prevent card click handler from firing
-                        handleViewCode(project.codeLink);
-                      }}
-                      aria-label={`View code for ${project.title}`}
-                    >
-                      View Code
-                    </button>
+                    <div className="action-buttons">
+                      <button
+                        className="btn btn-secondary"
+                        onClick={(e) => {
+                          e.stopPropagation(); // Prevent card click handler from firing
+                          handleViewCode(project.codeLink);
+                        }}
+                        aria-label={`View code for ${project.title}`}
+                      >
+                        View Code
+                      </button>
+                      {project.demoLink && (
+                        <button
+                          className="btn btn-primary"
+                          onClick={(e) => {
+                            e.stopPropagation(); // Prevent card click handler from firing
+                            handleViewDemo(project.demoLink);
+                          }}
+                          aria-label={`View live demo for ${project.title}`}
+                        >
+                          Live Demo
+                        </button>
+                      )}
+                    </div>
                     {!isExpanded && (
                       <span className="expand-hint">Click to see more details</span>
                     )}
