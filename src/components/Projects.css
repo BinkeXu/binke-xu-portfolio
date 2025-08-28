@@ -265,12 +265,11 @@
 .projects-section {
   margin-bottom: 40px; /* Spacing below the section */
 }
-
-/* Projects Grid Layout */
-/* CSS Grid for responsive project card layout */
-.projects-grid {
-  display: grid; /* Grid layout for cards */
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); /* Responsive columns */
+/* Projects List Layout */
+/* Flexbox column layout for single-column project display */
+.projects-list {
+  display: flex; /* Flexbox layout for cards */ /*display: grid;  Grid layout for cards */
+  flex-direction: column; /* Stack cards vertically in rows */  /* grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); Responsive columns */
   gap: 30px; /* Consistent spacing between cards */
   position: relative; /* For proper z-index stacking */
 }
@@ -549,9 +548,20 @@
     padding: 20px; /* Reduced padding for mobile */
   }
   
-  /* Adjust grid layout for mobile */
+  
+/* Projects Grid Layout */
+/* CSS Grid for responsive project card layout */
+.projects-grid {
+  display: grid; /* Grid layout for cards */
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); /* Responsive columns */
+}
+
+  /* Adjust grid layout for mobile 
   .projects-grid {
-    grid-template-columns: 1fr; /* Single column on mobile */
+    grid-template-columns: 1fr;  Single column on mobile */
+
+  /* Adjust spacing for mobile */
+  .projects-list {
     gap: 20px; /* Reduced gap for mobile */
   }
   

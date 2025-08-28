@@ -21,7 +21,7 @@ const Projects = () => {
   const [expandedCard, setExpandedCard] = useState(null); // Tracks which card is currently expanded
   const [sortBy, setSortBy] = useState('year'); // Default sort by year
   const [techFilter, setTechFilter] = useState('all'); // Tech stack filter
-  const projectsContainerRef = useRef(null); // Reference to the projects grid container
+  const projectsContainerRef = useRef(null); // Reference to the projects list container
 
   /**
    * Handles card click events
@@ -130,7 +130,7 @@ const Projects = () => {
       ],
       codeLink: "https://github.com/BinkeXu/IoT-React",
     },{
-      title: "COVID-19 World Map",
+      title: "COVID-19 Analytics Dashboard",
       type: "Individual Project",
       year: "2021",
       description: "Interactive web application visualizing global COVID-19 statistics on an interactive world map with real-time data exploration and comprehensive country analytics.",
@@ -407,7 +407,7 @@ const Projects = () => {
           </div>
           
           <div 
-            className="projects-grid" 
+            className="projects-list" 
             ref={projectsContainerRef}
             onClick={handleBackgroundClick}
           >

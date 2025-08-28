@@ -399,6 +399,11 @@
   margin-bottom: 60px;
 }
 
+/* Spacing between soft skills and certifications sections */
+.skills-panel + .skills-panel {
+  margin-top: 40px;
+}
+
 .skills-panel {
   background: var(--surface);
   border: 1px solid var(--border);
