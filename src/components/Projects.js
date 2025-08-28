@@ -177,6 +177,26 @@ const Projects = () => {
         "Real-time customer churn scoring with actionable business insights"
       ],
       codeLink: "https://github.com/BinkeXu/E-Commerce-Customer-Churn-Prediction",
+    },{
+      "title": "Machine Learning for Tree Image Segmentation",
+      "type": "Research Projects",
+      "year": "2022 - 2024",
+      "description": "Developed novel deep learning methods for accurate and efficient tree segmentation from remote sensing imagery, combining automated neural architecture search and ensemble learning for robust performance.",
+      "technologies": ["Python", "Deep Learning", "PyTorch", "Genetic Algorithms", "CNNs", "U-Net", "DeepLabV3+", "LinkNet", "Remote Sensing"],
+      "features": [
+        "GA-Unet-B: Genetic algorithm–based framework for automatically designing efficient U-Net architectures",
+        "Block-based encoding scheme to optimize network depth, convolutional layers, filters, and pooling strategies",
+        "Ensemble framework combining U-Net, LinkNet, and DeepLabV3+ with multiple pre-trained backbones",
+        "Output probability matrix averaging for robust model aggregation",
+        "Training, pre-selection, and final selection pipeline for optimal ensemble performance"
+      ],
+      "highlights": [
+        "GA-Unet-B achieved a average Dice coefficient of 85.56%, a 14% improvement over Standard U-Net (71.4%)",
+        "Reduced model size by 95% (1.5M vs. 31M parameters) while improving segmentation accuracy",
+        "Ensemble method outperformed individual models and recent approaches, reaching Dice 86.13% vs. 85.23%",
+        "Demonstrated strong generalization and robustness with fewer overfitting issues",
+        "Advanced practical applications of automated architecture search and ensemble learning for forestry and environmental monitoring"
+      ]
     }
     ];
 
