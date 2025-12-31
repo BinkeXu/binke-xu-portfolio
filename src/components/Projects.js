@@ -197,6 +197,31 @@ const Projects = () => {
         "Demonstrated strong generalization and robustness with fewer overfitting issues",
         "Advanced practical applications of automated architecture search and ensemble learning for forestry and environmental monitoring"
       ]
+    },{
+      "title": "Restaurant Intelligence System (RIS)",
+      "type": "Individual Project",
+      "year": "2025",
+      "description": "Production-grade, local-first RAG platform for analyzing restaurant reviews, featuring hybrid retrieval, intelligent query translation, and a professional executive dashboard.",
+      "technologies": ["Python", "LangChain", "Ollama (Llama 3.2)", "ChromaDB", "Streamlit", "RAGAS", "FlashRank", "BM25", "Pydantic", "Pandas"],
+      "features": [
+        "Natural language chat interface for grounded customer insight extraction",
+        "Intelligent query translation automatically extracting restaurant names and ratings",
+        "Hybrid search architecture combining semantic vector search with BM25 keywords",
+        "Local cross-encoder reranking using FlashRank for higher retrieval precision",
+        "Executive Streamlit dashboard with real-time AI parameter configuration",
+        "Deep inspection mode for viewing generated DB filters and source documents",
+        "Quantitative RAG evaluation framework measuring Faithfulness and Relevancy",
+        "Scalable data engineering pipeline with Pydantic validation and sanitization"
+      ],
+      "highlights": [
+        "Zero-knowledge architecture: 100% local execution ensures total data privacy",
+        "Advanced RAG implementation including self-querying and result reranking",
+        "Production-level UI/UX with custom CSS design and interactive inspection",
+        "Scientific performance validation with a dedicated golden test suite",
+        "Modular technical design allowing easy swapping of LLMs and embedding models",
+        "Grounded AI logic preventing hallucinations via strict system prompting"
+      ],
+      "codeLink": "https://github.com/BinkeXu/Restaurant-Intelligence-System"
     }
     ];
 
