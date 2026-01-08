@@ -4,146 +4,81 @@ import linkedinLogo from '../logos/linkedin.png';
 import gitLogo from '../logos/git.png';
 
 /**
- * Contact Component
+ * Contact Component - Premium Redesign
  * 
- * This component displays contact information and social media links
- * for professional networking and communication.
- * 
- * Features:
- * - Contact information display (email, phone, location)
- * - Professional social media links (LinkedIn, GitHub)
- * - Direct email and LinkedIn access
- * - Responsive design for all devices
- * - Accessibility-friendly contact methods
- * 
- * @returns {JSX.Element} The contact information page component
+ * Focused on professional networking and high-impact visual communication.
  */
 const Contact = () => {
   return (
     <div className="contact" data-reveal>
-      <div className="container">
-        <h2 data-reveal>Get In Touch</h2>
-        
-        {/* Main Contact Content */}
-        <div className="contact-content" data-reveal>
-          <div className="contact-info">
-            <h3>Contact Information</h3>
-            
-            {/* Contact Details List */}
-            {/* 
-              Displays primary contact methods with icons and details
-              Each contact method is clearly labeled and accessible
-            */}
-            <div className="info-list">
-              {/* Email Contact */}
-              <div className="info-item" data-reveal>
-                <span className="info-icon">📧</span>
-                <div className="info-details">
-                  <h4>Email</h4>
-                  <p>Binkexu@gmail.com</p>
-                </div>
-              </div>
-              
-              {/* Phone Contact */}
-              <div className="info-item" data-reveal>
-                <span className="info-icon">📱</span>
-                <div className="info-details">
-                  <h4>Phone</h4>
-                  <p>0221546027</p>
-                </div>
-              </div>
-              
-              {/* Location Information */}
-              <div className="info-item" data-reveal>
-                <span className="info-icon">📍</span>
-                <div className="info-details">
-                  <h4>Location</h4>
-                  <p>Wellington, New Zealand</p>
-                </div>
-              </div>
-              
-              {/* LinkedIn Profile */}
-              {/* 
-                Professional networking link with logo
-                Opens in new tab for better user experience
-              */}
-              <div className="info-item" data-reveal>
-                <div className="info-icon">
-                  <img src={linkedinLogo} alt="LinkedIn" />
-                </div>
-                <div className="info-details">
-                  <h4>LinkedIn</h4>
-                  <a 
-                    href="https://www.linkedin.com/in/binke-xu-/" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                  >
-                    linkedin.com/in/binke-xu-/
-                  </a>
-                </div>
-              </div>
-              
-              {/* GitHub Profile */}
-              {/* 
-                Code repository and portfolio link with logo
-                Opens in new tab for better user experience
-              */}
-              <div className="info-item" data-reveal>
-                <div className="info-icon">
-                  <img src={gitLogo} alt="GitHub" />
-                </div>
-                <div className="info-details">
-                  <h4>GitHub</h4>
-                  <a 
-                    href="https://github.com/BinkeXu" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                  >
-                    github.com/BinkeXu
-                  </a>
-                </div>
+      <div className="container contact-container">
+        <div className="contact-header-section">
+          <h2 className="contact-title">Get In Touch</h2>
+          <p className="contact-subtitle">
+            I'm currently looking for new opportunities in AI , Data and Software Engineering roles.
+            Whether you have a question or just want to connect, I'll do my best to get back to you!
+          </p>
+        </div>
+
+        <div className="contact-main-grid">
+          {/* Contact Methods Cards */}
+          <div className="contact-methods">
+            <div className="contact-method-card" data-reveal>
+              <div className="method-icon-box">📧</div>
+              <div className="method-info">
+                <h3>Email</h3>
+                <p>Binkexu@gmail.com</p>
+                <a href="mailto:Binkexu@gmail.com" className="method-link">Send Message</a>
               </div>
             </div>
 
-            {/* Social Media Links Section */}
-            {/* 
-              Quick access to professional networking platforms
-              Includes direct email, LinkedIn, and GitHub profile links
-            */}
-            <div className="social-links" data-reveal>
-              <h4>Connect With Me</h4>
-              <div className="social-icons">
-                {/* LinkedIn Profile Link */}
-                <a 
-                  href="https://www.linkedin.com/in/binke-xu-/" 
-                  target="_blank" 
+            <div className="contact-method-card" data-reveal>
+              <div className="method-icon-box">📱</div>
+              <div className="method-info">
+                <h3>Phone</h3>
+                <p>+64 022 154 6027</p>
+                <a href="tel:+640221546027" className="method-link">Call Now</a>
+              </div>
+            </div>
+
+            <div className="contact-method-card" data-reveal>
+              <div className="method-icon-box">📍</div>
+              <div className="method-info">
+                <h3>Location</h3>
+                <p>Wellington, New Zealand</p>
+                <span className="method-status">Open to Relocation</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Connect Side */}
+          <div className="connect-side">
+            <div className="connect-card" data-reveal>
+              <h3>Let's Connect Socially</h3>
+              <p>Find me on professional platforms and follow my latest updates.</p>
+
+              <div className="social-button-group">
+                <a
+                  href="https://www.linkedin.com/in/binke-xu-/"
+                  target="_blank"
                   rel="noopener noreferrer"
-                  className="social-link linkedin"
+                  className="social-btn linkedin-btn"
                 >
-                  <img src={linkedinLogo} alt="LinkedIn" className="social-logo" />
-                  LinkedIn
+                  <img src={linkedinLogo} alt="LinkedIn" className="btn-logo" />
+                  <span>LinkedIn Profile</span>
                 </a>
-                
-                {/* GitHub Profile Link */}
-                <a 
-                  href="https://github.com/BinkeXu" 
-                  target="_blank" 
+
+                <a
+                  href="https://github.com/BinkeXu"
+                  target="_blank"
                   rel="noopener noreferrer"
-                  className="social-link github"
+                  className="social-btn github-btn"
                 >
-                  <img src={gitLogo} alt="GitHub" className="social-logo" />
-                  GitHub
-                </a>
-                
-                {/* Direct Email Link */}
-                <a 
-                  href="mailto:Binkexu@gmail.com" 
-                  className="social-link email"
-                >
-                  <span className="social-icon">📧</span>
-                  Email
+                  <img src={gitLogo} alt="GitHub" className="btn-logo" />
+                  <span>GitHub Repository</span>
                 </a>
               </div>
+
             </div>
           </div>
         </div>

@@ -10,35 +10,49 @@
 /* Main Projects Container */
 /* Wrapper for the entire projects page with global background */
 .projects {
-  padding: 80px 0; /* Generous vertical spacing for content breathing room */
-  background: var(--bg); /* Uses global background variable for consistency */
+  padding: 50px 0;
+  /* Reduced vertical spacing */
+  background: var(--bg);
+  /* Uses global background variable for consistency */
 }
 
 /* Content Container */
 /* Centers and constrains content width for optimal readability */
 .projects .container {
-  max-width: 1200px; /* Maximum content width */
-  margin: 0 auto; /* Center content horizontally */
-  padding: 0 20px; /* Consistent horizontal padding */
+  max-width: 1200px;
+  /* Maximum content width */
+  margin: 0 auto;
+  /* Center content horizontally */
+  padding: 0 20px;
+  /* Consistent horizontal padding */
 }
 
 /* Page Title Styling */
 /* Main heading for the projects page */
 .projects h2 {
-  text-align: center; /* Centered alignment for visual balance */
-  margin-bottom: 60px; /* Generous spacing below title */
-  color: var(--text); /* Uses global text color variable */
-  font-size: 2.5rem; /* Large, prominent size */
-  font-weight: 700; /* Bold weight for maximum impact */
+  text-align: center;
+  /* Centered alignment for visual balance */
+  margin-bottom: 40px;
+  /* Reduced spacing below title */
+  color: var(--text);
+  /* Uses global text color variable */
+  font-size: 2.5rem;
+  /* Large, prominent size */
+  font-weight: 700;
+  /* Bold weight for maximum impact */
 }
 
 /* Section Headers */
 /* Styling for subsection headers (Work Experience, Engineering Projects) */
 .projects h3 {
-  color: var(--text); /* Consistent text color */
-  font-size: 1.8rem; /* Medium size for subsections */
-  margin-bottom: 30px; /* Moderate spacing below */
-  font-weight: 600; /* Semi-bold weight for hierarchy */
+  color: var(--text);
+  /* Consistent text color */
+  font-size: 1.8rem;
+  /* Medium size for subsections */
+  margin-bottom: 30px;
+  /* Moderate spacing below */
+  font-weight: 600;
+  /* Semi-bold weight for hierarchy */
 }
 
 /* ========================================
@@ -123,11 +137,11 @@
     align-items: stretch;
     gap: 15px;
   }
-  
+
   .filter-group {
     min-width: auto;
   }
-  
+
   .filter-info {
     margin-left: 0;
     align-self: center;
@@ -141,119 +155,170 @@
 /* Work Experience Section Container */
 /* Wrapper for the work experience section */
 .work-experience-section {
-  margin-bottom: 20px; /* Spacing below the section */
+  margin-bottom: 20px;
+  /* Spacing below the section */
 }
 
 /* Experience List Container */
 /* Flexbox container for stacking experience cards vertically */
 .experience-list {
-  display: flex; /* Flexbox layout */
-  flex-direction: column; /* Stack cards vertically */
-  gap: 30px; /* Consistent spacing between experience cards */
+  display: flex;
+  /* Flexbox layout */
+  flex-direction: column;
+  /* Stack cards vertically */
+  gap: 30px;
+  /* Consistent spacing between experience cards */
 }
 
 /* Individual Experience Card */
-/* Container for each work experience entry */
 .experience-card {
-  background: var(--surface); /* Uses global surface color for cards */
-  border-radius: 12px; /* Rounded corners for modern look */
-  padding: 30px; /* Generous internal padding */
-  box-shadow: var(--card-shadow); /* Uses global shadow variable */
-  border-left: 4px solid #3498db; /* Blue accent border on the left */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover animations */
+  background: var(--surface);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--border);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Accent Top Border to replace old left border */
+.experience-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
 }
 
 /* Experience Card Hover Effect */
-/* Subtle lift and shadow enhancement on hover */
 .experience-card:hover {
-  transform: translateY(-5px); /* Slight upward movement */
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
 }
 
 /* Experience Header Section */
 /* Contains job title and company information */
 .experience-header {
-  margin-bottom: 20px; /* Spacing below header */
+  margin-bottom: 20px;
+  /* Spacing below header */
 }
 
 /* Job Title */
 /* Main job title styling */
 .experience-header h4 {
-  color: var(--text); /* Uses global text color */
-  font-size: 1.4rem; /* Prominent size for job title */
-  margin-bottom: 10px; /* Spacing below title */
-  font-weight: 600; /* Semi-bold weight */
+  color: var(--text);
+  /* Uses global text color */
+  font-size: 1.4rem;
+  /* Prominent size for job title */
+  margin-bottom: 10px;
+  /* Spacing below title */
+  font-weight: 600;
+  /* Semi-bold weight */
 }
 
 /* Experience Meta Information */
 /* Container for company, location, and period details */
 .experience-meta {
-  display: flex; /* Flexbox layout for meta tags */
-  flex-wrap: wrap; /* Allow wrapping on smaller screens */
-  gap: 15px; /* Consistent spacing between meta tags */
-  font-size: 0.9rem; /* Smaller text for meta information */
-  color: #7f8c8d; /* Muted color for secondary information */
+  display: flex;
+  /* Flexbox layout for meta tags */
+  flex-wrap: wrap;
+  /* Allow wrapping on smaller screens */
+  gap: 15px;
+  /* Consistent spacing between meta tags */
+  font-size: 0.9rem;
+  /* Smaller text for meta information */
+  color: #7f8c8d;
+  /* Muted color for secondary information */
 }
 
 /* Meta Tag Styling */
 /* Individual meta information tags */
 .experience-meta span {
-  background: #ecf0f1; /* Light gray background */
-  padding: 5px 12px; /* Comfortable padding */
-  border-radius: 20px; /* Rounded pill shape */
-  font-weight: 500; /* Medium weight for readability */
+  background: #ecf0f1;
+  /* Light gray background */
+  padding: 5px 12px;
+  /* Comfortable padding */
+  border-radius: 20px;
+  /* Rounded pill shape */
+  font-weight: 500;
+  /* Medium weight for readability */
 }
 
 /* Company Name Styling */
 /* Special styling for company name to make it stand out */
 .company {
-  color: #3498db !important; /* Blue color for emphasis */
-  background: #ebf3fd !important; /* Light blue background */
+  color: #3498db !important;
+  /* Blue color for emphasis */
+  background: #ebf3fd !important;
+  /* Light blue background */
 }
 
 /* Experience Description */
 /* Job description text */
 .experience-description {
-  color: var(--muted); /* Uses global muted color */
-  line-height: 1.6; /* Comfortable reading line height */
-  margin-bottom: 20px; /* Spacing below description */
-  font-size: 1rem; /* Standard text size */
+  color: var(--muted);
+  /* Uses global muted color */
+  line-height: 1.6;
+  /* Comfortable reading line height */
+  margin-bottom: 20px;
+  /* Spacing below description */
+  font-size: 1rem;
+  /* Standard text size */
 }
 
 /* Achievements Section */
 /* Container for key achievements list */
 .achievements h5 {
-  color: var(--text); /* Uses global text color */
-  font-size: 1.1rem; /* Medium size for section header */
-  margin-bottom: 15px; /* Spacing below header */
-  font-weight: 600; /* Semi-bold weight */
+  color: var(--text);
+  /* Uses global text color */
+  font-size: 1.1rem;
+  /* Medium size for section header */
+  margin-bottom: 15px;
+  /* Spacing below header */
+  font-weight: 600;
+  /* Semi-bold weight */
 }
 
 /* Achievements List */
 /* Unordered list for achievements */
 .achievements ul {
-  list-style: none; /* Remove default bullets */
-  padding: 0; /* Remove default padding */
+  list-style: none;
+  /* Remove default bullets */
+  padding: 0;
+  /* Remove default padding */
 }
 
 /* Individual Achievement Item */
 /* Each achievement with custom bullet styling */
 .achievements li {
-  color: var(--muted); /* Uses global muted color */
-  line-height: 1.6; /* Comfortable reading line height */
-  margin-bottom: 8px; /* Spacing between achievements */
-  padding-left: 20px; /* Space for custom bullet */
-  position: relative; /* For positioning custom bullet */
+  color: var(--muted);
+  /* Uses global muted color */
+  line-height: 1.6;
+  /* Comfortable reading line height */
+  margin-bottom: 8px;
+  /* Spacing between achievements */
+  padding-left: 20px;
+  /* Space for custom bullet */
+  position: relative;
+  /* For positioning custom bullet */
 }
 
 /* Custom Bullet for Achievements */
 /* Blue arrow bullet instead of default list style */
 .achievements li::before {
-  content: "▸"; /* Custom arrow character */
-  color: #3498db; /* Blue color matching accent */
-  font-weight: bold; /* Bold weight for emphasis */
-  position: absolute; /* Absolute positioning */
-  left: 0; /* Align to left edge */
+  content: "▸";
+  /* Custom arrow character */
+  color: #3498db;
+  /* Blue color matching accent */
+  font-weight: bold;
+  /* Bold weight for emphasis */
+  position: absolute;
+  /* Absolute positioning */
+  left: 0;
+  /* Align to left edge */
 }
 
 /* ========================================
@@ -262,138 +327,199 @@
 
 /* Projects Section Container */
 /* Wrapper for the engineering projects section */
+/* ========================================
+   PROJECTS SECTION STYLES
+   ======================================== */
+
 .projects-section {
-  margin-bottom: 40px; /* Spacing below the section */
+  margin-bottom: 50px;
 }
-/* Projects List Layout */
-/* Flexbox column layout for single-column project display */
+
+/* Gallery Grid Layout */
 .projects-list {
-  display: flex; /* Flexbox layout for cards */ /*display: grid;  Grid layout for cards */
-  flex-direction: column; /* Stack cards vertically in rows */  /* grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); Responsive columns */
-  gap: 30px; /* Consistent spacing between cards */
-  position: relative; /* For proper z-index stacking */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-auto-rows: auto;
+  /* Let rows size naturally */
+  gap: 20px;
+  position: relative;
 }
 
 /* Individual Project Card */
-/* Container for each project with interactive features */
 .project-card {
-  background: var(--surface); /* Uses global surface color */
-  border-radius: 12px; /* Rounded corners */
-  padding: 30px; /* Generous internal padding */
-  box-shadow: var(--card-shadow); /* Uses global shadow variable */
-  border-left: 4px solid #e74c3c; /* Red accent border on the left */
-  transition: all 0.3s ease; /* Smooth transitions for all properties */
-  cursor: pointer; /* Pointer cursor to indicate interactivity */
-  position: relative; /* For z-index and positioning */
-  overflow: hidden; /* Hide content that exceeds card boundaries */
+  background: var(--surface);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 30px;
+  box-shadow: var(--card-shadow);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 520px;
+  /* Increased height for more content */
+  max-height: 520px;
+  /* Fixed max height when collapsed */
 }
 
-/* Project Card Hover Effect */
-/* Enhanced appearance on hover */
+/* Hover Effect */
 .project-card:hover {
-  transform: translateY(-5px); /* Slight upward movement */
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+  border-color: rgba(99, 102, 241, 0.3);
 }
 
-/* Expanded Project Card */
-/* Styling for cards that are currently expanded */
+/* Expanded Card State */
 .project-card.expanded {
-  transform: translateY(-5px); /* Maintain lifted position */
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
-  z-index: 100; /* High z-index to appear above other cards */
-  position: relative; /* Ensure proper stacking context */
+  grid-column: 1 / -1;
+  /* Span full width when expanded */
+  transform: scale(1.02);
+  z-index: 10;
+  border-color: var(--primary);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+  max-height: none;
+  /* Remove height limit when expanded */
 }
 
 /* Expanded Card Animation */
 /* Smooth slide-down animation for expanded content */
 .project-card.expanded .project-features,
 .project-card.expanded .project-highlights {
-  animation: slideDown 0.3s ease-out; /* Custom animation for content reveal */
+  animation: slideDown 0.3s ease-out;
+  /* Custom animation for content reveal */
 }
 
 /* Slide Down Animation Keyframes */
 /* Defines the animation for expanding content */
 @keyframes slideDown {
   from {
-    opacity: 0; /* Start invisible */
-    transform: translateY(-10px); /* Start slightly above final position */
+    opacity: 0;
+    /* Start invisible */
+    transform: translateY(-10px);
+    /* Start slightly above final position */
   }
+
   to {
-    opacity: 1; /* End fully visible */
-    transform: translateY(0); /* End at final position */
+    opacity: 1;
+    /* End fully visible */
+    transform: translateY(0);
+    /* End at final position */
   }
 }
 
 /* Project Header Section */
 /* Contains project title and meta information */
 .project-header {
-  margin-bottom: 20px; /* Spacing below header */
+  margin-bottom: 20px;
+  /* Spacing below header */
 }
 
 /* Project Title */
 /* Main project title styling */
 .project-header h4 {
-  color: var(--text); /* Uses global text color */
-  font-size: 1.4rem; /* Prominent size for project title */
-  margin-bottom: 10px; /* Spacing below title */
-  font-weight: 600; /* Semi-bold weight */
+  color: var(--text);
+  /* Uses global text color */
+  font-size: 1.4rem;
+  /* Prominent size for project title */
+  margin-bottom: 10px;
+  /* Spacing below title */
+  font-weight: 600;
+  /* Semi-bold weight */
 }
 
 /* Project Meta Information */
 /* Container for project type and year */
 .project-meta {
-  display: flex; /* Flexbox layout for meta tags */
-  gap: 15px; /* Consistent spacing between meta tags */
-  font-size: 0.9rem; /* Smaller text for meta information */
-  color: var(--muted); /* Uses global muted color */
+  display: flex;
+  /* Flexbox layout for meta tags */
+  gap: 15px;
+  /* Consistent spacing between meta tags */
+  font-size: 0.9rem;
+  /* Smaller text for meta information */
+  color: var(--muted);
+  /* Uses global muted color */
 }
 
 /* Project Type Badge */
-/* Styling for project type (Individual/Group) */
 .project-type {
-  background: #e74c3c; /* Red background for project type */
-  color: white; /* White text for contrast */
-  padding: 5px 12px; /* Comfortable padding */
-  border-radius: 20px; /* Rounded pill shape */
-  font-weight: 500; /* Medium weight for readability */
+  background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+  /* Blue gradient */
+  color: white;
+  padding: 6px 14px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
 }
 
 /* Project Year Badge */
 /* Styling for project completion year */
 .project-year {
-  background: #ecf0f1; /* Light gray background */
-  padding: 5px 12px; /* Comfortable padding */
-  border-radius: 20px; /* Rounded pill shape */
-  font-weight: 500; /* Medium weight for readability */
+  background: #ecf0f1;
+  /* Light gray background */
+  padding: 5px 12px;
+  /* Comfortable padding */
+  border-radius: 20px;
+  /* Rounded pill shape */
+  font-weight: 500;
+  /* Medium weight for readability */
 }
 
 /* Expanded Indicator Badge */
 /* Visual indicator showing when a card is expanded */
 .expanded-indicator {
-  background: #27ae60; /* Green background for expanded state */
-  color: white; /* White text for contrast */
-  padding: 5px 12px; /* Comfortable padding */
-  border-radius: 20px; /* Rounded pill shape */
-  font-weight: 500; /* Medium weight for readability */
-  font-size: 0.8rem; /* Smaller text size */
-  animation: pulse 2s infinite; /* Continuous pulse animation */
+  background: #27ae60;
+  /* Green background for expanded state */
+  color: white;
+  /* White text for contrast */
+  padding: 5px 12px;
+  /* Comfortable padding */
+  border-radius: 20px;
+  /* Rounded pill shape */
+  font-weight: 500;
+  /* Medium weight for readability */
+  font-size: 0.8rem;
+  /* Smaller text size */
+  animation: pulse 2s infinite;
+  /* Continuous pulse animation */
 }
 
 /* Pulse Animation Keyframes */
 /* Defines the pulsing effect for expanded indicator */
 @keyframes pulse {
-  0% { opacity: 1; }
-  50% { opacity: 0.7; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.7;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 /* Project Description */
-/* Project overview text */
+/* Project overview text with truncation */
 .project-description {
-  color: var(--muted); /* Uses global muted color */
-  line-height: 1.6; /* Comfortable reading line height */
-  margin-bottom: 20px; /* Spacing below description */
-  font-size: 1rem; /* Standard text size */
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 20px;
+  font-size: 1rem;
+  /* Truncate to 5 lines with ellipsis - more space to show content */
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Project Content Sections */
@@ -401,7 +527,8 @@
 .project-technologies,
 .project-features,
 .project-highlights {
-  margin-bottom: 20px; /* Consistent spacing between sections */
+  margin-bottom: 20px;
+  /* Consistent spacing between sections */
 }
 
 /* Section Headers */
@@ -409,115 +536,149 @@
 .project-technologies h5,
 .project-features h5,
 .project-highlights h5 {
-  color: var(--text); /* Uses global text color */
-  font-size: 1.1rem; /* Medium size for section headers */
-  margin-bottom: 15px; /* Spacing below headers */
-  font-weight: 600; /* Semi-bold weight */
+  color: var(--text);
+  /* Uses global text color */
+  font-size: 1.1rem;
+  /* Medium size for section headers */
+  margin-bottom: 15px;
+  /* Spacing below headers */
+  font-weight: 600;
+  /* Semi-bold weight */
 }
 
 /* Technology Tags Container */
 /* Flexbox container for technology badges */
 .tech-tags {
-  display: flex; /* Flexbox layout for tags */
-  flex-wrap: wrap; /* Allow wrapping on smaller screens */
-  gap: 10px; /* Consistent spacing between tags */
+  display: flex;
+  /* Flexbox layout for tags */
+  flex-wrap: wrap;
+  /* Allow wrapping on smaller screens */
+  gap: 10px;
+  /* Consistent spacing between tags */
 }
 
 /* Individual Technology Tag */
-/* Styling for each technology badge */
 .tech-tag {
-  background: #3498db; /* Blue background for technology tags */
-  color: white; /* White text for contrast */
-  padding: 6px 12px; /* Comfortable padding */
-  border-radius: 20px; /* Rounded pill shape */
-  font-size: 0.85rem; /* Smaller text size */
-  font-weight: 500; /* Medium weight for readability */
+  background: rgba(99, 102, 241, 0.1);
+  /* Subtle primary tint */
+  color: var(--primary);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  padding: 6px 14px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.tech-tag:hover {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
 }
 
 /* More Technologies Indicator */
 /* Special styling for "more technologies" indicator */
 .tech-tag.more-indicator {
-  background: #95a5a6; /* Gray background to distinguish from regular tags */
-  font-style: italic; /* Italic text for emphasis */
+  background: #95a5a6;
+  /* Gray background to distinguish from regular tags */
+  font-style: italic;
+  /* Italic text for emphasis */
 }
 
 /* Project Features and Highlights Lists */
 /* Unordered lists for features and highlights */
 .project-features ul,
 .project-highlights ul {
-  list-style: none; /* Remove default bullets */
-  padding: 0; /* Remove default padding */
+  list-style: none;
+  /* Remove default bullets */
+  padding: 0;
+  /* Remove default padding */
 }
 
 /* Feature and Highlight Items */
 /* Each feature/highlight with custom bullet styling */
 .project-features li,
 .project-highlights li {
-  color: var(--muted); /* Uses global muted color */
-  line-height: 1.6; /* Comfortable reading line height */
-  margin-bottom: 8px; /* Spacing between items */
-  padding-left: 20px; /* Space for custom bullet */
-  position: relative; /* For positioning custom bullet */
+  color: var(--muted);
+  /* Uses global muted color */
+  line-height: 1.6;
+  /* Comfortable reading line height */
+  margin-bottom: 8px;
+  /* Spacing between items */
+  padding-left: 20px;
+  /* Space for custom bullet */
+  position: relative;
+  /* For positioning custom bullet */
 }
 
 /* Custom Bullet for Features and Highlights */
 /* Red arrow bullet matching project card accent */
 .project-features li::before,
 .project-highlights li::before {
-  content: "▸"; /* Custom arrow character */
-  color: #e74c3c; /* Red color matching project card accent */
-  font-weight: bold; /* Bold weight for emphasis */
-  position: absolute; /* Absolute positioning */
-  left: 0; /* Align to left edge */
+  content: "▸";
+  /* Custom arrow character */
+  color: #e74c3c;
+  /* Red color matching project card accent */
+  font-weight: bold;
+  /* Bold weight for emphasis */
+  position: absolute;
+  /* Absolute positioning */
+  left: 0;
+  /* Align to left edge */
 }
 
 /* Project Actions Section */
 /* Container for action buttons and expand hints */
 .project-actions {
-  display: flex; /* Flexbox layout for actions */
-  flex-direction: column; /* Stack elements vertically */
-  gap: 12px; /* Consistent spacing between elements */
-  margin-top: 8px; /* Spacing above actions */
-  align-items: stretch; /* Stretch elements to full width */
+  display: flex;
+  /* Flexbox layout for actions */
+  flex-direction: column;
+  /* Stack elements vertically */
+  gap: 12px;
+  /* Consistent spacing between elements */
+  margin-top: 8px;
+  /* Spacing above actions */
+  align-items: stretch;
+  /* Stretch elements to full width */
 }
 
 /* Action Buttons Container */
 /* Wrapper for the action buttons */
 .action-buttons {
-  display: flex; /* Flexbox layout for buttons */
-  gap: 10px; /* Spacing between buttons */
-  flex-wrap: wrap; /* Allow wrapping on small screens */
-  align-items: center; /* Vertically center buttons */
+  display: flex;
+  /* Flexbox layout for buttons */
+  gap: 10px;
+  /* Spacing between buttons */
+  flex-wrap: wrap;
+  /* Allow wrapping on small screens */
+  align-items: center;
+  /* Vertically center buttons */
 }
 
 /* Demo Button Styling */
 /* Override primary button color for demo button */
-.action-buttons .btn-primary {
-  background: linear-gradient(135deg, #87CEEB, #B0E0E6) !important;
-  color: #2c3e50 !important;
-  border: 1px solid #87CEEB;
-}
-
-.action-buttons .btn-primary:hover {
-  background: linear-gradient(135deg, #98D8E8, #C0E8F0) !important;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(135, 206, 235, 0.3);
-}
+/* Using global button styles for actions */
 
 /* Expand Hint Text */
 /* Instructional text for collapsed cards */
 .expand-hint {
-  color: #7f8c8d; /* Muted color for hint text */
-  font-size: 0.85rem; /* Smaller text size */
-  font-style: italic; /* Italic style for emphasis */
-  opacity: 0.8; /* Slightly transparent */
+  color: #7f8c8d;
+  /* Muted color for hint text */
+  font-size: 0.85rem;
+  /* Smaller text size */
+  font-style: italic;
+  /* Italic style for emphasis */
+  opacity: 0.8;
+  /* Slightly transparent */
 }
 
 /* Expand Hint Hover Effect */
 /* Enhanced appearance when hovering over card */
 .project-card:hover .expand-hint {
-  opacity: 1; /* Full opacity on hover */
-  color: #3498db; /* Blue color on hover for better visibility */
+  opacity: 1;
+  /* Full opacity on hover */
+  color: #3498db;
+  /* Blue color on hover for better visibility */
 }
 
 /* ========================================
@@ -526,35 +687,44 @@
 
 /* Tablet devices (768px and below) */
 @media (max-width: 768px) {
+
   /* Adjust main container padding for mobile */
   .projects {
-    padding: 60px 0; /* Reduced padding for mobile */
+    padding: 60px 0;
+    /* Reduced padding for mobile */
   }
-  
+
   /* Adjust heading sizes for mobile */
   .projects h2 {
-    font-size: 2rem; /* Smaller size for mobile */
-    margin-bottom: 40px; /* Reduced spacing */
+    font-size: 2rem;
+    /* Smaller size for mobile */
+    margin-bottom: 40px;
+    /* Reduced spacing */
   }
-  
+
   .projects h3 {
-    font-size: 1.5rem; /* Adjusted for mobile */
-    margin-bottom: 25px; /* Reduced spacing */
+    font-size: 1.5rem;
+    /* Adjusted for mobile */
+    margin-bottom: 25px;
+    /* Reduced spacing */
   }
-  
+
   /* Adjust card padding for mobile */
   .experience-card,
   .project-card {
-    padding: 20px; /* Reduced padding for mobile */
+    padding: 20px;
+    /* Reduced padding for mobile */
   }
-  
-  
-/* Projects Grid Layout */
-/* CSS Grid for responsive project card layout */
-.projects-grid {
-  display: grid; /* Grid layout for cards */
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); /* Responsive columns */
-}
+
+
+  /* Projects Grid Layout */
+  /* CSS Grid for responsive project card layout */
+  .projects-grid {
+    display: grid;
+    /* Grid layout for cards */
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    /* Responsive columns */
+  }
 
   /* Adjust grid layout for mobile 
   .projects-grid {
@@ -562,53 +732,65 @@
 
   /* Adjust spacing for mobile */
   .projects-list {
-    gap: 20px; /* Reduced gap for mobile */
+    gap: 20px;
+    /* Reduced gap for mobile */
   }
-  
+
   /* Stack meta information vertically on mobile */
   .experience-meta,
   .project-meta {
-    flex-direction: column; /* Vertical stacking on mobile */
-    gap: 8px; /* Reduced gap for mobile */
+    flex-direction: column;
+    /* Vertical stacking on mobile */
+    gap: 8px;
+    /* Reduced gap for mobile */
   }
-  
+
   /* Adjust technology tag spacing for mobile */
   .tech-tags {
-    gap: 8px; /* Reduced gap for mobile */
+    gap: 8px;
+    /* Reduced gap for mobile */
   }
-  
+
   /* Stack action buttons vertically on mobile */
   .action-buttons {
-    flex-direction: column; /* Vertical stacking on mobile */
-    gap: 8px; /* Reduced gap for mobile */
+    flex-direction: column;
+    /* Vertical stacking on mobile */
+    gap: 8px;
+    /* Reduced gap for mobile */
   }
 }
 
 /* Mobile devices (480px and below) */
 @media (max-width: 480px) {
+
   /* Further reduce container padding for small mobile */
   .projects .container {
-    padding: 0 15px; /* Minimal padding for small screens */
+    padding: 0 15px;
+    /* Minimal padding for small screens */
   }
-  
+
   /* Compact card padding for small mobile */
   .experience-card,
   .project-card {
-    padding: 15px; /* Minimal padding for small mobile */
+    padding: 15px;
+    /* Minimal padding for small mobile */
   }
-  
+
   /* Optimize action buttons for small mobile */
   .action-buttons {
-    gap: 6px; /* Minimal gap for small mobile */
+    gap: 6px;
+    /* Minimal gap for small mobile */
   }
-  
+
   /* Optimize headings for very small screens */
   .projects h2 {
-    font-size: 1.8rem; /* Compact size for small mobile */
+    font-size: 1.8rem;
+    /* Compact size for small mobile */
   }
-  
+
   .projects h3 {
-    font-size: 1.3rem; /* Small size for mobile */
+    font-size: 1.3rem;
+    /* Small size for mobile */
   }
 }
 

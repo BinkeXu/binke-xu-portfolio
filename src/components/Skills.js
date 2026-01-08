@@ -36,110 +36,53 @@ import firebaseLogo from '../logos/Firebase.png';
  * @returns {JSX.Element} The skills and expertise page component
  */
 const Skills = () => {
-  /**
-   * Technical Skills Data
-   * Core programming languages and frameworks with their respective logo icons
-   * Each skill includes a name and an imported logo image
-   */
-  const technicalSkills = [
-    { 
-      name: 'Python', 
-      icon: <img src={pythonLogo} alt="Python" />
+  const skillCategories = [
+    {
+      id: 'ai-ml',
+      title: 'AI & Machine Learning',
+      description: 'Deep Learning, NLP, and Computer Vision expertise',
+      skills: [
+        { name: 'Python', icon: <img src={pythonLogo} alt="Python" /> },
+        { name: 'PyTorch', icon: <img src={pytorchLogo} alt="PyTorch" /> },
+        { name: 'OpenCV', icon: <img src={opencvLogo} alt="OpenCV" /> },
+        { name: 'Pandas', icon: <img src={pandasLogo} alt="Pandas" /> },
+        { name: 'NumPy', icon: <img src={numpyLogo} alt="NumPy" /> },
+        { name: 'TensorFlow', icon: <img src={tensorflowLogo} alt="TensorFlow" /> },
+      ]
     },
-    { 
-      name: 'PyTorch', 
-      icon: <img src={pytorchLogo} alt="PyTorch" />
+    {
+      id: 'web-eng',
+      title: 'Web Engineering',
+      description: 'Building scalable full-stack applications',
+      skills: [
+        { name: 'React', icon: <img src={reactLogo} alt="React" /> },
+        { name: 'Node.js', icon: <img src={nodejsLogo} alt="Node.js" /> },
+        { name: 'Java', icon: <img src={javaLogo} alt="Java" /> },
+        { name: 'React Native', icon: <img src={reactNativeLogo} alt="React Native" /> },
+        { name: 'SQL', icon: <img src={sqlLogo} alt="SQL" /> },
+        { name: 'PostgreSQL', icon: <img src={postgresqlLogo} alt="PostgreSQL" /> },
+      ]
     },
-    { 
-      name: 'Java', 
-      icon: <img src={javaLogo} alt="Java" />
-    },
-    { 
-      name: 'Node.js', 
-      icon: <img src={nodejsLogo} alt="Node.js" />
-    },
-    { 
-      name: 'React', 
-      icon: <img src={reactLogo} alt="React" />
-    },
-    { 
-      name: 'SQL', 
-      icon: <img src={sqlLogo} alt="SQL" />
-    },
-    { 
-      name: 'Azure', 
-      icon: <img src={azureLogo} alt="Azure" />
-    },
-    { 
-      name: 'Git', 
-      icon: <img src={gitLogo} alt="Git" />
-    },
-    { 
-      name: 'PostgreSQL', 
-      icon: <img src={postgresqlLogo} alt="PostgreSQL" />
-    },
+    {
+      id: 'infrastructure',
+      title: 'Tooling & Data',
+      description: 'Infrastructure, version control, and cloud',
+      skills: [
+        { name: 'Azure', icon: <img src={azureLogo} alt="Azure" /> },
+        { name: 'Git', icon: <img src={gitLogo} alt="Git" /> },
+        { name: 'GitLab', icon: <img src={gitlabLogo} alt="GitLab" /> },
+        { name: 'Firebase', icon: <img src={firebaseLogo} alt="Firebase" /> },
+        { name: 'Agile (Scrum)', icon: <img src={agileLogo} alt="Agile" /> },
+        { name: 'CI/CD', icon: <img src={cicdLogo} alt="CI/CD" /> },
+      ]
+    }
   ];
 
-  /**
-   * Soft Skills Data
-   * Non-technical skills and competencies that complement technical expertise
-   * These skills are displayed as tags without icons
-   */
   const softSkills = [
-    'Problem Solving', 'Critical Thinking', 'Project Management', 
-    'Team Collaboration', 'Research & Analysis', 'Communication',
-    'Agile/Scrum', 'CI/CD Pipelines'
+    'Problem Solving', 'Critical Thinking', 'Project Management',
+    'Team Collaboration', 'Research & Analysis', 'Communication'
   ];
 
-  /**
-   * Tools and Technologies Data
-   * Additional tools, libraries, and platforms used in development
-   * Each tool includes a name and an imported logo image
-   */
-  const toolsTechnologies = [
-    { 
-      name: 'GitLab', 
-      icon: <img src={gitlabLogo} alt="GitLab" />
-    },
-    { 
-      name: 'Agile (Scrum)', 
-      icon: <img src={agileLogo} alt="Agile" />
-    },
-    { 
-      name: 'CI/CD pipelines', 
-      icon: <img src={cicdLogo} alt="CI/CD" />
-    },
-    { 
-      name: 'OpenCV', 
-      icon: <img src={opencvLogo} alt="OpenCV" />
-    },
-    { 
-      name: 'Pandas', 
-      icon: <img src={pandasLogo} alt="Pandas" />
-    },
-    { 
-      name: 'NumPy', 
-      icon: <img src={numpyLogo} alt="NumPy" />
-    },
-    { 
-      name: 'TensorFlow', 
-      icon: <img src={tensorflowLogo} alt="TensorFlow" />
-    },
-    { 
-      name: 'Firebase', 
-      icon: <img src={firebaseLogo} alt="Firebase" />
-    },
-    { 
-      name: 'React Native', 
-      icon: <img src={reactNativeLogo} alt="React Native" />
-    },
-  ];
-
-  /**
-   * Professional Certifications Data
-   * Microsoft Azure certifications with verification links
-   * Each certification includes name, year, description, and credential URL
-   */
   const certifications = [
     {
       name: 'Microsoft Azure Fundamentals (AZ-900)',
@@ -155,104 +98,73 @@ const Skills = () => {
     }
   ];
 
-  /**
-   * Handles credential verification link clicks
-   * Opens the Microsoft credential verification page in a new tab
-   * 
-   * @param {string} url - The credential verification URL
-   */
   const handleShowCredential = (url) => {
-    window.open(url, '_blank'); // Open in new tab to maintain user's current page
+    window.open(url, '_blank');
   };
 
   return (
     <div className="skills">
       <div className="container">
-        <h2>Skills & Expertise</h2>
+        <header className="skills-header" data-reveal>
+          <h2>Expertise & Skills</h2>
+          <p className="skills-subtitle">Specialized in Artificial Intelligence and Full-Stack Engineering</p>
+        </header>
 
-        {/* Two-column layout for core technical capabilities */}
-        <div className="skills-layout">
-          {/* Technical Skills Panel */}
-          {/* 
-            Displays core programming languages and frameworks
-            Each skill is shown with its logo icon and name
-          */}
-          <section className="skills-panel" data-reveal>
-            <div className="panel-header">
-              <h3>Technical Skills</h3>
+        {/* Bento Grid Layout */}
+        <div className="bento-grid">
+          {skillCategories.map((category) => (
+            <div key={category.id} className={`bento-item ${category.id}`} data-reveal>
+              <div className="category-info">
+                <h3>{category.title}</h3>
+                <p>{category.description}</p>
+              </div>
+              <div className="category-skills">
+                {category.skills.map((skill, idx) => (
+                  <div key={idx} className="skill-badge" title={skill.name}>
+                    <div className="skill-badge-icon">{skill.icon}</div>
+                    <span>{skill.name}</span>
+                  </div>
+                ))}
+              </div>
             </div>
-            <div className="panel-grid skills-grid">
-              {technicalSkills.map((skill, index) => (
-                <div key={index} className="skill-item">
-                  <div className="skill-icon">{skill.icon}</div>
-                  <div className="skill-name">{skill.name}</div>
-                </div>
+          ))}
+
+          {/* Soft Skills Pill Section */}
+          <div className="bento-item soft-skills" data-reveal>
+            <div className="category-info">
+              <h3>Core Competencies</h3>
+              <p>Professional soft skills and methodologies</p>
+            </div>
+            <div className="soft-skills-container">
+              {softSkills.map((skill, index) => (
+                <span key={index} className="pill-tag">{skill}</span>
               ))}
             </div>
-          </section>
-
-          {/* Tools & Technologies Panel */}
-          {/* 
-            Shows additional development tools and platforms
-            Includes libraries, frameworks, and development methodologies
-          */}
-          <section className="skills-panel" data-reveal>
-            <div className="panel-header">
-              <h3>Tools & Technologies</h3>
-            </div>
-            <div className="panel-grid tools-grid">
-              {toolsTechnologies.map((tool, index) => (
-                <div key={index} className="tool-card">
-                  <div className="tool-icon">{tool.icon}</div>
-                  <div className="tool-name">{tool.name}</div>
-                </div>
-              ))}
-            </div>
-          </section>
+          </div>
         </div>
 
-        {/* Full-width panels for additional skills and certifications */}
-        
-        {/* Soft Skills Panel */}
-        {/* 
-          Displays non-technical competencies and professional skills
-          Skills are shown as interactive tags for better visual appeal
-        */}
-        <section className="skills-panel" data-reveal>
-          <div className="panel-header">
-            <h3>Soft Skills</h3>
+        {/* Certifications Section */}
+        <section className="certifications-section" data-reveal>
+          <div className="section-header">
+            <h3>Professional Certifications</h3>
           </div>
-          <div className="soft-skills-list">
-            {softSkills.map((skill, index) => (
-              <span key={index} className="soft-skill-tag">{skill}</span>
-            ))}
-          </div>
-        </section>
-
-        {/* Certifications Panel */}
-        {/* 
-          Shows professional certifications with verification links
-          Each certification includes description and year obtained
-        */}
-        <section className="skills-panel" data-reveal>
-          <div className="panel-header">
-            <h3>Certifications</h3>
-          </div>
-          <div className="certifications-grid">
+          <div className="certs-container">
             {certifications.map((cert, index) => (
-              <div key={index} className="certification-card">
-                <div className="cert-header">
+              <div key={index} className="cert-card">
+                <div className="cert-badge">Microsoft</div>
+                <div className="cert-content">
                   <h4>{cert.name}</h4>
-                  {/* Credential verification button */}
-                  <button
-                    className="credential-button"
-                    onClick={() => handleShowCredential(cert.credentialUrl)}
-                  >
-                    Show Credential
-                  </button>
+                  <p>{cert.description}</p>
+                  <div className="cert-footer">
+                    <span className="year">{cert.year}</span>
+                    <button
+                      className="verify-btn"
+                      onClick={() => handleShowCredential(cert.credentialUrl)}
+                    >
+                      Verify Credential
+                    </button>
+                  </div>
                 </div>
-                <p>{cert.description}</p>
-                <span className="cert-year">{cert.year}</span>
               </div>
             ))}
           </div>

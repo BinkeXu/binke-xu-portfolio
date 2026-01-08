@@ -1,240 +1,316 @@
 /* ========================================
    GLOBAL STYLES - App.css
-   ========================================
-   
-   This file contains global styles that apply to the entire application.
-   It includes CSS reset, base typography, utility classes, and responsive adjustments.
    ======================================== */
 
-/* CSS Reset and Base Styles */
-/* Removes default browser styling for consistent appearance across browsers */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+/* Import Google Fonts - Outfit (Headings) and Inter (Body) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;700;800&display=swap');
 
-/* Root element styles */
-/* Sets base font and color variables for consistent theming across the application */
 :root {
-  /* Light theme tokens - used throughout the app for consistent colors */
-  --bg: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); /* Main background gradient */
-  --text: #333333; /* Primary text color */
-  --muted: #555555; /* Secondary/muted text color */
-  --primary: #667eea; /* Primary brand color for buttons and accents */
-  --primary-2: #764ba2; /* Secondary brand color for gradients */
-  --surface: #ffffff; /* Card and surface background color */
-  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Standard card shadow */
-  --border: rgba(102, 126, 234, 0.1); /* Subtle border color */
+  /* Light Theme Tokens */
+  --bg: #f8fafc;
+  --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  --text: #1e293b;
+  /* Slate 800 */
+  --muted: #64748b;
+  /* Slate 500 */
+
+  /* Brand Colors */
+  --primary: #2563eb;
+  /* Blue 600 */
+  --primary-hover: #1d4ed8;
+  /* Blue 700 */
+  --secondary: #3b82f6;
+  /* Blue 500 */
+  --accent: #8b5cf6;
+  /* Violet 500 */
+
+  /* Surface & UI */
+  --surface: rgba(255, 255, 255, 0.8);
+  --surface-hover: rgba(255, 255, 255, 0.9);
+  --border: rgba(148, 163, 184, 0.2);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.5);
+
+  /* Shadows */
+  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --card-shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+  /* Typography */
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
 }
 
-/* Dark theme variant - can be toggled for dark mode support */
+/* Dark Theme Variant */
 [data-theme="dark"] {
-  /* Dark theme tokens - alternative color scheme */
-  --bg: #0f1221; /* Dark background */
-  --text: #e6e8f0; /* Light text for dark backgrounds */
-  --muted: #b7bdd2; /* Muted text in dark mode */
-  --primary: #8aa4ff; /* Brighter primary for dark mode */
-  --primary-2: #8c6ad8; /* Adjusted secondary for dark mode */
-  --surface: #171a2b; /* Dark surface color */
-  --card-shadow: 0 6px 16px rgba(0, 0, 0, 0.5); /* Stronger shadow for dark mode */
-  --border: rgba(138, 164, 255, 0.15); /* Adjusted border for dark mode */
+  --bg: #0f172a;
+  /* Slate 900 */
+  --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  --text: #f1f5f9;
+  /* Slate 100 */
+  --muted: #94a3b8;
+  /* Slate 400 */
+
+  --primary: #60a5fa;
+  /* Blue 400 */
+  --primary-hover: #93c5fd;
+  /* Blue 300 */
+  --secondary: #3b82f6;
+  /* Blue 500 */
+
+  --surface: rgba(30, 41, 59, 0.7);
+  /* Slate 800 with opacity */
+  --surface-hover: rgba(30, 41, 59, 0.9);
+  --border: rgba(148, 163, 184, 0.1);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.1);
+
+  --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
 }
 
-/* Base body styling */
-/* Sets the foundation for all text and background across the application */
+/* Base body and html styling */
+html,
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif; /* Modern system font stack for optimal readability */
-  -webkit-font-smoothing: antialiased; /* Smooth font rendering on WebKit browsers */
-  -moz-osx-font-smoothing: grayscale; /* Smooth font rendering on Firefox */
-  line-height: 1.6; /* Comfortable reading line height */
-  color: var(--text); /* Uses CSS variable for consistent text color */
-  background: var(--bg); /* Applies the global background gradient */
-  min-height: 100vh; /* Ensures background covers full viewport height */
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--bg);
+  /* Fallback */
+  background: var(--bg-gradient);
+  min-height: 100vh;
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
 }
 
 /* Code font styling */
 /* Ensures code elements use monospace font for better readability and code-like appearance */
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace; /* Professional code font stack */
+    monospace;
+  /* Professional code font stack */
 }
 
 /* Main Application Container */
 /* Wraps the entire application content and provides flexbox layout structure */
 .App {
-  min-height: 100vh; /* Full viewport height */
-  display: flex; /* Flexbox layout for proper content distribution */
-  flex-direction: column; /* Stack children vertically */
+  min-height: 100vh;
+  /* Full viewport height */
+  display: flex;
+  /* Flexbox layout for proper content distribution */
+  flex-direction: column;
+  /* Stack children vertically */
 }
 
 /* Main Content Area */
 /* Contains the dynamic content that changes based on navigation */
 .main-content {
-  flex: 1; /* Takes remaining space after navbar */
-  margin-top: 80px; /* Accounts for fixed navbar height to prevent content overlap */
+  flex: 1;
+  /* Takes remaining space after navbar */
+  margin-top: 80px;
+  /* Accounts for fixed navbar height to prevent content overlap */
 }
 
 /* Scroll reveal animations */
 /* Provides smooth reveal animations for elements as they come into view */
 [data-reveal] {
-  opacity: 0; /* Start invisible */
-  transform: translateY(16px); /* Start slightly below final position */
-  transition: opacity 600ms ease, transform 600ms ease; /* Smooth transition */
+  opacity: 0;
+  /* Start invisible */
+  transform: translateY(16px);
+  /* Start slightly below final position */
+  transition: opacity 600ms ease, transform 600ms ease;
+  /* Smooth transition */
 }
 
 [data-reveal].revealed {
-  opacity: 1; /* Fully visible */
-  transform: translateY(0); /* Final position */
+  opacity: 1;
+  /* Fully visible */
+  transform: translateY(0);
+  /* Final position */
 }
 
 /* Container Utility Class */
 /* Provides consistent max-width and centering for content sections across all pages */
 .container {
-  max-width: 1200px; /* Maximum content width for optimal readability */
-  margin: 0 auto; /* Center content horizontally */
-  padding: 0 20px; /* Consistent horizontal padding */
+  max-width: 1200px;
+  /* Maximum content width for optimal readability */
+  margin: 0 auto;
+  /* Center content horizontally */
+  padding: 0 20px;
+  /* Consistent horizontal padding */
 }
 
 /* Section Headers */
 /* Consistent styling for all main section titles across the website */
-h1, h2, h3, h4, h5, h6 {
-  color: #2c3e50; /* Professional dark blue-gray color */
-  font-weight: 600; /* Semi-bold weight for good hierarchy */
-  line-height: 1.2; /* Tight line height for headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--text);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
 }
 
 /* Main section titles (h2) */
 /* Standardized styling for section headers with consistent spacing and emphasis */
 h2 {
-  font-size: 2.5rem; /* Large, prominent size */
-  margin-bottom: 60px; /* Generous spacing below */
-  text-align: center; /* Centered alignment for visual balance */
-  font-weight: 700; /* Bold weight for maximum impact */
+  font-size: 2.5rem;
+  /* Large, prominent size */
+  margin-bottom: 60px;
+  /* Generous spacing below */
+  text-align: center;
+  /* Centered alignment for visual balance */
+  font-weight: 700;
+  /* Bold weight for maximum impact */
 }
 
 /* Subsection titles (h3) */
 /* Styling for subsection headers within main sections */
 h3 {
-  font-size: 1.8rem; /* Medium size for subsections */
-  margin-bottom: 30px; /* Moderate spacing */
-  color: #34495e; /* Slightly lighter than main headings */
+  font-size: 1.8rem;
+  /* Medium size for subsections */
+  margin-bottom: 30px;
+  /* Moderate spacing */
+  color: #34495e;
+  /* Slightly lighter than main headings */
 }
 
 /* Paragraph styling */
 /* Base text styling for consistent readability across all content */
 p {
-  margin-bottom: 20px; /* Consistent paragraph spacing */
-  line-height: 1.7; /* Comfortable reading line height */
-  color: var(--muted); /* Uses muted color for body text */
+  margin-bottom: 20px;
+  /* Consistent paragraph spacing */
+  line-height: 1.7;
+  /* Comfortable reading line height */
+  color: var(--muted);
+  /* Uses muted color for body text */
 }
 
 /* Button Styles */
 /* Global button styling system for consistent UI elements across the application */
 
 /* Base button styles */
-/* Foundation styles that all button variants inherit */
 .btn {
-  display: inline-block; /* Inline-block for proper sizing */
-  padding: 12px 30px; /* Comfortable padding for touch targets */
-  border: none; /* Remove default border */
-  border-radius: 25px; /* Rounded corners for modern look */
-  font-size: 1rem; /* Readable font size */
-  font-weight: 500; /* Medium weight for good readability */
-  text-decoration: none; /* Remove underline */
-  cursor: pointer; /* Hand cursor on hover */
-  transition: all 0.3s ease; /* Smooth transitions for all properties */
-  text-align: center; /* Center text within button */
-  min-width: 120px; /* Minimum width for consistent button sizing */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 32px;
+  border: none;
+  border-radius: 50px;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  min-width: 140px;
 }
 
-/* Primary button variant */
-/* Main call-to-action buttons with gradient background for maximum visual impact */
+/* Primary Button */
 .btn-primary {
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-2) 100%); /* Brand gradient */
-  color: white; /* White text for contrast */
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3); /* Subtle shadow for depth */
+  background: linear-gradient(135deg, var(--primary) 0%, #818cf8 100%);
+  color: white;
+  box-shadow: 0 4px 6px -1px rgba(99, 102, 241, 0.4);
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px); /* Slight upward movement on hover */
-  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4); /* Enhanced shadow on hover */
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.5);
 }
 
-/* Secondary button variant */
-/* Secondary actions with outline style for less emphasis than primary buttons */
+.btn-primary:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Secondary Button (Outline) */
 .btn-secondary {
-  background: transparent; /* Transparent background */
-  color: #050505; /* Changed to red color for text and border */
-  border: 2px solid #050505; /* Changed to red outlined border */
+  background: transparent;
+  color: var(--text);
+  border: 2px solid var(--text);
 }
 
 .btn-secondary:hover {
-  background: #6de0cd; /* Fill with red color on hover */
-  color: white; /* White text for contrast */
-  transform: translateY(-2px); /* Consistent hover animation */
+  background: var(--text);
+  color: var(--bg);
+  transform: translateY(-2px);
 }
 
-/* Custom Download CV Button Style */
-/* Special styling for the CV download button to make it stand out */
+/* Download CV Button */
 .btn-download-cv {
-  background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%); /* Green gradient background */
-  color: white; /* White text for contrast */
-  border: 2px solid #27ae60; /* Green border */
-  box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3); /* Green shadow for depth */
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+  box-shadow: 0 4px 6px -1px rgba(16, 185, 129, 0.4);
 }
 
 .btn-download-cv:hover {
-  background: linear-gradient(135deg, #229954 0%, #27ae60 100%); /* Darker green on hover */
-  border-color: #229954; /* Darker border on hover */
-  transform: translateY(-2px); /* Consistent hover animation */
-  box-shadow: 0 6px 20px rgba(39, 174, 96, 0.4); /* Enhanced shadow on hover */
-}
-
-/* Button active states */
-/* Visual feedback when buttons are clicked or pressed */
-.btn:active {
-  transform: translateY(0); /* Return to original position */
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.5);
 }
 
 /* Link Styling */
 /* Global link styling for consistent navigation experience */
 a {
-  color: #667eea; /* Brand color for links */
-  text-decoration: none; /* Remove default underline */
-  transition: color 0.3s ease; /* Smooth color transition on hover */
+  color: #667eea;
+  /* Brand color for links */
+  text-decoration: none;
+  /* Remove default underline */
+  transition: color 0.3s ease;
+  /* Smooth color transition on hover */
 }
 
 a:hover {
-  color: #5a6fd8; /* Darker shade on hover for feedback */
+  color: #5a6fd8;
+  /* Darker shade on hover for feedback */
 }
 
 /* List Styling */
 /* Consistent list appearance across all components */
-ul, ol {
-  margin-bottom: 20px; /* Consistent spacing below lists */
-  padding-left: 20px; /* Standard left padding for list items */
+ul,
+ol {
+  margin-bottom: 20px;
+  /* Consistent spacing below lists */
+  padding-left: 20px;
+  /* Standard left padding for list items */
 }
 
 li {
-  margin-bottom: 8px; /* Spacing between list items */
-  line-height: 1.6; /* Readable line height for list content */
+  margin-bottom: 8px;
+  /* Spacing between list items */
+  line-height: 1.6;
+  /* Readable line height for list content */
 }
 
 /* Image Styling */
 /* Global image styling for consistent appearance */
 img {
-  max-width: 100%; /* Responsive images that scale with container */
-  height: auto; /* Maintain aspect ratio */
-  border-radius: 8px; /* Subtle rounded corners */
+  max-width: 100%;
+  /* Responsive images that scale with container */
+  height: auto;
+  /* Maintain aspect ratio */
+  border-radius: 8px;
+  /* Subtle rounded corners */
 }
 
 /* Section Spacing */
 /* Consistent spacing between major sections for visual harmony */
 section {
-  padding: 80px 0; /* Generous vertical padding for breathing room */
+  padding: 80px 0;
+  /* Generous vertical padding for breathing room */
 }
 
 /* Responsive Design Adjustments */
@@ -242,62 +318,82 @@ section {
 
 /* Tablet devices (768px and below) */
 @media (max-width: 768px) {
+
   /* Adjust container padding for smaller screens */
   .container {
-    padding: 0 15px; /* Reduced padding for mobile */
+    padding: 0 15px;
+    /* Reduced padding for mobile */
   }
-  
+
   /* Reduce section padding for mobile */
   section {
-    padding: 60px 0; /* Less padding on smaller screens */
+    padding: 60px 0;
+    /* Less padding on smaller screens */
   }
-  
+
   /* Adjust heading sizes for mobile */
   h2 {
-    font-size: 2rem; /* Smaller size for mobile */
-    margin-bottom: 40px; /* Reduced spacing */
+    font-size: 2rem;
+    /* Smaller size for mobile */
+    margin-bottom: 40px;
+    /* Reduced spacing */
   }
-  
+
   h3 {
-    font-size: 1.5rem; /* Adjusted for mobile */
-    margin-bottom: 25px; /* Reduced spacing */
+    font-size: 1.5rem;
+    /* Adjusted for mobile */
+    margin-bottom: 25px;
+    /* Reduced spacing */
   }
-  
+
   /* Adjust button sizing for touch devices */
   .btn {
-    padding: 14px 28px; /* Larger padding for touch targets */
-    font-size: 1.1rem; /* Slightly larger text */
-    min-width: 140px; /* Wider for better touch interaction */
+    padding: 14px 28px;
+    /* Larger padding for touch targets */
+    font-size: 1.1rem;
+    /* Slightly larger text */
+    min-width: 140px;
+    /* Wider for better touch interaction */
   }
 }
 
 /* Mobile devices (480px and below) */
 @media (max-width: 480px) {
+
   /* Further reduce spacing for small mobile devices */
   .container {
-    padding: 0 10px; /* Minimal padding for small screens */
+    padding: 0 10px;
+    /* Minimal padding for small screens */
   }
-  
+
   section {
-    padding: 40px 0; /* Compact spacing for small mobile */
+    padding: 40px 0;
+    /* Compact spacing for small mobile */
   }
-  
+
   /* Optimize headings for very small screens */
   h2 {
-    font-size: 1.8rem; /* Compact size for small mobile */
-    margin-bottom: 30px; /* Minimal spacing */
+    font-size: 1.8rem;
+    /* Compact size for small mobile */
+    margin-bottom: 30px;
+    /* Minimal spacing */
   }
-  
+
   h3 {
-    font-size: 1.3rem; /* Small size for mobile */
-    margin-bottom: 20px; /* Compact spacing */
+    font-size: 1.3rem;
+    /* Small size for mobile */
+    margin-bottom: 20px;
+    /* Compact spacing */
   }
-  
+
   /* Ensure buttons are touch-friendly on small screens */
   .btn {
-    padding: 16px 32px; /* Large padding for small screens */
-    font-size: 1.2rem; /* Readable text size */
-    min-width: 160px; /* Wide enough for comfortable touch */
+    padding: 16px 32px;
+    /* Large padding for small screens */
+    font-size: 1.2rem;
+    /* Readable text size */
+    min-width: 160px;
+    /* Wide enough for comfortable touch */
   }
 }
 
@@ -318,33 +414,81 @@ section {
 }
 
 /* Margin utilities */
-.mb-0 { margin-bottom: 0; }
-.mb-1 { margin-bottom: 10px; }
-.mb-2 { margin-bottom: 20px; }
-.mb-3 { margin-bottom: 30px; }
-.mb-4 { margin-bottom: 40px; }
+.mb-0 {
+  margin-bottom: 0;
+}
+
+.mb-1 {
+  margin-bottom: 10px;
+}
+
+.mb-2 {
+  margin-bottom: 20px;
+}
+
+.mb-3 {
+  margin-bottom: 30px;
+}
+
+.mb-4 {
+  margin-bottom: 40px;
+}
 
 /* Padding utilities */
-.p-0 { padding: 0; }
-.p-1 { padding: 10px; }
-.p-2 { padding: 20px; }
-.p-3 { padding: 30px; }
-.p-4 { padding: 40px; }
+.p-0 {
+  padding: 0;
+}
+
+.p-1 {
+  padding: 10px;
+}
+
+.p-2 {
+  padding: 20px;
+}
+
+.p-3 {
+  padding: 30px;
+}
+
+.p-4 {
+  padding: 40px;
+}
 
 /* Display utilities */
-.d-none { display: none; }
-.d-block { display: block; }
-.d-flex { display: flex; }
-.d-grid { display: grid; }
+.d-none {
+  display: none;
+}
+
+.d-block {
+  display: block;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.d-grid {
+  display: grid;
+}
 
 /* Flexbox utilities */
-.justify-center { justify-content: center; }
-.justify-between { justify-content: space-between; }
-.align-center { align-items: center; }
-.flex-column { flex-direction: column; }
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.flex-column {
+  flex-direction: column;
+}
 
 /* ========================================
    END OF GLOBAL STYLES
    ======================================== */
-
-

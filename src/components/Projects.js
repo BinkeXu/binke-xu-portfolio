@@ -41,6 +41,27 @@ const Projects = () => {
   };
 
   /**
+   * Scroll expanded card into view
+   * Centers the expanded card on the screen for better visibility
+   */
+  useEffect(() => {
+    if (expandedCard !== null) {
+      // Wait for the DOM to update and expansion animation to begin
+      setTimeout(() => {
+        const cards = document.querySelectorAll('.project-card');
+        const expandedElement = cards[expandedCard];
+        if (expandedElement) {
+          expandedElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center',
+            inline: 'nearest'
+          });
+        }
+      }, 100); // Small delay to allow expansion animation to start
+    }
+  }, [expandedCard]);
+
+  /**
    * Handles background clicks to collapse all cards
    * Detects clicks on the background (not on cards) and resets state
    * @param {Event} e - Click event object
@@ -129,7 +150,7 @@ const Projects = () => {
         "Lightweight Node/Express Socket.IO relay to broadcast updates across pages"
       ],
       codeLink: "https://github.com/BinkeXu/IoT-React",
-    },{
+    }, {
       title: "COVID-19 Analytics Dashboard",
       type: "Individual Project",
       year: "2021",
@@ -152,12 +173,12 @@ const Projects = () => {
         "Professional-grade error handling and fallback systems for production use"
       ],
       codeLink: "https://github.com/BinkeXu/covid-world-map",
-    },{
+    }, {
       "title": "E-Commerce Customer Churn Prediction",
       "type": "Individual Project",
       "year": "2025",
       "description": "End-to-end MLOps pipeline for predicting customer churn using machine learning, featuring a production-ready API, interactive web dashboard, and comprehensive monitoring infrastructure.",
-      "technologies": ["Python", "Machine Learning","FastAPI", "Streamlit", "Docker", "Kubernetes", "Prometheus", "Grafana", "LightGBM", "XGBoost", "Scikit-learn", "Pandas", "NumPy"],
+      "technologies": ["Python", "Machine Learning", "FastAPI", "Streamlit", "Docker", "Kubernetes", "Prometheus", "Grafana", "LightGBM", "XGBoost", "Scikit-learn", "Pandas", "NumPy"],
       "features": [
         "RFM analysis-based feature engineering for customer segmentation",
         "Multi-algorithm ML pipeline with hyperparameter tuning and cross-validation",
@@ -177,7 +198,7 @@ const Projects = () => {
         "Real-time customer churn scoring with actionable business insights"
       ],
       codeLink: "https://github.com/BinkeXu/E-Commerce-Customer-Churn-Prediction",
-    },{
+    }, {
       "title": "Machine Learning for Tree Image Segmentation",
       "type": "Research Projects",
       "year": "2022 - 2024",
@@ -197,7 +218,7 @@ const Projects = () => {
         "Demonstrated strong generalization and robustness with fewer overfitting issues",
         "Advanced practical applications of automated architecture search and ensemble learning for forestry and environmental monitoring"
       ]
-    },{
+    }, {
       "title": "Restaurant Intelligence System (RIS)",
       "type": "Individual Project",
       "year": "2025",
@@ -223,7 +244,7 @@ const Projects = () => {
       ],
       "codeLink": "https://github.com/BinkeXu/Restaurant-Intelligence-System"
     }
-    ];
+  ];
 
   /**
    * Work experience data array
@@ -334,17 +355,17 @@ const Projects = () => {
     allTechs.forEach(tech => {
       techCount[tech] = (techCount[tech] || 0) + 1;
     });
-    
+
     // Get techs that appear in at least 2 projects
     const commonTechs = Object.entries(techCount)
       .filter(([tech, count]) => count >= 2)
-      .sort(([,a], [,b]) => b - a)
+      .sort(([, a], [, b]) => b - a)
       .map(([tech]) => tech);
-    
+
     // Add important techs that should always be available for filtering
     const importantTechs = ['Python', 'Machine Learning'];
     const additionalTechs = importantTechs.filter(tech => !commonTechs.includes(tech));
-    
+
     return [...commonTechs, ...additionalTechs];
   };
 
@@ -353,14 +374,14 @@ const Projects = () => {
    */
   const getFilteredAndSortedProjects = () => {
     let filteredProjects = [...projects];
-    
+
     // Apply tech stack filter
     if (techFilter !== 'all') {
-      filteredProjects = filteredProjects.filter(project => 
+      filteredProjects = filteredProjects.filter(project =>
         project.technologies.includes(techFilter)
       );
     }
-    
+
     // Apply sorting
     filteredProjects.sort((a, b) => {
       if (sortBy === 'year') {
@@ -371,7 +392,7 @@ const Projects = () => {
       }
       return 0;
     });
-    
+
     return filteredProjects;
   };
 
@@ -383,7 +404,7 @@ const Projects = () => {
     <div className="projects" data-reveal>
       <div className="container">
         <h2>Projects & Experience</h2>
-        
+
         {/* Work Experience Section */}
         <section className="work-experience-section" data-reveal>
           <h3>Work Experience</h3>
@@ -415,14 +436,14 @@ const Projects = () => {
         {/* Engineering Projects Section */}
         <section className="projects-section" data-reveal>
           <h3>Engineering Projects</h3>
-          
+
           {/* Filter Controls */}
           <div className="filter-controls">
             <div className="filter-group">
               <label htmlFor="sort-select">Sort by:</label>
-              <select 
+              <select
                 id="sort-select"
-                value={sortBy} 
+                value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
                 className="filter-select"
               >
@@ -430,12 +451,12 @@ const Projects = () => {
                 <option value="techStack">Tech Stack Complexity</option>
               </select>
             </div>
-            
+
             <div className="filter-group">
               <label htmlFor="tech-filter">Filter by Tech:</label>
-              <select 
+              <select
                 id="tech-filter"
-                value={techFilter} 
+                value={techFilter}
                 onChange={(e) => setTechFilter(e.target.value)}
                 className="filter-select"
               >
@@ -445,26 +466,26 @@ const Projects = () => {
                 ))}
               </select>
             </div>
-            
+
             <div className="filter-info">
               Showing {filteredProjects.length} of {projects.length} projects
             </div>
           </div>
-          
-          <div 
-            className="projects-list" 
+
+          <div
+            className="projects-list"
             ref={projectsContainerRef}
             onClick={handleBackgroundClick}
           >
             {filteredProjects.map((project, index) => {
               // Determine card state for rendering
               const isExpanded = expandedCard === index;
-              
+
               console.log(`Card ${index}: expanded=${isExpanded}`);
-              
+
               return (
-                <div 
-                  key={index} 
+                <div
+                  key={index}
                   className={`project-card ${isExpanded ? 'expanded' : ''}`}
                   onClick={(e) => {
                     e.stopPropagation(); // Prevent background click handler from firing
@@ -480,10 +501,10 @@ const Projects = () => {
                       {isExpanded && <span className="expanded-indicator">★ EXPANDED</span>}
                     </div>
                   </div>
-                  
+
                   {/* Project Description - Always Visible */}
                   <p className="project-description">{project.description}</p>
-                  
+
                   {/* Technologies Section - Shows limited tech tags when collapsed */}
                   <div className="project-technologies">
                     <h5>Technologies Used:</h5>
@@ -496,7 +517,7 @@ const Projects = () => {
                       )}
                     </div>
                   </div>
-                  
+
                   {/* Expandable Content - Features and Highlights */}
                   {isExpanded && (
                     <>
@@ -508,7 +529,7 @@ const Projects = () => {
                           ))}
                         </ul>
                       </div>
-                      
+
                       <div className="project-highlights">
                         <h5>Highlights:</h5>
                         <ul>

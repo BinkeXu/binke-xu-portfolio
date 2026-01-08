@@ -1,52 +1,37 @@
 import React from 'react';
 import './Home.css';
-import myPhoto from '../img/My-photo.jpg';
+import myPhoto from '../img/My-photo.png';
 
 /**
  * Home Component - Main Landing Page
  * 
  * This component serves as the homepage of the portfolio website.
- * It includes a hero section, about me section, and education details.
- * 
- * Features:
- * - Professional hero section with profile image
- * - About Me section with key statistics
- * - Education section with degree details
- * - Functional CV download button
- * - Responsive design for all devices
+ * It features a modern split layout with a floating stats bar and 
+ * an integrated education timeline.
  */
+const ENABLE_CV_DOWNLOAD = false; // Set to false to hide the CV button
+
 const Home = () => {
   /**
    * Handles CV download functionality
-   * Creates a temporary download link and triggers the file download
-   * 
-   * Technical Details:
-   * - Creates a temporary <a> element
-   * - Sets the href to the CV file in the public folder
-   * - Triggers the download automatically
-   * - Cleans up the temporary element after download
    */
   const handleDownloadCV = () => {
     try {
-      // Get the correct base path for GitHub Pages
       const basePath = process.env.PUBLIC_URL || '';
       const cvPath = `${basePath}/Binke_Xu_CV.pdf`;
-      
-      // Create a link element to trigger the download
+
       const link = document.createElement('a');
       link.href = cvPath;
       link.download = 'Binke_Xu_CV.pdf';
-      link.target = '_blank'; // Open in new tab as fallback
-      
-      // Add to DOM, click, and remove
+      link.target = '_blank';
+
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-      
+
       console.log('CV download initiated successfully');
     } catch (error) {
       console.error('Error downloading CV:', error);
-      // Fallback: open in new tab
       const basePath = process.env.PUBLIC_URL || '';
       const fallbackUrl = `${basePath}/Binke_Xu_CV.pdf`;
       window.open(fallbackUrl, '_blank');
@@ -55,183 +40,132 @@ const Home = () => {
 
   return (
     <div className="home">
-      {/* Hero Section */}
-      {/* 
-        The main introduction section featuring:
-        - Profile image placeholder
-        - Name and title
-        - Professional description
-        - Call-to-action button (CV download)
-      */}
+      {/* Hero Section: Split Layout */}
       <section className="hero" data-reveal>
-        <div className="hero-content">
-          <div className="profile-section">
-            {/* Profile Image */}
-            {/* 
-              Displays the user's actual profile photo
-              Responsive and optimized for all screen sizes
-            */}
-            <div className="profile-image">
-              <img 
-                src={myPhoto || `${process.env.PUBLIC_URL || ''}/logo192.png`} 
-                alt="Binke Xu - AI and Software Engineering Professional" 
-                className="profile-photo"
+        <div className="container hero-container">
+          {/* Visual Side (Right on Desktop, Top on Mobile) */}
+          <div className="hero-visual">
+            <div className="visual-circle main-circle"></div>
+            <div className="visual-circle secondary-circle"></div>
+            <div className="profile-image-container">
+              <img
+                src={myPhoto || `${process.env.PUBLIC_URL || ''}/logo192.png`}
+                alt="Binke Xu"
+                className="hero-image"
                 onError={(e) => {
-                  console.error('Error loading profile image:', e);
-                  console.log('Trying fallback image...');
-                  const basePath = process.env.PUBLIC_URL || '';
-                  e.target.src = `${basePath}/logo192.png`; // Fallback to default logo
-                  e.target.onerror = null; // Prevent infinite loop
+                  e.target.style.display = 'none';
                 }}
               />
             </div>
-            
-            {/* Hero Text Content */}
-            {/* 
-              Contains the main introduction text and download button
-              Structured for optimal readability and user engagement
-            */}
-            <div className="hero-text">
-              <h1>Binke Xu</h1>
-              <p className="subtitle">Master of Science in Artificial Intelligence</p>
-              <p className="description">
-                Recent graduate with distinction from Victoria University of Wellington, specializing in AI and software engineering. 
-                Experienced in developing end-to-end solutions from mobile applications to complex AI systems.
-              </p>
-              
-              {/* Call-to-Action Button */}
-              {/* 
-                CV download button that allows visitors to download the resume
-                Styled with custom download-cv class for enhanced visual appeal
-              */}
-              <div className="hero-buttons">
-                <button className="btn btn-download-cv" onClick={handleDownloadCV}>
+          </div>
+
+          {/* Text Side */}
+          <div className="hero-text-content">
+            <h1 className="hero-title">
+              Hello, I'm <span className="highlight">Binke Xu</span>
+            </h1>
+            <h2 className="hero-subtitle">Masters in AI & Software Engineering</h2>
+            <p className="hero-bio">
+              Bridging the gap between complex artificial intelligence algorithms and
+              intuitive, user-centric software solutions. Specialized in full-stack development
+              and machine learning research.
+            </p>
+
+            {ENABLE_CV_DOWNLOAD && (
+              <div className="hero-cta">
+                <button className="btn btn-primary btn-download" onClick={handleDownloadCV}>
                   Download CV
                 </button>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </section>
 
-      {/* About Me Section */}
-      {/* 
-        Provides detailed information about the portfolio owner
-        Includes professional summary and key statistics
-      */}
-      <section className="about-me" data-reveal>
+      {/* Floating Stats Bar */}
+      <div className="stats-bar-wrapper" data-reveal>
         <div className="container">
-          <h2>About Me</h2>
-          <div className="about-content">
-            {/* About Text */}
-            {/* 
-              Detailed professional description highlighting:
-              - Educational background
-              - Technical expertise
-              - Professional goals
-              - Certifications and achievements
-            */}
-            <div className="about-text">
-              <p>
-                I am a recent Master of Science graduate in Artificial Intelligence with distinction from Victoria University of Wellington, 
-                building upon my Bachelor's degree in Software Engineering. I have experience in developing end-to-end solutions, 
-                from mobile applications to complex AI systems. My technical expertise spans multiple languages and frameworks, 
-                including Python, PyTorch, Java, Node.js, and GitLab, complemented by my Microsoft Azure Fundamentals (AZ-900) 
-                and Azure AI Fundamentals (AI-900) certification.
-              </p>
-              <p>
-                Currently seeking opportunities in Software Engineering or Artificial Intelligence-related roles to apply my skills 
-                and knowledge in a dynamic work environment, tackle challenging projects, and contribute to innovative solutions in the industry.
-              </p>
+          <div className="stats-bar">
+            <div className="stat-item">
+              <span className="stat-number">2+</span>
+              <span className="stat-label">Years Research</span>
             </div>
-            
-            {/* Key Statistics */}
-            {/* 
-              Visual representation of key achievements and experience
-              Each stat highlights a different aspect of professional background
-            */}
-            <div className="stats">
-              <div className="stat-item">
-                <h3>2+</h3>
-                <p>Years Research Experience</p>
-              </div>
-              <div className="stat-item">
-                <h3>2</h3>
-                <p>IEEE Publications</p>
-              </div>
-              <div className="stat-item">
-                <h3>2</h3>
-                <p>Microsoft Certifications</p>
-              </div>
-              <div className="stat-item">
-                <h3>5+</h3>
-                <p>Programming Languages</p>
-              </div>
+            <div className="stat-divider"></div>
+            <div className="stat-item">
+              <span className="stat-number">2</span>
+              <span className="stat-label">IEEE Publications</span>
+            </div>
+            <div className="stat-divider"></div>
+            <div className="stat-item">
+              <span className="stat-number">2</span>
+              <span className="stat-label">Certifications</span>
+            </div>
+            <div className="stat-divider"></div>
+            <div className="stat-item">
+              <span className="stat-number">5+</span>
+              <span className="stat-label">Tech Stacks</span>
             </div>
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* Education Section */}
-      {/* 
-        Displays educational background and achievements
-        Includes both Master's and Bachelor's degree information
-      */}
-      <section className="education" data-reveal>
+      {/* Main Content: Split Grid */}
+      <section className="main-content-section" data-reveal>
         <div className="container">
-          <h2>Education</h2>
-          <div className="education-grid">
-            {/* Master's Degree */}
-            {/* 
-              Master of Science in Artificial Intelligence
-              Highlights research focus and academic achievements
-            */}
-            <div className="education-card">
-              <div className="education-header">
-                <h3>Master of Science in Artificial Intelligence</h3>
-                <span className="education-period">March 2023 – September 2024</span>
-              </div>
-              <div className="education-institution">Victoria University of Wellington, New Zealand</div>
-              <div className="education-achievement">
-                <strong>Rank in Class:</strong> A Grade with Distinction
-              </div>
-              <div className="education-details">
-                <p><strong>Master by research:</strong></p>
-                <ul>
-                  <li>Conducted independent research utilizing Python to develop algorithms and tools for training and visualization</li>
-                  <li>Collaborated with supervisors and peers to refine project objectives and deliver presentations for effective communication of findings</li>
-                  <li>Developed strong skills in critical thinking, problem-solving, and project management</li>
-                </ul>
+          <div className="content-split-layout">
+
+            {/* Left Column: About Context */}
+            <div className="about-column">
+              <div className="sticky-header">
+                <h2 className="section-title">About Me</h2>
+                <div className="about-text-content">
+                  <p>
+                    I am a recent <strong>Master of Science graduate in Artificial Intelligence</strong> with distinction from Victoria University of Wellington.
+                    My academic journey is built upon a solid foundation in Software Engineering (Bachelor's with Second Class Hons).
+                  </p>
+                  <p>
+                    I thrive on solving complex problems, from optimizing neural network architectures to building responsive mobile applications.
+                    My technical toolkit includes <strong>Python, PyTorch, Java, and React</strong>, backed by industry-standard certifications in Azure AI.
+                  </p>
+                  <p>
+                    Currently, I am looking for opportunities where I can leverage my unique blend of research capability and engineering practicality.
+                  </p>
+                </div>
               </div>
             </div>
 
-            {/* Bachelor's Degree */}
-            {/* 
-              Bachelor of Engineering in Software Engineering
-              Shows foundational education and key coursework
-            */}
-            <div className="education-card">
-              <div className="education-header">
-                <h3>Bachelor of Engineering in Software Engineering</h3>
-                <span className="education-period">March 2018 – August 2023</span>
-              </div>
-              <div className="education-institution">Victoria University of Wellington, New Zealand</div>
-              <div className="education-achievement">
-                <strong>Rank in Class:</strong> Second Class Hons (Div1)
-              </div>
-              <div className="education-details">
-                <p><strong>Key Courses:</strong></p>
-                <ul>
-                  <li>Engineering Project</li>
-                  <li>Software Dev for Mobile</li>
-                  <li>Database Engineering</li>
-                  <li>User Interface Design</li>
-                  <li>ML Tools and Techniques</li>
-                  <li>Human-Computer Interaction</li>
-                  <li>Computer Network Design</li>
-                </ul>
+            {/* Right Column: Education Timeline */}
+            <div className="education-column">
+              <h2 className="section-title">Education Journey</h2>
+              <div className="timeline">
+
+                {/* Master's Card */}
+                <div className="timeline-card">
+                  <div className="timeline-date">2023 - 2024</div>
+                  <h3 className="degree-title">MSc in Artificial Intelligence</h3>
+                  <h4 className="university">Victoria University of Wellington</h4>
+                  <div className="grade-badge">Grade A (Distinction)</div>
+                  <ul className="studies-list">
+                    <li>Developed novel algorithms for training data optimization.</li>
+                    <li>Utilized Python/PyTorch for deep learning research.</li>
+                  </ul>
+                </div>
+
+                {/* Bachelor's Card */}
+                <div className="timeline-card">
+                  <div className="timeline-date">2018 - 2023</div>
+                  <h3 className="degree-title">BE in Software Engineering</h3>
+                  <h4 className="university">Victoria University of Wellington</h4>
+                  <div className="grade-badge">Second Class Hons (Div 1)</div>
+                  <ul className="studies-list">
+                    <li>Focus: Mobile Sw Dev, Machine Learning, UI/UX.</li>
+                    <li>Completed comprehensive Engineering Project.</li>
+                  </ul>
+                </div>
+
               </div>
             </div>
+
           </div>
         </div>
       </section>

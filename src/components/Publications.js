@@ -61,7 +61,7 @@ const Publications = () => {
    * These areas are displayed as interactive tags for better visual organization
    */
   const researchAreas = [
-    'Artificial Intelligence', 'Machine Learning', 'Computer Vision', 
+    'Artificial Intelligence', 'Machine Learning', 'Computer Vision',
     'Image Segmentation', 'Neural Networks', 'Genetic Algorithms',
     'Remote Sensing', 'Tree Modelling', 'Deep Learning'
   ];
@@ -70,61 +70,71 @@ const Publications = () => {
     <div className="publications" data-reveal>
       <div className="container">
         <h2 className="publications-title" data-reveal>Publications & Research</h2>
-        
+
         {/* Research Statistics Section */}
-        {/* 
-          Overview of research achievements and impact
-          Displays key metrics in an easy-to-scan format
-        */}
         <section className="stats-section" data-reveal>
           <div className="stats-grid">
-            {/* IEEE Publications Count */}
             <div className="stat-card">
               <h3>2</h3>
               <p>IEEE Publications</p>
             </div>
-            {/* International Conferences Count */}
             <div className="stat-card">
               <h3>2</h3>
-              <p>International Conferences</p>
+              <p>Intl. Conferences</p>
             </div>
-            {/* Research Collaborations Count */}
             <div className="stat-card">
               <h3>3+</h3>
-              <p>Research Collaborations</p>
+              <p>Collaborations</p>
             </div>
           </div>
         </section>
 
         {/* Academic Publications Section */}
-        {/* 
-          Detailed display of published research papers
-          Each publication shows comprehensive academic information
-        */}
         <section className="publications-section" data-reveal>
           <h3>Academic Publications</h3>
           <div className="publications-list">
             {publications.map((pub, index) => (
               <div key={index} className="publication-card">
-                {/* Publication Header with Title and Type */}
                 <div className="publication-header">
                   <h4>{pub.title}</h4>
                   <span className="publication-type">{pub.type}</span>
                 </div>
-                
-                {/* Publication Authors */}
-                <div className="publication-authors">
-                  <strong>Authors:</strong> {pub.authors}
+
+                <div className="publication-meta-grid">
+                  <div className="meta-row">
+                    <span className="meta-label">Authors:</span>
+                    <span className="meta-value">
+                      {pub.authors.split(', ').map((author, i, arr) => (
+                        <span key={i}>
+                          {author.includes('Binke Xu') ? <strong className="highlight-author">{author}</strong> : author}
+                          {i < arr.length - 1 ? ', ' : ''}
+                        </span>
+                      ))}
+                    </span>
+                  </div>
+                  <div className="meta-row">
+                    <span className="meta-label">Venue:</span>
+                    <span className="meta-value">{pub.journal}</span>
+                  </div>
+                  <div className="meta-row">
+                    <span className="meta-label">Year:</span>
+                    <span className="meta-value">{pub.year}</span>
+                  </div>
                 </div>
-                
-                {/* Journal or Conference Information */}
-                <div className="publication-journal">
-                  <strong>Journal/Conference:</strong> {pub.journal}
-                </div>
-                
-                {/* Publication Year */}
-                <div className="publication-year">
-                  <strong>Year:</strong> {pub.year}
+
+                <div className="publication-content">
+                  <p className="publication-abstract">{pub.abstract}</p>
+
+                  {pub.highlights && (
+                    <div className="publication-highlights">
+                      <h5>Key Highlights</h5>
+                      <ul>
+                        {pub.highlights.map((highlight, i) => (
+                          <li key={i}>{highlight}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
                 </div>
               </div>
             ))}
@@ -132,10 +142,6 @@ const Publications = () => {
         </section>
 
         {/* Research Areas Section */}
-        {/* 
-          Displays key research domains and specializations
-          Areas are shown as interactive tags for better organization
-        */}
         <section className="research-areas-section" data-reveal>
           <h3>Research Areas</h3>
           <div className="research-tags">
