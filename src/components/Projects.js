@@ -268,6 +268,26 @@ const Projects = () => {
         "Zero-dependency workspace mobility—take your job data anywhere"
       ],
       "codeLink": "https://github.com/BinkeXu/Job-Application-Lifecycle-Manager"
+    }, {
+      "title": "Personal Portfolio Website",
+      "type": "Individual Project",
+      "year": "2025",
+      "description": "A modern, responsive portfolio website built from scratch using React to showcase engineering projects and professional experience, featuring interactive UI elements and dynamic filtering.",
+      "technologies": ["React", "JavaScript", "CSS3", "HTML5", "Git"],
+      "features": [
+        "Interactive project cards with expand/collapse details and smooth animations",
+        "Dynamic filtering and sorting capabilities based on year and technology stack",
+        "Fully responsive design optimized for desktop, tablet, and mobile devices",
+        "Component-based architecture ensuring code maintainability and reusability",
+        "Custom-built design system with cohesive typography and color palette"
+      ],
+      "highlights": [
+        "Implemented from ground up without heavy UI frameworks for maximum control",
+        "Advanced DOM manipulation and event handling for custom user interactions",
+        "Performance-optimized rendering with efficient state management",
+        "Clean, professional aesthetic emphasizing content readability and visual hierarchy"
+      ],
+      "codeLink": "https://github.com/BinkeXu/binke-xu-portfolio"
     }
   ];
 
