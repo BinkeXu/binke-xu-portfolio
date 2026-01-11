@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/binke-xu-portfolio/static/css/main.015421a9.css",
-    "main.js": "/binke-xu-portfolio/static/js/main.e4ee3261.js",
+    "main.js": "/binke-xu-portfolio/static/js/main.4762386e.js",
     "static/js/453.2291aba8.chunk.js": "/binke-xu-portfolio/static/js/453.2291aba8.chunk.js",
     "static/media/My-photo.png": "/binke-xu-portfolio/static/media/My-photo.a7b18add3c7bcedb419d.png",
     "static/media/cicd.png": "/binke-xu-portfolio/static/media/cicd.dee4ae58dd0a5da592d2.png",
@@ -23,11 +23,11 @@
     "static/media/linkedin.png": "/binke-xu-portfolio/static/media/linkedin.63b96b9ea7fdfd7a5ee0.png",
     "index.html": "/binke-xu-portfolio/index.html",
     "main.015421a9.css.map": "/binke-xu-portfolio/static/css/main.015421a9.css.map",
-    "main.e4ee3261.js.map": "/binke-xu-portfolio/static/js/main.e4ee3261.js.map",
+    "main.4762386e.js.map": "/binke-xu-portfolio/static/js/main.4762386e.js.map",
     "453.2291aba8.chunk.js.map": "/binke-xu-portfolio/static/js/453.2291aba8.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.015421a9.css",
-    "static/js/main.e4ee3261.js"
+    "static/js/main.4762386e.js"
   ]
 }
