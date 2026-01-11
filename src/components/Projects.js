@@ -243,6 +243,31 @@ const Projects = () => {
         "Grounded AI logic preventing hallucinations via strict system prompting"
       ],
       "codeLink": "https://github.com/BinkeXu/Restaurant-Intelligence-System"
+    }, {
+      "title": "Job Application Lifecycle Manager (JALM)",
+      "type": "Individual Project",
+      "year": "2026",
+      "description": "A high-performance, hybrid-process automation platform for end-to-end job application management, featuring real-time filesystem synchronization, headless document generation, and multi-process analytics.",
+      "technologies": ["Python", "CustomTkinter", ".NET 8.0 (C#)", "SQLite (WAL Mode)", "OpenXML SDK", "PyInstaller", "Git"],
+      "features": [
+        "Hybrid Intelligence architecture combining Python UI with a .NET background service",
+        "Real-time folder monitoring with intelligent 500ms debouncing logic",
+        "Automated document generation headlessly cloning CV/Cover Letter templates",
+        "Headless Cover Letter date replacement using OpenXML SDK",
+        "Multi-process analytics engine for 'Ghosting' detection and CSV export",
+        "Workspace isolation allowing independent settings and databases per root folder",
+        "Performance-optimized UI with virtual rendering and chunk-based processing",
+        "Persistent data mirroring to human-readable .txt files for portability"
+      ],
+      "highlights": [
+        "Advanced concurrency handling with SQLite Write-Ahead Logging (WAL)",
+        "Bundled single-EXE deployment using PyInstaller for hybrid process orchestration",
+        "Native filesystem integration bypassing browser sandboxing restrictions",
+        "Throttled GUI rendering and optimized database indexing for high responsiveness",
+        "Professional-grade branding with automated nomenclature standards",
+        "Zero-dependency workspace mobility—take your job data anywhere"
+      ],
+      "codeLink": "https://github.com/BinkeXu/Job-Application-Lifecycle-Manager"
     }
   ];
 
