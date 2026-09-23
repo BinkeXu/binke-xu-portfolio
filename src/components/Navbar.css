@@ -127,18 +127,42 @@
   transform: rotate(15deg);
 }
 
-/* Responsive */
+/* Responsive Mobile Navigation */
 @media (max-width: 768px) {
   .navbar-container {
-    height: 70px;
-    padding: 0 16px;
+    height: 64px;
+    padding: 0 12px;
+    gap: 8px;
+  }
+
+  .brand-text {
+    font-size: 1.25rem;
   }
 
   .navbar-nav {
-    display: none;
-    /* Mobile menu implementation usually requires JS state toggling, assumed handled or hidden for now */
+    display: flex;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 4px;
+    padding: 4px;
+    max-width: calc(100vw - 120px);
   }
 
-  /* Assuming mobile menu logic exists or we simplify. 
-     Keeping it simple: stick to desktop-first or horizontal scroll for now if no mobile drawer code exists. */
+  .navbar-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-link {
+    padding: 6px 12px;
+    font-size: 0.82rem;
+    white-space: nowrap;
+  }
+
+  .theme-toggle {
+    margin-left: 4px;
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+  }
 }

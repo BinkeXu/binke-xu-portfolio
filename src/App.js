@@ -27,12 +27,13 @@ import Navbar from './components/Navbar';
  */
 function App() {
   // State to track which section is currently active
-  // This enables the navigation highlighting and component switching
-  const [currentSection, setCurrentSection] = useState('welcome');
+  // Default directly to 'home' to pass the 5-second recruiter test
+  const [currentSection, setCurrentSection] = useState('home');
 
   // Scroll-reveal observer setup
   const ioRef = useRef(null);
   useEffect(() => {
+    if (typeof IntersectionObserver === 'undefined') return;
     const elements = document.querySelectorAll('[data-reveal]');
     const observer = new IntersectionObserver(
       (entries) => {
@@ -61,7 +62,7 @@ function App() {
       case 'welcome':
         return <Welcome />;
       case 'home':
-        return <Home />;
+        return <Home setCurrentSection={setCurrentSection} />;
       case 'skills':
         return <Skills />;
       case 'projects':

@@ -4,9 +4,10 @@ import linkedinLogo from '../logos/linkedin.png';
 import gitLogo from '../logos/git.png';
 
 /**
- * Contact Component - Premium Redesign
+ * Contact Component - Premium Professional Presence
  * 
- * Focused on professional networking and high-impact visual communication.
+ * Focused on recruiter convenience, direct contact channels,
+ * and clear New Zealand Permanent Resident work rights visibility.
  */
 const Contact = () => {
   return (
@@ -15,8 +16,7 @@ const Contact = () => {
         <div className="contact-header-section">
           <h2 className="contact-title">Get In Touch</h2>
           <p className="contact-subtitle">
-            I'm currently looking for new opportunities in AI , Data and Software Engineering roles.
-            Whether you have a question or just want to connect, I'll do my best to get back to you!
+            I am actively seeking roles in <strong>Data Engineering, Machine Learning Systems, and Full-Stack Software Engineering</strong> in Wellington, New Zealand (and open to relocation). Feel free to reach out directly!
           </p>
         </div>
 
@@ -28,7 +28,7 @@ const Contact = () => {
               <div className="method-info">
                 <h3>Email</h3>
                 <p>Binkexu@gmail.com</p>
-                <a href="mailto:Binkexu@gmail.com" className="method-link">Send Message</a>
+                <a href="mailto:Binkexu@gmail.com" className="method-link">Send Email ↗</a>
               </div>
             </div>
 
@@ -37,16 +37,16 @@ const Contact = () => {
               <div className="method-info">
                 <h3>Phone</h3>
                 <p>+64 022 154 6027</p>
-                <a href="tel:+640221546027" className="method-link">Call Now</a>
+                <a href="tel:+640221546027" className="method-link">Call Direct ↗</a>
               </div>
             </div>
 
             <div className="contact-method-card" data-reveal>
               <div className="method-icon-box">📍</div>
               <div className="method-info">
-                <h3>Location</h3>
+                <h3>Location & Work Rights</h3>
                 <p>Wellington, New Zealand</p>
-                <span className="method-status">Open to Relocation</span>
+                <span className="method-status">Permanent Resident Visa (Full NZ Work Rights)</span>
               </div>
             </div>
           </div>
@@ -54,8 +54,8 @@ const Contact = () => {
           {/* Connect Side */}
           <div className="connect-side">
             <div className="connect-card" data-reveal>
-              <h3>Let's Connect Socially</h3>
-              <p>Find me on professional platforms and follow my latest updates.</p>
+              <h3>Professional Channels</h3>
+              <p>Explore my latest open-source repositories and connect on LinkedIn.</p>
 
               <div className="social-button-group">
                 <a
@@ -65,7 +65,7 @@ const Contact = () => {
                   className="social-btn linkedin-btn"
                 >
                   <img src={linkedinLogo} alt="LinkedIn" className="btn-logo" />
-                  <span>LinkedIn Profile</span>
+                  <span>LinkedIn Profile ↗</span>
                 </a>
 
                 <a
@@ -75,7 +75,7 @@ const Contact = () => {
                   className="social-btn github-btn"
                 >
                   <img src={gitLogo} alt="GitHub" className="btn-logo" />
-                  <span>GitHub Repository</span>
+                  <span>GitHub Repository ↗</span>
                 </a>
               </div>
 

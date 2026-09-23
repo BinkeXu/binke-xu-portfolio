@@ -38,7 +38,7 @@ const Welcome = ({ setCurrentSection }) => {
           <h1 className="welcome-title">Hello, Welcome to Binke's website!</h1>
           
           {/* Subtitle describing the website purpose */}
-          <p className="welcome-subtitle">Portfolio & Professional Journey</p>
+          <p className="welcome-subtitle">Software & Data Engineer • Machine Learning Systems</p>
           
           {/* Call-to-action button to enter the main website */}
           <button className="enter-website-btn" onClick={handleEnterWebsite}>

@@ -4,83 +4,346 @@ import './Projects.css';
 /**
  * Projects Component
  * 
- * Displays a comprehensive view of engineering projects and work experience.
- * Features expandable project cards that show condensed information by default
- * and reveal full details only on click interaction.
+ * Displays a comprehensive, recruiter-optimized view of engineering projects,
+ * research outputs, and work experience.
  * 
- * Key Features:
- * - Interactive project cards with click-only expansion
- * - Single card expansion (only one card expanded at a time)
- * - Filtering and sorting by year and tech stack
- * - Work experience section with achievements
- * - Code link handling with fallback popup
- * - Responsive design for all screen sizes
+ * Features:
+ * - Flagship Showcase Banner: New Zealand Labour Market & Income Intelligence Dashboard
+ * - Interactive project cards with expandable case study details
+ * - Strategic categorization: Data & ML, Full-Stack, Research, and Academic Projects
+ * - Direct Live Demo and GitHub repository action links
  */
-const Projects = () => {
-  // State management for card interactions
-  const [expandedCard, setExpandedCard] = useState(null); // Tracks which card is currently expanded
-  const [sortBy, setSortBy] = useState('year'); // Default sort by year
-  const [techFilter, setTechFilter] = useState('all'); // Tech stack filter
-  const projectsContainerRef = useRef(null); // Reference to the projects list container
 
-  /**
-   * Handles card click events
-   * Toggles card expansion state - clicking same card collapses it,
-   * clicking different card expands it and collapses others
-   * @param {number} index - Index of the clicked card
-   */
-  const handleCardClick = (index) => {
-    console.log('Click on card:', index, 'Current expanded:', expandedCard);
-    if (expandedCard === index) {
-      // If clicking the same card, collapse it
-      setExpandedCard(null);
-    } else {
-      // Expand the clicked card and collapse any other expanded card
-      setExpandedCard(index);
+/**
+ * Flagship Featured Project
+ * Promoted prominently at the top as the Hero Project
+ */
+const featuredProject = {
+    title: "New Zealand Labour Market & Income Intelligence Dashboard",
+    role: "Lead Full-Stack & Data Engineer",
+    year: "2026",
+    demoLink: "https://nz-labour-dashboard.vercel.app/",
+    codeLink: "https://github.com/BinkeXu/New-Zealand-Labour-Market-Income-Intelligence-Dashboard.git",
+    technologies: ["React 18", "Vite", "Python 3.11", "Pandas", "Recharts", "Vercel CI/CD", "Big Data ETL"],
+    caseStudy: {
+      challenge: "Macroeconomic employment and income datasets across MBIE, Stats NZ, and IRD were siloed in disparate formats, making comparative regional analysis and income benchmarking difficult for job seekers and economic analysts.",
+      solution: "Engineered an executive intelligence platform ingesting 280MB+ of official raw government data (230 monthly MBIE job series, 25-year IRD PAYE deciles, and Stats NZ LEED data). Developed algorithms for regional Net Discretionary Income ($/wk) and an annual Job Volume Estimator across all 10 NZ regions.",
+      architectureWin: "Architected frontend with React.lazy() dynamic route splitting, context decomposition, and memoized aggregations, slashing JavaScript bundle size by 70% (700 kB down to 210 kB). Backed by automated Python ETL validation tests with a 100% pass rate."
     }
   };
 
   /**
-   * Scroll expanded card into view
-   * Centers the expanded card on the screen for better visibility
+   * Curated Project Catalog
+   */
+  const projects = [
+    {
+      title: "New Zealand Labour Market & Income Intelligence Dashboard",
+      type: "Production Full-Stack & Data Platform",
+      category: "data-ml",
+      year: "2026",
+      description: "Executive macroeconomic intelligence platform analyzing 280MB+ of official NZ government data across 10 regions, featuring regional Net Discretionary Income modeling and automated ETL pipelines.",
+      technologies: ["React 18", "Vite", "Python 3.11", "Pandas", "Recharts", "Vercel CI/CD", "Big Data ETL"],
+      features: [
+        "Ingests and harmonizes 280MB+ of official raw government data (MBIE, IRD PAYE, Stats NZ LEED)",
+        "Calculates regional Net Discretionary Income ($/wk) and annual Job Volume Estimators across 10 NZ regions",
+        "Interactive modal trend charts and income distribution decile breakdown",
+        "Refactored with React.lazy() code-splitting and memoization, reducing bundle size by 70% (700 kB to 210 kB)",
+        "Automated Python unit test suite ensuring continuous data integrity"
+      ],
+      highlights: [
+        "Live production app deployed on Vercel with instant client-side rendering",
+        "70% JavaScript bundle size reduction through code-splitting and context decomposition",
+        "Harmonized 230 monthly MBIE series and 25 years of IRD tax distribution records",
+        "100% test pass rate with automated data quality assertions"
+      ],
+      codeLink: "https://github.com/BinkeXu/New-Zealand-Labour-Market-Income-Intelligence-Dashboard.git",
+      demoLink: "https://nz-labour-dashboard.vercel.app/"
+    },
+    {
+      title: "E-Commerce Customer Churn Prediction",
+      type: "Cloud Data Engineering & MLOps",
+      category: "data-ml",
+      year: "2025",
+      description: "Cloud-native Medallion data warehouse and real-time churn scoring service. Features a scalable BigQuery + dbt data architecture, a containerized FastAPI endpoint, and an interactive Streamlit dashboard.",
+      technologies: ["Google BigQuery", "dbt", "Python", "FastAPI", "Docker", "GitHub Actions CI/CD", "LightGBM", "Scikit-learn", "Streamlit"],
+      features: [
+        "Scalable ELT pipeline transforming 540,000+ raw e-commerce records using dbt SQL models into a Medallion warehouse architecture",
+        "RFM (Recency, Frequency, Monetary) feature engineering via SQL window functions for maximum compute efficiency",
+        "Multi-algorithm ML pipeline with hyperparameter tuning, achieving 0.89 AUC and 84% Recall",
+        "Containerized RESTful FastAPI microservice delivering inference in <120ms average latency",
+        "Automated GitHub Actions CI/CD testing both dbt schema integrity and application unit tests"
+      ],
+      highlights: [
+        "Processed 540,000+ transaction records in BigQuery with decoupled compute and storage",
+        "Achieved 0.89 AUC and 84% Recall on customer churn classification",
+        "Deployed containerized FastAPI prediction endpoint with <120ms latency",
+        "Implemented end-to-end MLOps from cloud data warehouse to automated container testing"
+      ],
+      codeLink: "https://github.com/BinkeXu/E-Commerce-Customer-Churn-Prediction"
+    },
+    {
+      title: "Restaurant Intelligence System (RIS)",
+      type: "Local-First AI / GenAI / RAG",
+      category: "data-ml",
+      year: "2025",
+      description: "Privacy-focused, zero-cloud sentiment analysis and hybrid RAG platform for restaurant reviews, running 100% locally with Llama 3.2 via Ollama, ChromaDB, and cross-encoder reranking.",
+      technologies: ["Python", "LangChain", "ChromaDB", "Ollama (Llama 3.2)", "FlashRank", "Streamlit", "RAGAS", "BM25"],
+      features: [
+        "Analyzed 5,000+ customer reviews 100% locally using Llama 3.2 via Ollama, ensuring total data privacy without cloud API expenses",
+        "Hybrid retrieval combining dense vector embeddings (ChromaDB) with BM25 sparse keyword search",
+        "Local cross-encoder reranking via FlashRank, reducing semantic search noise by 35%",
+        "Intelligent query translation automatically extracting structured restaurant metadata and rating filters",
+        "Evaluated via RAGAS framework, achieving over 80% retrieval relevance and faithfulness"
+      ],
+      highlights: [
+        "100% local, zero-leakage architecture: complete data sovereignty without third-party API exposure",
+        "35% search noise reduction using cross-encoder reranking over vector search",
+        "RAGAS evaluation confirming >80% factual faithfulness and contextual relevancy",
+        "Executive Streamlit dashboard with real-time vector parameter tuning and inspect mode"
+      ],
+      codeLink: "https://github.com/BinkeXu/Restaurant-Intelligence-System"
+    },
+    {
+      title: "Supply Chain Inventory Optimisation",
+      type: "Business Analytics & Data Engineering",
+      category: "data-ml",
+      year: "2025",
+      description: "Dynamic safety stock and multi-echelon reorder point modeling for 30,000+ SKUs across 26 regions, featuring dual-axis ABC-XYZ segmentation and high-performance pre-aggregated dashboards.",
+      technologies: ["Python", "Streamlit", "Power BI", "SQLite", "Pandas", "NumPy", "Data Modeling"],
+      features: [
+        "Dual-axis ABC-XYZ demand volatility and value segmentation classifying 30,000+ SKUs across 26 geographic regions",
+        "Calculated dynamic Reorder Points (ROP) factoring in supplier lead time variance to maintain a 95% service level",
+        "Pre-aggregated statistical queries in Python, boosting dashboard rendering speed by 40% compared to native DAX queries",
+        "Automated data pipeline transforming raw supply chain inventory records into normalized SQLite tables",
+        "Interactive scenario simulator for evaluating stockout risks against holding costs"
+      ],
+      highlights: [
+        "Classified 30,000+ SKUs into dynamic ABC-XYZ inventory categories",
+        "Maintained 95% service level while minimizing dead-stock capital allocation",
+        "40% faster dashboard rendering via Python pre-aggregation over native DAX",
+        "End-to-end data pipeline from raw supply records to executive KPI dashboard"
+      ],
+      codeLink: "https://github.com/BinkeXu"
+    },
+    {
+      title: "Job Application Lifecycle Manager (JALM)",
+      type: "Systems Automation & Full-Stack",
+      category: "fullstack",
+      year: "2026",
+      description: "High-performance hybrid desktop automation platform featuring a C# .NET 8.0 background service, real-time filesystem synchronization with debouncing, SQLite WAL mode, and headless document generation.",
+      technologies: ["Python", "CustomTkinter", ".NET 8.0 (C#)", "SQLite (WAL Mode)", "OpenXML SDK", "PyInstaller"],
+      features: [
+        "Hybrid architecture combining a Python GUI with a C# .NET background service for real-time filesystem monitoring",
+        "Intelligent 500ms debouncing logic for tracking application folder modifications without UI lag",
+        "Automated headless CV and Cover Letter customization utilizing OpenXML SDK for instant metadata replacement",
+        "Multi-process analytics engine for ghosting detection and application pipeline tracking",
+        "SQLite Write-Ahead Logging (WAL) for safe multi-process concurrent read/write transactions"
+      ],
+      highlights: [
+        "Real-time folder monitoring with 500ms debounce syncing into SQLite WAL",
+        "Headless document generation using OpenXML SDK bypassing heavy office suites",
+        "Multi-process orchestration bundled into a portable single-binary desktop workflow",
+        "Zero-dependency workspace mobility allowing users to run anywhere"
+      ],
+      codeLink: "https://github.com/BinkeXu/Job-Application-Lifecycle-Manager"
+    },
+    {
+      title: "Machine Learning for Tree Image Segmentation",
+      type: "Research Project",
+      category: "research",
+      year: "2022 - 2024",
+      description: "Novel deep learning and evolutionary optimization research for precise tree canopy segmentation from high-resolution remote sensing imagery, developed in collaboration with Landcare Research and published in IEEE conferences.",
+      technologies: ["Python", "PyTorch", "Genetic Algorithms", "CNNs", "U-Net", "DeepLabV3+", "LinkNet", "OpenCV", "Remote Sensing"],
+      features: [
+        "GA-U-Net-B: Genetic algorithm-based Neural Architecture Search (NAS) automatically designing tailored U-Net architectures",
+        "Block-based chromosomal encoding scheme optimizing network depth, layer topology, filter counts, and pooling strategies",
+        "Ensemble semantic segmentation pipeline aggregating U-Net, LinkNet, and DeepLabV3+ with diverse pre-trained backbones",
+        "Fine-grained segmentation detail validation on complex native New Zealand forest canopy datasets",
+        "Authored 2 peer-reviewed IEEE conference publications (SSCI 2022 Singapore and MIGARS 2024)"
+      ],
+      highlights: [
+        "GA-U-Net-B reduced model parameters by 95% (31M down to 1.5M) while boosting accuracy by 14% over baseline U-Net",
+        "Ensemble architecture achieved peak Dice coefficient of 86.13% on remote sensing imagery",
+        "Presented research at IEEE SSCI 2022 (Singapore) and IEEE MIGARS 2024",
+        "Successful multi-year collaboration with Landcare Research and Victoria University of Wellington"
+      ],
+      codeLink: "https://github.com/BinkeXu"
+    },
+    // Academic & University Projects (Categorized under Academic Projects filter)
+    {
+      title: "COVID-19 Analytics Dashboard",
+      type: "Academic Project",
+      category: "academic",
+      year: "2021",
+      description: "Interactive web application visualizing global COVID-19 pandemic trajectories on an interactive world map with country-specific drill-downs and population-adjusted metrics.",
+      technologies: ["React", "TypeScript", "react-simple-maps", "styled-components", "PapaParse"],
+      features: [
+        "Interactive world map with color-coded choropleth based on infection density",
+        "Dynamic tooltips showing granular stats, vaccination progress, and per-capita metrics",
+        "Client-side CSV processing with PapaParse and memoized country statistics aggregation"
+      ],
+      highlights: [
+        "Type-safe development using TypeScript and modular styled-components",
+        "Fluid map panning, zooming, and responsive data panel navigation"
+      ],
+      codeLink: "https://github.com/BinkeXu/covid-world-map"
+    },
+    {
+      title: "Home IoT Device Dashboard",
+      type: "Academic Project",
+      category: "academic",
+      year: "2020",
+      description: "Ionic React web application visualizing live sensor telemetry streamed from MQTT over WebSockets in real time across simulated household rooms.",
+      technologies: ["React", "Ionic", "TypeScript", "MQTT (Paho)", "Socket.IO", "Chart.js", "Node.js"],
+      features: [
+        "Real-time sensor telemetry across 5 zones (living, kitchen, dining, bedroom, bathroom)",
+        "Dynamic Chart.js visualizations tracking room activity and battery levels",
+        "Lightweight Node.js / Socket.IO relay broadcasting updates across connected clients"
+      ],
+      highlights: [
+        "End-to-end data pipeline from MQTT broker to reactive browser interface",
+        "Desktop notifications triggered upon inactivity thresholds"
+      ],
+      codeLink: "https://github.com/BinkeXu/IoT-React"
+    },
+    {
+      title: "Rocket Mission Control System",
+      type: "Academic Project",
+      category: "academic",
+      year: "2020",
+      description: "Centralized web telemetry control hub bridging telemetry streams between flight simulation, avionics, and rocket telemetry subsystems.",
+      technologies: ["Node.js", "React", "GitLab CI", "Flight Simulation", "Avionics"],
+      features: [
+        "Telemetry ingestion, parsing, storage, and real-time visualization for aerospace simulations",
+        "Structured multi-user mission control dashboard interface",
+        "Collaborative team development managed under GitLab CI/CD"
+      ],
+      highlights: [
+        "Complex distributed systems integration and real-time telemetry processing",
+        "Rigorous Agile sprint execution in a multi-developer team"
+      ],
+      codeLink: "https://github.com/BinkeXu"
+    },
+    {
+      title: "Chatroom App",
+      type: "Academic Project",
+      category: "academic",
+      year: "2021",
+      description: "End-to-end Android chat application enabling real-time, multi-user messaging within a local network environment.",
+      technologies: ["React Native", "Firebase", "Android", "Real-Time WebSocket"],
+      features: [
+        "Real-time multi-user communication and instant message propagation",
+        "User authentication and personal profile customization",
+        "Firebase Firestore cloud backend for message persistence"
+      ],
+      highlights: [
+        "Full-stack mobile application development with React Native",
+        "Real-time state synchronization with offline tolerance"
+      ],
+      codeLink: "https://github.com/BinkeXu"
+    },
+    {
+      title: "Personal Portfolio Website",
+      type: "Academic Project",
+      category: "academic",
+      year: "2025",
+      description: "Modern, responsive portfolio website built with React and Glassmorphism styling to showcase professional experience and engineering case studies.",
+      technologies: ["React", "JavaScript", "CSS3", "HTML5", "GitHub Pages"],
+      features: [
+        "Glassmorphism surface design with backdrop blur and responsive CSS Grid",
+        "Single-card expansion logic with auto-centering scroll animations",
+        "Categorized filtering across data pipelines, research, and systems engineering"
+      ],
+      highlights: [
+        "Custom design system implemented without heavy UI component libraries",
+        "Automated deployment to GitHub Pages via gh-pages"
+      ],
+      codeLink: "https://github.com/BinkeXu/binke-xu-portfolio"
+    }
+  ];
+
+/**
+ * Project Category Filters
+ */
+const categories = [
+  { id: 'all', label: 'All Projects' },
+  { id: 'data-ml', label: 'Data & ML Systems' },
+  { id: 'fullstack', label: 'Full-Stack & Systems' },
+  { id: 'research', label: 'Research Projects' },
+  { id: 'academic', label: 'Academic Projects' }
+];
+
+/**
+ * Helper to safely extract the completion/latest year from single years ("2026")
+ * or year ranges ("2022 - 2024").
+ */
+const parseProjectYear = (yearStr) => {
+  if (!yearStr) return 2020;
+  const matches = String(yearStr).match(/\d{4}/g);
+  if (matches && matches.length > 0) {
+    return Math.max(...matches.map(Number));
+  }
+  const parsed = parseInt(yearStr, 10);
+  return isNaN(parsed) ? 2020 : parsed;
+};
+
+/**
+ * Projects Component
+ */
+const Projects = () => {
+  // State management for card interactions and filters
+  const [expandedId, setExpandedId] = useState(null);
+  const [activeCategory, setActiveCategory] = useState('all'); // 'all', 'data-ml', 'fullstack', 'research', 'academic'
+  const [sortBy, setSortBy] = useState('year'); // 'year', 'techStack'
+  const projectsContainerRef = useRef(null);
+
+  /**
+   * Handles card click events - toggles expansion by project title
+   */
+  const handleCardClick = (title) => {
+    setExpandedId(prev => (prev === title ? null : title));
+  };
+
+  /**
+   * Scroll expanded card into view with proper timer cleanup
    */
   useEffect(() => {
-    if (expandedCard !== null) {
-      // Wait for the DOM to update and expansion animation to begin
-      setTimeout(() => {
-        const cards = document.querySelectorAll('.project-card');
-        const expandedElement = cards[expandedCard];
-        if (expandedElement) {
-          expandedElement.scrollIntoView({
-            behavior: 'smooth',
-            block: 'center',
-            inline: 'nearest'
-          });
+    if (expandedId !== null) {
+      const timer = setTimeout(() => {
+        if (projectsContainerRef.current) {
+          const cardElements = projectsContainerRef.current.querySelectorAll('.project-card');
+          for (const card of cardElements) {
+            if (card.getAttribute('data-project-title') === expandedId) {
+              card.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center',
+                inline: 'nearest'
+              });
+              break;
+            }
+          }
         }
-      }, 100); // Small delay to allow expansion animation to start
+      }, 100);
+      return () => clearTimeout(timer);
     }
-  }, [expandedCard]);
+  }, [expandedId]);
 
   /**
    * Handles background clicks to collapse all cards
-   * Detects clicks on the background (not on cards) and resets state
-   * @param {Event} e - Click event object
    */
   const handleBackgroundClick = (e) => {
-    // If clicking on the background (not on a card), collapse all cards
     if (e.target === projectsContainerRef.current || e.target.closest('.projects') === projectsContainerRef.current) {
-      setExpandedCard(null);
+      setExpandedId(null);
     }
   };
 
   /**
-   * Effect hook to handle clicks outside the projects container
-   * Adds global click listener to collapse cards when clicking elsewhere
+   * Global click outside listener
    */
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (projectsContainerRef.current && !projectsContainerRef.current.contains(e.target)) {
-        setExpandedCard(null);
+        setExpandedId(null);
       }
     };
 
@@ -91,406 +354,149 @@ const Projects = () => {
   }, []);
 
   /**
-   * Project data array containing all engineering projects
-   * Each project includes title, type, year, description, technologies,
-   * features, highlights, and optional code link
-   */
-  const projects = [
-    {
-      title: "Chatroom App",
-      type: "Individual Project",
-      year: "2021",
-      description: "End-to-end Android chat app enabling real-time, multi-user communication on a local network.",
-      technologies: ["React Native", "Firebase", "Android", "Real-time Communication"],
-      features: [
-        "Real-time, multi-user communication within a local network environment",
-        "User registration, login/logout functionality",
-        "Chatrooms and individual user profiles",
-        "Google Firebase backend for data storage and retrieval"
-      ],
-      highlights: [
-        "Full-stack mobile application development",
-        "Real-time data synchronization",
-        "User authentication and profile management"
-      ]
-    },
-    {
-      title: "Rocket Mission Control System",
-      type: "Group Project",
-      year: "2020",
-      description: "Web control system enabling telemetry flow across simulation, avionics, and rocket subsystems.",
-      technologies: ["Node.js", "React", "GitLab", "Flight Simulation", "Avionics"],
-      features: [
-        "Seamless communication and data transmission among flight simulation, avionics, and rocket systems",
-        "Robust web application serving as the core of the system",
-        "User interface for simulation page with data reception, parsing, storage, and transmission",
-        "Efficient version control management using GitLab"
-      ],
-      highlights: [
-        "Multi-system integration and communication",
-        "Real-time data processing and visualization",
-        "Team collaboration and project management",
-        "Complex system architecture design"
-      ]
-    },
-    {
-      title: "Home IoT Device Dashboard",
-      type: "Individual Project",
-      year: "2020",
-      description: "An Ionic React web app that visualizes activity data from MQTT in real time.",
-      technologies: ["React", "Ionic", "TypeScript", "MQTT (Paho over WebSocket)", "Socket.IO", "Chart.js", "Node.js", "Express"],
-      features: [
-        "Real-time activity dashboard across rooms (living, kitchen, dining, toilet, bedroom)",
-        "Live charts (bar, pie) and per-room battery status",
-        "Desktop notification on 5-minute inactivity"
-      ],
-      highlights: [
-        "Implemented end-to-end data flow: MQTT → React (Paho) → Socket.IO server → live UI updates",
-        "Built responsive Ionic UI with routing and chart visualizations",
-        "Lightweight Node/Express Socket.IO relay to broadcast updates across pages"
-      ],
-      codeLink: "https://github.com/BinkeXu/IoT-React",
-    }, {
-      title: "COVID-19 Analytics Dashboard",
-      type: "Individual Project",
-      year: "2021",
-      description: "Interactive web application visualizing global COVID-19 statistics on an interactive world map with real-time data exploration and comprehensive country analytics.",
-      technologies: ["React", "TypeScript", "react-simple-maps", "styled-components", "PapaParse", "CSV Processing"],
-      features: [
-        "Interactive world map with color-coded countries based on COVID-19 case density",
-        "Real-time tooltips showing detailed statistics on hover",
-        "Comprehensive country data panels with cases, deaths, vaccinations, and population metrics",
-        "Zoom and pan capabilities with smooth map navigation",
-        "Population-adjusted metrics (per-million calculations) for fair country comparisons",
-        "Vaccination progress visualization with color-coded progress bars",
-        "Responsive design optimized for desktop and mobile devices"
-      ],
-      highlights: [
-        "Full-stack data visualization with robust CSV parsing and error handling",
-        "Type-safe development with comprehensive TypeScript interfaces",
-        "Modern glassmorphism UI design with smooth animations and transitions",
-        "Efficient data processing with memoized country statistics aggregation",
-        "Professional-grade error handling and fallback systems for production use"
-      ],
-      codeLink: "https://github.com/BinkeXu/covid-world-map",
-    }, {
-      "title": "E-Commerce Customer Churn Prediction",
-      "type": "Individual Project",
-      "year": "2025",
-      "description": "End-to-end MLOps pipeline for predicting customer churn using machine learning. Features a scalable BigQuery + dbt data architecture, a production-ready API, and an interactive dashboard for real-time risk analysis.",
-      "technologies": [
-        "Google BigQuery",
-        "dbt",
-        "Python",
-        "FastAPI",
-        "Streamlit",
-        "Docker",
-        "Kubernetes",
-        "LightGBM",
-        "Scikit-learn"
-      ],
-      "features": [
-        "Scalable ELT pipeline using dbt and BigQuery for data transformation",
-        "RFM analysis implemented via SQL window functions for high performance",
-        "Multi-algorithm ML pipeline with hyperparameter tuning",
-        "RESTful API with Pydantic validation and async processing",
-        "Interactive Streamlit dashboard for real-time risk analysis",
-        "Docker containerization with secure secret management",
-        "CI/CD pipeline including data integrity tests (dbt) and unit tests"
-      ],
-      "highlights": [
-        "Complete MLOps implementation from data warehousing to production deployment",
-        "Production-ready architecture with separate compute (App) and storage (BigQuery)",
-        "Automated testing strategy covering both Data Quality and Application Logic",
-        "Cloud-native deployment with Docker and Kubernetes compatibility",
-        "Real-time customer churn scoring with actionable business insights"
-      ],
-      codeLink: "https://github.com/BinkeXu/E-Commerce-Customer-Churn-Prediction",
-    }, {
-      "title": "Machine Learning for Tree Image Segmentation",
-      "type": "Research Projects",
-      "year": "2022 - 2024",
-      "description": "Developed novel deep learning methods for accurate and efficient tree segmentation from remote sensing imagery, combining automated neural architecture search and ensemble learning for robust performance.",
-      "technologies": ["Python", "Deep Learning", "PyTorch", "Genetic Algorithms", "CNNs", "U-Net", "DeepLabV3+", "LinkNet", "Remote Sensing"],
-      "features": [
-        "GA-Unet-B: Genetic algorithm–based framework for automatically designing efficient U-Net architectures",
-        "Block-based encoding scheme to optimize network depth, convolutional layers, filters, and pooling strategies",
-        "Ensemble framework combining U-Net, LinkNet, and DeepLabV3+ with multiple pre-trained backbones",
-        "Output probability matrix averaging for robust model aggregation",
-        "Training, pre-selection, and final selection pipeline for optimal ensemble performance"
-      ],
-      "highlights": [
-        "GA-Unet-B achieved a average Dice coefficient of 85.56%, a 14% improvement over Standard U-Net (71.4%)",
-        "Reduced model size by 95% (1.5M vs. 31M parameters) while improving segmentation accuracy",
-        "Ensemble method outperformed individual models and recent approaches, reaching Dice 86.13% vs. 85.23%",
-        "Demonstrated strong generalization and robustness with fewer overfitting issues",
-        "Advanced practical applications of automated architecture search and ensemble learning for forestry and environmental monitoring"
-      ]
-    }, {
-      "title": "Restaurant Intelligence System (RIS)",
-      "type": "Individual Project",
-      "year": "2025",
-      "description": "Production-grade, local-first RAG platform for analyzing restaurant reviews, featuring hybrid retrieval, intelligent query translation, and a professional executive dashboard.",
-      "technologies": ["Python", "LangChain", "Ollama (Llama 3.2)", "ChromaDB", "Streamlit", "RAGAS", "FlashRank", "BM25", "Pydantic", "Pandas"],
-      "features": [
-        "Natural language chat interface for grounded customer insight extraction",
-        "Intelligent query translation automatically extracting restaurant names and ratings",
-        "Hybrid search architecture combining semantic vector search with BM25 keywords",
-        "Local cross-encoder reranking using FlashRank for higher retrieval precision",
-        "Executive Streamlit dashboard with real-time AI parameter configuration",
-        "Deep inspection mode for viewing generated DB filters and source documents",
-        "Quantitative RAG evaluation framework measuring Faithfulness and Relevancy",
-        "Scalable data engineering pipeline with Pydantic validation and sanitization"
-      ],
-      "highlights": [
-        "Zero-knowledge architecture: 100% local execution ensures total data privacy",
-        "Advanced RAG implementation including self-querying and result reranking",
-        "Production-level UI/UX with custom CSS design and interactive inspection",
-        "Scientific performance validation with a dedicated golden test suite",
-        "Modular technical design allowing easy swapping of LLMs and embedding models",
-        "Grounded AI logic preventing hallucinations via strict system prompting"
-      ],
-      "codeLink": "https://github.com/BinkeXu/Restaurant-Intelligence-System"
-    }, {
-      "title": "Job Application Lifecycle Manager (JALM)",
-      "type": "Individual Project",
-      "year": "2026",
-      "description": "A high-performance, hybrid-process automation platform for end-to-end job application management, featuring real-time filesystem synchronization, headless document generation, and multi-process analytics.",
-      "technologies": ["Python", "CustomTkinter", ".NET 8.0 (C#)", "SQLite (WAL Mode)", "OpenXML SDK", "PyInstaller", "Git"],
-      "features": [
-        "Hybrid Intelligence architecture combining Python UI with a .NET background service",
-        "Real-time folder monitoring with intelligent 500ms debouncing logic",
-        "Automated document generation headlessly cloning CV/Cover Letter templates",
-        "Headless Cover Letter date replacement using OpenXML SDK",
-        "Multi-process analytics engine for 'Ghosting' detection and CSV export",
-        "Workspace isolation allowing independent settings and databases per root folder",
-        "Performance-optimized UI with virtual rendering and chunk-based processing",
-        "Persistent data mirroring to human-readable .txt files for portability"
-      ],
-      "highlights": [
-        "Advanced concurrency handling with SQLite Write-Ahead Logging (WAL)",
-        "Bundled single-EXE deployment using PyInstaller for hybrid process orchestration",
-        "Native filesystem integration bypassing browser sandboxing restrictions",
-        "Throttled GUI rendering and optimized database indexing for high responsiveness",
-        "Professional-grade branding with automated nomenclature standards",
-        "Zero-dependency workspace mobility—take your job data anywhere"
-      ],
-      "codeLink": "https://github.com/BinkeXu/Job-Application-Lifecycle-Manager"
-    }, {
-      "title": "Personal Portfolio Website",
-      "type": "Individual Project",
-      "year": "2025",
-      "description": "A modern, responsive portfolio website built from scratch using React to showcase engineering projects and professional experience, featuring interactive UI elements and dynamic filtering.",
-      "technologies": ["React", "JavaScript", "CSS3", "HTML5", "Git"],
-      "features": [
-        "Interactive project cards with expand/collapse details and smooth animations",
-        "Dynamic filtering and sorting capabilities based on year and technology stack",
-        "Fully responsive design optimized for desktop, tablet, and mobile devices",
-        "Component-based architecture ensuring code maintainability and reusability",
-        "Custom-built design system with cohesive typography and color palette"
-      ],
-      "highlights": [
-        "Implemented from ground up without heavy UI frameworks for maximum control",
-        "Advanced DOM manipulation and event handling for custom user interactions",
-        "Performance-optimized rendering with efficient state management",
-        "Clean, professional aesthetic emphasizing content readability and visual hierarchy"
-      ],
-      "codeLink": "https://github.com/BinkeXu/binke-xu-portfolio"
-    }
-  ];
-
-  /**
-   * Work experience data array
-   * Contains professional experience with company details and achievements
-   */
-  const workExperience = [
-    {
-      title: "Research Assistant",
-      company: "Victoria University of Wellington",
-      location: "Wellington, New Zealand",
-      period: "September 2022 – March 2023",
-      description: "Collaborated with Landcare Research on a project focusing on tree image segmentation in the Wellington region.",
-      achievements: [
-        "Implemented advanced image segmentation method for precise image segmentation, increasing accuracy by 2%",
-        "Utilized Python libraries including OpenCV, PyTorch, and NumPy to create a comprehensive pipeline for training, testing, and visualizing results for tree segmentation",
-        "Engaged with project supervisors and external team members to assess project progress, address challenges, and strategize future steps",
-        "Authored formal progress reports and delivered presentations to the team, elucidating project advancements, methodologies, and outcomes"
-      ]
-    }
-  ];
-
-  /**
-   * Handles code link clicks with fallback for missing links
-   * Opens GitHub repository if available, otherwise shows informative popup
-   * @param {string} codeLink - URL to the project's code repository
+   * Opens repository link or handles fallback
    */
   const handleViewCode = (codeLink) => {
-    const isValidLink = typeof codeLink === 'string' && codeLink.trim().length > 0;
-    if (isValidLink) {
-      try {
-        window.open(codeLink, '_blank', 'noopener,noreferrer');
-        return;
-      } catch (error) {
-        // fallthrough to popup
-      }
-    }
-
-    // Create fallback popup for missing code links
-    const popup = window.open('', 'CodeLinkPending', 'width=520,height=360');
-    if (popup) {
-      popup.document.write(`
-        <!doctype html>
-        <html lang="en">
-          <head>
-            <meta charset="utf-8" />
-            <meta name="viewport" content="width=device-width, initial-scale=1" />
-            <title>Code Link Coming Soon</title>
-            <style>
-              body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 24px; background: #f7fafc; color: #1a202c; }
-              .card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; box-shadow: 0 6px 20px rgba(0,0,0,0.06); }
-              h1 { font-size: 18px; margin: 0 0 12px; }
-              p { margin: 0 0 16px; line-height: 1.5; }
-              .actions { display: flex; gap: 10px; }
-              .btn { appearance: none; border: 0; padding: 10px 14px; border-radius: 10px; cursor: pointer; font-weight: 600; }
-              .primary { background: linear-gradient(135deg, #6b8afd, #5cc6ff); color: #fff; }
-              .secondary { background: #edf2f7; color: #1a202c; }
-              a { color: inherit; text-decoration: none; }
-            </style>
-          </head>
-          <body>
-            <div class="card">
-              <h1>Code link will be added soon</h1>
-              <p>This project's repository link hasn't been provided yet. Please check back later, or view my GitHub profile in the meantime.</p>
-              <div class="actions">
-                <a class="btn primary" href="https://github.com/BinkeXu" target="_blank" rel="noopener noreferrer">Open GitHub Profile</a>
-                <button class="btn secondary" onclick="window.close()">Close</button>
-              </div>
-            </div>
-          </body>
-        </html>
-      `);
-      popup.document.close();
+    if (typeof codeLink === 'string' && codeLink.trim().length > 0) {
+      window.open(codeLink, '_blank', 'noopener,noreferrer');
     } else {
-      // As a final fallback
-      alert('Code link will be added soon.');
+      window.open('https://github.com/BinkeXu', '_blank', 'noopener,noreferrer');
     }
   };
 
   /**
-   * Handles demo link clicks
-   * Opens the live demo in a new tab
-   * @param {string} demoLink - URL to the project's live demo
+   * Opens live demo link
    */
   const handleViewDemo = (demoLink) => {
     if (typeof demoLink === 'string' && demoLink.trim().length > 0) {
-      try {
-        window.open(demoLink, '_blank', 'noopener,noreferrer');
-      } catch (error) {
-        console.error('Error opening demo link:', error);
-      }
+      window.open(demoLink, '_blank', 'noopener,noreferrer');
     }
   };
 
   /**
-   * Get unique years from projects for sorting
-   */
-  const getUniqueYears = () => {
-    const years = [...new Set(projects.map(project => project.year))];
-    return years.sort((a, b) => parseInt(b) - parseInt(a)); // Sort years descending
-  };
-
-  /**
-   * Get common tech stacks for filtering
-   */
-  const getCommonTechStacks = () => {
-    const allTechs = projects.flatMap(project => project.technologies);
-    const techCount = {};
-    allTechs.forEach(tech => {
-      techCount[tech] = (techCount[tech] || 0) + 1;
-    });
-
-    // Get techs that appear in at least 2 projects
-    const commonTechs = Object.entries(techCount)
-      .filter(([tech, count]) => count >= 2)
-      .sort(([, a], [, b]) => b - a)
-      .map(([tech]) => tech);
-
-    // Add important techs that should always be available for filtering
-    const importantTechs = ['Python', 'Machine Learning'];
-    const additionalTechs = importantTechs.filter(tech => !commonTechs.includes(tech));
-
-    return [...commonTechs, ...additionalTechs];
-  };
-
-  /**
-   * Filter and sort projects based on current filters
+   * Filter and sort projects
    */
   const getFilteredAndSortedProjects = () => {
-    let filteredProjects = [...projects];
+    let filtered = [...projects];
 
-    // Apply tech stack filter
-    if (techFilter !== 'all') {
-      filteredProjects = filteredProjects.filter(project =>
-        project.technologies.includes(techFilter)
-      );
+    // Filter by category
+    if (activeCategory !== 'all') {
+      filtered = filtered.filter(p => p.category === activeCategory);
     }
 
-    // Apply sorting
-    filteredProjects.sort((a, b) => {
+    // Sort
+    filtered.sort((a, b) => {
       if (sortBy === 'year') {
-        return parseInt(b.year) - parseInt(a.year); // Descending order
+        const yearA = parseProjectYear(a.year);
+        const yearB = parseProjectYear(b.year);
+        return yearB - yearA;
       } else if (sortBy === 'techStack') {
-        // Sort by number of technologies (descending)
         return b.technologies.length - a.technologies.length;
       }
       return 0;
     });
 
-    return filteredProjects;
+    return filtered;
   };
 
   const filteredProjects = getFilteredAndSortedProjects();
-  const uniqueYears = getUniqueYears();
-  const commonTechStacks = getCommonTechStacks();
 
   return (
     <div className="projects" data-reveal>
       <div className="container">
-        <h2>Projects & Experience</h2>
+        <header className="projects-page-header">
+          <h2>Engineering Projects</h2>
+          <p className="projects-page-subtitle">
+            Production data pipelines, local AI systems, and peer-reviewed research architectures
+          </p>
+        </header>
 
-        {/* Work Experience Section */}
-        <section className="work-experience-section" data-reveal>
-          <h3>Work Experience</h3>
-          <div className="experience-list">
-            {workExperience.map((exp, index) => (
-              <div key={index} className="experience-card">
-                <div className="experience-header">
-                  <h4>{exp.title}</h4>
-                  <div className="experience-meta">
-                    <span className="company">{exp.company}</span>
-                    <span className="location">{exp.location}</span>
-                    <span className="period">{exp.period}</span>
-                  </div>
-                </div>
-                <p className="experience-description">{exp.description}</p>
-                <div className="achievements">
-                  <h5>Key Achievements:</h5>
-                  <ul>
-                    {exp.achievements.map((achievement, idx) => (
-                      <li key={idx}>{achievement}</li>
-                    ))}
-                  </ul>
-                </div>
+        {/* 1. Flagship Hero Project Spotlight */}
+        <section className="featured-hero-section" data-reveal>
+          <div className="featured-hero-card">
+            <div className="featured-hero-top">
+              <div className="featured-badge-group">
+                <span className="featured-label">FLAGSHIP SHOWCASE</span>
+                <span className="featured-year">{featuredProject.year} • {featuredProject.role}</span>
               </div>
-            ))}
+              <div className="featured-actions">
+                <button
+                  className="btn btn-demo-live"
+                  onClick={() => handleViewDemo(featuredProject.demoLink)}
+                >
+                  <span className="pulsing-live-dot"></span>
+                  Live Demo on Vercel ↗
+                </button>
+                <button
+                  className="btn btn-featured-code"
+                  onClick={() => handleViewCode(featuredProject.codeLink)}
+                >
+                  GitHub Repository ↗
+                </button>
+              </div>
+            </div>
+
+            <h3 className="featured-title">{featuredProject.title}</h3>
+
+            <div className="featured-tags">
+              {featuredProject.technologies.map((tech, idx) => (
+                <span key={idx} className="featured-tech-tag">{tech}</span>
+              ))}
+            </div>
+
+            {/* Case Study 3-Column Layout */}
+            <div className="case-study-grid">
+              <div className="case-study-box challenge-box">
+                <div className="box-header">
+                  <span className="box-icon">🎯</span>
+                  <h4>The Challenge</h4>
+                </div>
+                <p>{featuredProject.caseStudy.challenge}</p>
+              </div>
+
+              <div className="case-study-box solution-box">
+                <div className="box-header">
+                  <span className="box-icon">💡</span>
+                  <h4>The Solution</h4>
+                </div>
+                <p>{featuredProject.caseStudy.solution}</p>
+              </div>
+
+              <div className="case-study-box architecture-box">
+                <div className="box-header">
+                  <span className="box-icon">⚡</span>
+                  <h4>Architecture & Performance Win</h4>
+                </div>
+                <p>{featuredProject.caseStudy.architectureWin}</p>
+              </div>
+            </div>
           </div>
         </section>
 
-        {/* Engineering Projects Section */}
+        {/* 2. Curated Project Catalog Section */}
         <section className="projects-section" data-reveal>
-          <h3>Engineering Projects</h3>
+          <div className="section-title-wrap">
+            <h3>Project Catalog & Case Studies</h3>
+            <p className="section-subtitle">Click any card to expand full architecture, features, and measurable impact</p>
+          </div>
 
-          {/* Filter Controls */}
+          {/* Category Filter Tabs */}
+          <div className="category-tabs">
+            {categories.map((cat) => (
+              <button
+                key={cat.id}
+                className={`category-tab-btn ${activeCategory === cat.id ? 'active' : ''}`}
+                onClick={() => {
+                  setActiveCategory(cat.id);
+                  setExpandedId(null);
+                }}
+              >
+                {cat.label}
+              </button>
+            ))}
+          </div>
+
+          {/* Sort & Tech Controls */}
           <div className="filter-controls">
             <div className="filter-group">
               <label htmlFor="sort-select">Sort by:</label>
@@ -501,51 +507,34 @@ const Projects = () => {
                 className="filter-select"
               >
                 <option value="year">Year (Newest First)</option>
-                <option value="techStack">Tech Stack Complexity</option>
-              </select>
-            </div>
-
-            <div className="filter-group">
-              <label htmlFor="tech-filter">Filter by Tech:</label>
-              <select
-                id="tech-filter"
-                value={techFilter}
-                onChange={(e) => setTechFilter(e.target.value)}
-                className="filter-select"
-              >
-                <option value="all">All Technologies</option>
-                {commonTechStacks.map(tech => (
-                  <option key={tech} value={tech}>{tech}</option>
-                ))}
+                <option value="techStack">Tech Stack Breadth</option>
               </select>
             </div>
 
             <div className="filter-info">
-              Showing {filteredProjects.length} of {projects.length} projects
+              Showing {filteredProjects.length} projects
             </div>
           </div>
 
+          {/* Project Cards Grid */}
           <div
             className="projects-list"
             ref={projectsContainerRef}
             onClick={handleBackgroundClick}
           >
-            {filteredProjects.map((project, index) => {
-              // Determine card state for rendering
-              const isExpanded = expandedCard === index;
-
-              console.log(`Card ${index}: expanded=${isExpanded}`);
+            {filteredProjects.map((project) => {
+              const isExpanded = expandedId === project.title;
 
               return (
                 <div
-                  key={index}
+                  key={project.title}
+                  data-project-title={project.title}
                   className={`project-card ${isExpanded ? 'expanded' : ''}`}
                   onClick={(e) => {
-                    e.stopPropagation(); // Prevent background click handler from firing
-                    handleCardClick(index);
+                    e.stopPropagation();
+                    handleCardClick(project.title);
                   }}
                 >
-                  {/* Project Header with Title and Meta Information */}
                   <div className="project-header">
                     <h4>{project.title}</h4>
                     <div className="project-meta">
@@ -555,10 +544,8 @@ const Projects = () => {
                     </div>
                   </div>
 
-                  {/* Project Description - Always Visible */}
                   <p className="project-description">{project.description}</p>
 
-                  {/* Technologies Section - Shows limited tech tags when collapsed */}
                   <div className="project-technologies">
                     <h5>Technologies Used:</h5>
                     <div className="tech-tags">
@@ -571,7 +558,6 @@ const Projects = () => {
                     </div>
                   </div>
 
-                  {/* Expandable Content - Features and Highlights */}
                   {isExpanded && (
                     <>
                       <div className="project-features">
@@ -584,7 +570,7 @@ const Projects = () => {
                       </div>
 
                       <div className="project-highlights">
-                        <h5>Highlights:</h5>
+                        <h5>Measurable Highlights & Impact:</h5>
                         <ul>
                           {project.highlights.map((highlight, idx) => (
                             <li key={idx}>{highlight}</li>
@@ -594,34 +580,36 @@ const Projects = () => {
                     </>
                   )}
 
-                  {/* Project Actions - View Code Button, Demo Button, and Expand Hint */}
                   <div className="project-actions">
                     <div className="action-buttons">
-                      <button
-                        className="btn btn-secondary"
-                        onClick={(e) => {
-                          e.stopPropagation(); // Prevent card click handler from firing
-                          handleViewCode(project.codeLink);
-                        }}
-                        aria-label={`View code for ${project.title}`}
-                      >
-                        View Code
-                      </button>
                       {project.demoLink && (
                         <button
-                          className="btn btn-primary"
+                          className="btn btn-demo"
                           onClick={(e) => {
-                            e.stopPropagation(); // Prevent card click handler from firing
+                            e.stopPropagation();
                             handleViewDemo(project.demoLink);
                           }}
                           aria-label={`View live demo for ${project.title}`}
                         >
-                          Live Demo
+                          <span className="pulsing-live-dot mini"></span>
+                          Live Demo ↗
+                        </button>
+                      )}
+                      {project.codeLink && (
+                        <button
+                          className="btn btn-secondary"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleViewCode(project.codeLink);
+                          }}
+                          aria-label={`View code for ${project.title}`}
+                        >
+                          View Code ↗
                         </button>
                       )}
                     </div>
                     {!isExpanded && (
-                      <span className="expand-hint">Click to see more details</span>
+                      <span className="expand-hint">Click card to expand</span>
                     )}
                   </div>
                 </div>
