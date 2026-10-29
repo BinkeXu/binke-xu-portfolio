@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/binke-xu-portfolio/static/css/main.2e8bb855.css",
-    "main.js": "/binke-xu-portfolio/static/js/main.d1624277.js",
+    "main.css": "/binke-xu-portfolio/static/css/main.8b02ae43.css",
+    "main.js": "/binke-xu-portfolio/static/js/main.88aa7d63.js",
     "static/js/453.2291aba8.chunk.js": "/binke-xu-portfolio/static/js/453.2291aba8.chunk.js",
     "static/media/My-photo.png": "/binke-xu-portfolio/static/media/My-photo.df97f1f35dd370a375db.png",
     "static/media/cicd.png": "/binke-xu-portfolio/static/media/cicd.dee4ae58dd0a5da592d2.png",
@@ -20,12 +20,12 @@
     "static/media/PostgreSQL.png": "/binke-xu-portfolio/static/media/PostgreSQL.ba628df4785bc11af809.png",
     "static/media/linkedin.png": "/binke-xu-portfolio/static/media/linkedin.63b96b9ea7fdfd7a5ee0.png",
     "index.html": "/binke-xu-portfolio/index.html",
-    "main.2e8bb855.css.map": "/binke-xu-portfolio/static/css/main.2e8bb855.css.map",
-    "main.d1624277.js.map": "/binke-xu-portfolio/static/js/main.d1624277.js.map",
+    "main.8b02ae43.css.map": "/binke-xu-portfolio/static/css/main.8b02ae43.css.map",
+    "main.88aa7d63.js.map": "/binke-xu-portfolio/static/js/main.88aa7d63.js.map",
     "453.2291aba8.chunk.js.map": "/binke-xu-portfolio/static/js/453.2291aba8.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.2e8bb855.css",
-    "static/js/main.d1624277.js"
+    "static/css/main.8b02ae43.css",
+    "static/js/main.88aa7d63.js"
   ]
 }
