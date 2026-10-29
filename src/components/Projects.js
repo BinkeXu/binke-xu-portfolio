@@ -1,4 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import './Projects.css';
 
 /**
@@ -36,29 +37,6 @@ const featuredProject = {
    * Curated Project Catalog
    */
   const projects = [
-    {
-      title: "New Zealand Labour Market & Income Intelligence Dashboard",
-      type: "Production Full-Stack & Data Platform",
-      category: "data-ml",
-      year: "2026",
-      description: "Executive macroeconomic intelligence platform analyzing 280MB+ of official NZ government data across 10 regions, featuring regional Net Discretionary Income modeling and automated ETL pipelines.",
-      technologies: ["React 18", "Vite", "Python 3.11", "Pandas", "Recharts", "Vercel CI/CD", "Big Data ETL"],
-      features: [
-        "Ingests and harmonizes 280MB+ of official raw government data (MBIE, IRD PAYE, Stats NZ LEED)",
-        "Calculates regional Net Discretionary Income ($/wk) and annual Job Volume Estimators across 10 NZ regions",
-        "Interactive modal trend charts and income distribution decile breakdown",
-        "Refactored with React.lazy() code-splitting and memoization, reducing bundle size by 70% (700 kB to 210 kB)",
-        "Automated Python unit test suite ensuring continuous data integrity"
-      ],
-      highlights: [
-        "Live production app deployed on Vercel with instant client-side rendering",
-        "70% JavaScript bundle size reduction through code-splitting and context decomposition",
-        "Harmonized 230 monthly MBIE series and 25 years of IRD tax distribution records",
-        "100% test pass rate with automated data quality assertions"
-      ],
-      codeLink: "https://github.com/BinkeXu/New-Zealand-Labour-Market-Income-Intelligence-Dashboard.git",
-      demoLink: "https://nz-labour-dashboard.vercel.app/"
-    },
     {
       title: "E-Commerce Customer Churn Prediction",
       type: "Cloud Data Engineering & MLOps",
@@ -291,67 +269,39 @@ const parseProjectYear = (yearStr) => {
  * Projects Component
  */
 const Projects = () => {
-  // State management for card interactions and filters
-  const [expandedId, setExpandedId] = useState(null);
+  // State management for modal interaction and filters
+  const [selectedProject, setSelectedProject] = useState(null);
   const [activeCategory, setActiveCategory] = useState('all'); // 'all', 'data-ml', 'fullstack', 'research', 'academic'
   const [sortBy, setSortBy] = useState('year'); // 'year', 'techStack'
-  const projectsContainerRef = useRef(null);
 
-  /**
-   * Handles card click events - toggles expansion by project title
-   */
-  const handleCardClick = (title) => {
-    setExpandedId(prev => (prev === title ? null : title));
+  const handleOpenModal = (project) => {
+    setSelectedProject(project);
   };
 
-  /**
-   * Scroll expanded card into view with proper timer cleanup
-   */
-  useEffect(() => {
-    if (expandedId !== null) {
-      const timer = setTimeout(() => {
-        if (projectsContainerRef.current) {
-          const cardElements = projectsContainerRef.current.querySelectorAll('.project-card');
-          for (const card of cardElements) {
-            if (card.getAttribute('data-project-title') === expandedId) {
-              card.scrollIntoView({
-                behavior: 'smooth',
-                block: 'center',
-                inline: 'nearest'
-              });
-              break;
-            }
-          }
-        }
-      }, 100);
-      return () => clearTimeout(timer);
-    }
-  }, [expandedId]);
-
-  /**
-   * Handles background clicks to collapse all cards
-   */
-  const handleBackgroundClick = (e) => {
-    if (e.target === projectsContainerRef.current || e.target.closest('.projects') === projectsContainerRef.current) {
-      setExpandedId(null);
-    }
+  const handleCloseModal = () => {
+    setSelectedProject(null);
   };
 
-  /**
-   * Global click outside listener
-   */
+  // Close modal on Escape key and lock body scroll while modal is open
   useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (projectsContainerRef.current && !projectsContainerRef.current.contains(e.target)) {
-        setExpandedId(null);
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        setSelectedProject(null);
       }
     };
 
-    document.addEventListener('click', handleClickOutside);
+    if (selectedProject) {
+      document.body.style.overflow = 'hidden';
+      window.addEventListener('keydown', handleKeyDown);
+    } else {
+      document.body.style.overflow = '';
+    }
+
     return () => {
-      document.removeEventListener('click', handleClickOutside);
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', handleKeyDown);
     };
-  }, []);
+  }, [selectedProject]);
 
   /**
    * Opens repository link or handles fallback
@@ -448,7 +398,13 @@ const Projects = () => {
             <div className="case-study-grid">
               <div className="case-study-box challenge-box">
                 <div className="box-header">
-                  <span className="box-icon">🎯</span>
+                  <span className="box-icon" aria-hidden="true">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <circle cx="12" cy="12" r="10" />
+                      <circle cx="12" cy="12" r="6" />
+                      <circle cx="12" cy="12" r="2" />
+                    </svg>
+                  </span>
                   <h4>The Challenge</h4>
                 </div>
                 <p>{featuredProject.caseStudy.challenge}</p>
@@ -456,7 +412,13 @@ const Projects = () => {
 
               <div className="case-study-box solution-box">
                 <div className="box-header">
-                  <span className="box-icon">💡</span>
+                  <span className="box-icon" aria-hidden="true">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" />
+                      <path d="M9 18h6" />
+                      <path d="M10 22h4" />
+                    </svg>
+                  </span>
                   <h4>The Solution</h4>
                 </div>
                 <p>{featuredProject.caseStudy.solution}</p>
@@ -464,7 +426,11 @@ const Projects = () => {
 
               <div className="case-study-box architecture-box">
                 <div className="box-header">
-                  <span className="box-icon">⚡</span>
+                  <span className="box-icon" aria-hidden="true">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                    </svg>
+                  </span>
                   <h4>Architecture & Performance Win</h4>
                 </div>
                 <p>{featuredProject.caseStudy.architectureWin}</p>
@@ -488,7 +454,7 @@ const Projects = () => {
                 className={`category-tab-btn ${activeCategory === cat.id ? 'active' : ''}`}
                 onClick={() => {
                   setActiveCategory(cat.id);
-                  setExpandedId(null);
+                  setSelectedProject(null);
                 }}
               >
                 {cat.label}
@@ -517,106 +483,191 @@ const Projects = () => {
           </div>
 
           {/* Project Cards Grid */}
-          <div
-            className="projects-list"
-            ref={projectsContainerRef}
-            onClick={handleBackgroundClick}
-          >
-            {filteredProjects.map((project) => {
-              const isExpanded = expandedId === project.title;
-
-              return (
-                <div
-                  key={project.title}
-                  data-project-title={project.title}
-                  className={`project-card ${isExpanded ? 'expanded' : ''}`}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleCardClick(project.title);
-                  }}
-                >
-                  <div className="project-header">
-                    <h4>{project.title}</h4>
-                    <div className="project-meta">
-                      <span className="project-type">{project.type}</span>
-                      <span className="project-year">{project.year}</span>
-                      {isExpanded && <span className="expanded-indicator">★ EXPANDED</span>}
-                    </div>
+          <div className="projects-list">
+            {filteredProjects.map((project) => (
+              <div
+                key={project.title}
+                data-project-title={project.title}
+                className="project-card"
+                onClick={() => handleOpenModal(project)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    handleOpenModal(project);
+                  }
+                }}
+                aria-label={`Open details for ${project.title}`}
+              >
+                <div className="project-header">
+                  <h4>{project.title}</h4>
+                  <div className="project-meta">
+                    <span className="project-type">{project.type}</span>
+                    <span className="project-year">{project.year}</span>
                   </div>
+                </div>
 
-                  <p className="project-description">{project.description}</p>
+                <p className="project-description">{project.description}</p>
 
-                  <div className="project-technologies">
-                    <h5>Technologies Used:</h5>
-                    <div className="tech-tags">
-                      {project.technologies.slice(0, isExpanded ? project.technologies.length : 3).map((tech, idx) => (
-                        <span key={idx} className="tech-tag">{tech}</span>
-                      ))}
-                      {!isExpanded && project.technologies.length > 3 && (
-                        <span className="tech-tag more-indicator">+{project.technologies.length - 3} more</span>
-                      )}
-                    </div>
-                  </div>
-
-                  {isExpanded && (
-                    <>
-                      <div className="project-features">
-                        <h5>Key Features:</h5>
-                        <ul>
-                          {project.features.map((feature, idx) => (
-                            <li key={idx}>{feature}</li>
-                          ))}
-                        </ul>
-                      </div>
-
-                      <div className="project-highlights">
-                        <h5>Measurable Highlights & Impact:</h5>
-                        <ul>
-                          {project.highlights.map((highlight, idx) => (
-                            <li key={idx}>{highlight}</li>
-                          ))}
-                        </ul>
-                      </div>
-                    </>
-                  )}
-
-                  <div className="project-actions">
-                    <div className="action-buttons">
-                      {project.demoLink && (
-                        <button
-                          className="btn btn-demo"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            handleViewDemo(project.demoLink);
-                          }}
-                          aria-label={`View live demo for ${project.title}`}
-                        >
-                          <span className="pulsing-live-dot mini"></span>
-                          Live Demo ↗
-                        </button>
-                      )}
-                      {project.codeLink && (
-                        <button
-                          className="btn btn-secondary"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            handleViewCode(project.codeLink);
-                          }}
-                          aria-label={`View code for ${project.title}`}
-                        >
-                          View Code ↗
-                        </button>
-                      )}
-                    </div>
-                    {!isExpanded && (
-                      <span className="expand-hint">Click card to expand</span>
+                <div className="project-technologies">
+                  <h5>Technologies Used:</h5>
+                  <div className="tech-tags">
+                    {project.technologies.slice(0, 4).map((tech, idx) => (
+                      <span key={idx} className="tech-tag">{tech}</span>
+                    ))}
+                    {project.technologies.length > 4 && (
+                      <span className="tech-tag more-indicator">+{project.technologies.length - 4} more</span>
                     )}
                   </div>
                 </div>
-              );
-            })}
+
+                <div className="project-actions">
+                  <div className="action-buttons">
+                    {project.demoLink && (
+                      <button
+                        className="btn btn-demo"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleViewDemo(project.demoLink);
+                        }}
+                        aria-label={`View live demo for ${project.title}`}
+                      >
+                        <span className="pulsing-live-dot mini"></span>
+                        Live Demo ↗
+                      </button>
+                    )}
+                    {project.codeLink && (
+                      <button
+                        className="btn btn-secondary"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleViewCode(project.codeLink);
+                        }}
+                        aria-label={`View code for ${project.title}`}
+                      >
+                        View Code ↗
+                      </button>
+                    )}
+                    <button
+                      className="btn-expand-toggle"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleOpenModal(project);
+                      }}
+                      aria-label={`Explore case study for ${project.title}`}
+                    >
+                      Explore Case Study ↗
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </section>
+
+        {/* Modal Window for Centered Expanded Project View (Mounted directly to body via Portal) */}
+        {selectedProject && typeof document !== 'undefined' && createPortal(
+          <div
+            className="project-modal-backdrop"
+            onClick={handleCloseModal}
+            role="presentation"
+          >
+            <div
+              className="project-modal-dialog"
+              onClick={(e) => e.stopPropagation()}
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="modal-project-title"
+            >
+              <div className="modal-header">
+                <div className="modal-title-group">
+                  <div className="modal-badges">
+                    <span className="modal-badge-type">{selectedProject.type}</span>
+                    <span className="modal-badge-year">{selectedProject.year}</span>
+                  </div>
+                  <h3 id="modal-project-title" className="modal-title">{selectedProject.title}</h3>
+                </div>
+                <button
+                  className="modal-close-btn"
+                  onClick={handleCloseModal}
+                  aria-label="Close project details modal"
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </button>
+              </div>
+
+              <div className="modal-body">
+                <p className="modal-description">{selectedProject.description}</p>
+
+                <div className="modal-section">
+                  <h4 className="modal-section-title">Technologies Used</h4>
+                  <div className="modal-tech-tags">
+                    {selectedProject.technologies.map((tech, idx) => (
+                      <span key={idx} className="modal-tech-tag">{tech}</span>
+                    ))}
+                  </div>
+                </div>
+
+                {selectedProject.features && selectedProject.features.length > 0 && (
+                  <div className="modal-section">
+                    <h4 className="modal-section-title">Key Engineering Features</h4>
+                    <ul className="modal-list features-list">
+                      {selectedProject.features.map((feature, idx) => (
+                        <li key={idx}>{feature}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {selectedProject.highlights && selectedProject.highlights.length > 0 && (
+                  <div className="modal-section">
+                    <h4 className="modal-section-title">Measurable Highlights & Business Impact</h4>
+                    <ul className="modal-list highlights-list">
+                      {selectedProject.highlights.map((highlight, idx) => (
+                        <li key={idx}>{highlight}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+
+              <div className="modal-footer">
+                <div className="modal-actions">
+                  {selectedProject.demoLink && (
+                    <button
+                      className="btn btn-demo"
+                      onClick={() => handleViewDemo(selectedProject.demoLink)}
+                      aria-label={`View live demo for ${selectedProject.title}`}
+                    >
+                      <span className="pulsing-live-dot mini"></span>
+                      Live Demo ↗
+                    </button>
+                  )}
+                  {selectedProject.codeLink && (
+                    <button
+                      className="btn btn-secondary"
+                      onClick={() => handleViewCode(selectedProject.codeLink)}
+                      aria-label={`View code for ${selectedProject.title}`}
+                    >
+                      View Code ↗
+                    </button>
+                  )}
+                </div>
+                <button
+                  className="btn-modal-done"
+                  onClick={handleCloseModal}
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>,
+          document.body
+        )}
       </div>
     </div>
   );

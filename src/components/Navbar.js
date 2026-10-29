@@ -20,7 +20,7 @@ import './Navbar.css';
 const Navbar = ({ currentSection, setCurrentSection }) => {
   const [theme, setTheme] = useState(() => {
     const saved = typeof window !== 'undefined' ? localStorage.getItem('theme') : null;
-    return saved || 'light';
+    return saved || 'dark';
   });
 
   useEffect(() => {
@@ -58,7 +58,13 @@ const Navbar = ({ currentSection, setCurrentSection }) => {
           This creates a professional identity for the website
         */}
         <div className="navbar-brand">
-          <span className="brand-text">Binke Xu</span>
+          <button
+            className="navbar-brand-btn"
+            onClick={() => handleNavigationClick('home')}
+            aria-label="Return to home section"
+          >
+            <span className="brand-text">Binke Xu</span>
+          </button>
         </div>
 
         {/* Navigation Menu */}

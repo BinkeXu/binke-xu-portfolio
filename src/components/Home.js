@@ -5,9 +5,9 @@ import myPhoto from '../img/My-photo.png';
 /**
  * Home Component - Main Landing Page
  * 
- * This component serves as the homepage of the portfolio website.
- * It features a modern split layout with a floating stats bar, recruiter-focused
- * work rights visibility, and an integrated education timeline.
+ * Features a modern split hero layout, floating stats bar,
+ * recruiter-focused work rights visibility, and a centered, full-width
+ * chronological Career & Education Journey timeline.
  */
 const ENABLE_CV_DOWNLOAD = false; // Kept disabled per user directive
 
@@ -23,13 +23,7 @@ const CAREER_JOURNEY = [
     location: "Wellington, NZ",
     badge: "Current Role",
     badgeType: "work",
-    description: "Managing high-volume nationwide healthcare operational triage, rapid incident escalation, and cross-functional communication under strict SLAs.",
-    achievements: [
-      "Orchestrated operational triage managing 60 quotes and mission-critical requests daily across healthcare providers nationwide with strict SLA adherence.",
-      "Coordinated rapid crisis escalation protocols, resolving urgent clinical and operational service delivery bottlenecks under intense operational pressure.",
-      "Facilitated clear, empathetic stakeholder communication between multidisciplinary clinical coordinators, regional management, and internal IT systems.",
-      "Identified process inefficiencies and recommended data-driven workflow improvements to enhance daily ticket resolution speeds."
-    ]
+    summary: "Manages nationwide healthcare operational triage, handling 60 quotes and mission-critical requests daily with strict SLA adherence and rapid crisis escalation."
   },
   {
     period: "2023 – 2024",
@@ -38,12 +32,7 @@ const CAREER_JOURNEY = [
     location: "Wellington, NZ",
     badge: "Grade A (Distinction)",
     badgeType: "education",
-    description: "Specialized postgraduate research in evolutionary Neural Architecture Search (NAS) and deep learning computer vision.",
-    achievements: [
-      "Authored 2 peer-reviewed IEEE publications in computer vision and tree segmentation in collaboration with Landcare Research.",
-      "Engineered genetic algorithm architecture search (GA-U-Net-B) and ensemble segmentation pipelines, slashing parameters by 95%.",
-      "Utilized Python, PyTorch, OpenCV, and high-performance computing clusters."
-    ]
+    summary: "Graduated with Distinction; authored 2 peer-reviewed IEEE publications and engineered evolutionary neural architecture search (GA-U-Net-B), reducing model parameters by 95%."
   },
   {
     period: "September 2022 – March 2023",
@@ -52,13 +41,7 @@ const CAREER_JOURNEY = [
     location: "Wellington, NZ",
     badge: "Research & Engineering",
     badgeType: "work",
-    description: "Collaborated with Manaaki Whenua – Landcare Research on deep learning image segmentation pipelines for remote sensing data.",
-    achievements: [
-      "Engineered end-to-end computer vision pipelines in Python, PyTorch, OpenCV, and NumPy for training, testing, and visualizing semantic segmentation on high-resolution canopy data.",
-      "Increased tree segmentation accuracy while validating model generalization across diverse regional forest ecosystems.",
-      "Authored formal technical progress reports and delivered research presentations to academic supervisors and external industry researchers.",
-      "Co-authored peer-reviewed research papers published in IEEE international conference proceedings."
-    ]
+    summary: "Engineered deep learning canopy segmentation pipelines in Python and PyTorch in collaboration with Landcare Research, improving accuracy across native NZ forest ecosystems."
   },
   {
     period: "2018 – 2023",
@@ -67,11 +50,7 @@ const CAREER_JOURNEY = [
     location: "Wellington, NZ",
     badge: "Second Class Hons (Div 1)",
     badgeType: "education",
-    description: "Comprehensive software engineering curriculum spanning systems programming, cloud architecture, and collaborative agile engineering.",
-    achievements: [
-      "Core focus: Distributed Systems, Mobile & Web Development, Cloud Computing, UI/UX.",
-      "Delivered end-to-end industry-aligned engineering capstone projects with modern Agile/GitLab practices."
-    ]
+    summary: "Specialized in distributed systems, cloud computing, and full-stack software development; delivered industry-aligned engineering capstone projects under modern Agile practices."
   }
 ];
 
@@ -134,10 +113,10 @@ const Home = ({ setCurrentSection }) => {
             </h1>
             <h2 className="hero-subtitle">Software & Data Engineer</h2>
             <p className="hero-tagline">
-              MSc in Artificial Intelligence (Distinction) • Microsoft Azure Certified • Based in Wellington, New Zealand
+              MSc in Artificial Intelligence (Distinction) • MS Azure Certified • 2 IEEE Publications • Based in Wellington, NZ
             </p>
             <p className="hero-bio">
-              Specializing in <strong>Production Data Pipelines, Machine Learning Systems, and Interactive Analytics</strong>. Passionate about building robust cloud data architectures, local-first RAG solutions, and high-performance decision intelligence platforms.
+              Software & Data Engineer with an <strong>MSc in Artificial Intelligence (Distinction)</strong> and <strong>BE (Hons)</strong> from Victoria University of Wellington. Specializing in <strong>Production Data Pipelines, Machine Learning Systems, and Interactive Analytics</strong>. Proven track record across cloud-native Medallion data warehouses (BigQuery/dbt), local RAG architectures, and high-volume healthcare operational triage under strict SLAs.
             </p>
 
             <div className="hero-cta-group">
@@ -186,13 +165,13 @@ const Home = ({ setCurrentSection }) => {
             </div>
             <div className="stat-divider"></div>
             <div className="stat-item">
-              <span className="stat-number">2x Certified</span>
-              <span className="stat-label">Azure (AZ-900 & AI-900)</span>
+              <span className="stat-number">MS Azure Certified</span>
+              <span className="stat-label">AZ-900 & AI-900</span>
             </div>
             <div className="stat-divider"></div>
             <div className="stat-item">
-              <span className="stat-number">2 IEEE Papers</span>
-              <span className="stat-label">MIGARS 2024 & SSCI 2022</span>
+              <span className="stat-number">2 Publications</span>
+              <span className="stat-label">IEEE (MIGARS & SSCI)</span>
             </div>
             <div className="stat-divider"></div>
             <div className="stat-item">
@@ -203,54 +182,32 @@ const Home = ({ setCurrentSection }) => {
         </div>
       </div>
 
-      {/* Main Content: Split Grid */}
-      <section className="main-content-section" data-reveal>
-        <div className="container">
-          <div className="content-split-layout">
+      {/* Career & Education Journey Section (Clean Full-Width Centered Layout) */}
+      <section className="journey-section" data-reveal>
+        <div className="container journey-container">
+          <div className="journey-header">
+            <h2 className="section-title">Career & Education Journey</h2>
+            <p className="section-subtitle">
+              A chronological track record spanning production engineering, academic distinction, and peer-reviewed research
+            </p>
+          </div>
 
-            {/* Left Column: About Context */}
-            <div className="about-column">
-              <div className="sticky-header">
-                <h2 className="section-title">About Me</h2>
-                <div className="about-text-content">
-                  <p>
-                    I am a <strong>Software & Data Engineer</strong> with an <strong>MSc in Artificial Intelligence (A Grade with Distinction)</strong> and a <strong>Bachelor of Engineering in Software Engineering (Hons Div 1)</strong> from Victoria University of Wellington.
-                  </p>
-                  <p>
-                    My passion lies in architecting <strong>resilient data pipelines, high-impact machine learning systems, and responsive analytics interfaces</strong>. From cloud-native Medallion data warehouses in BigQuery/dbt to privacy-preserving local RAG systems with Ollama/ChromaDB and executive dashboards, I build production systems that turn complex datasets into clear, actionable outcomes.
-                  </p>
-                  <p>
-                    Beyond algorithmic engineering, my operational experience as a <strong>National Communications Officer at Access Community Health</strong> involves managing high-volume operational triage, handling <strong>60 quotes and requests every day</strong> under strict SLAs, instilling disciplined communication and calm crisis resolution under pressure.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Column: Career & Education Timeline */}
-            <div className="education-column">
-              <h2 className="section-title">Career & Education Journey</h2>
-              <div className="timeline">
-                {CAREER_JOURNEY.map((item) => (
-                  <div key={`${item.institution}-${item.title}`} className="timeline-card">
-                    <div className="timeline-date">{item.period}</div>
-                    <h3 className="degree-title">{item.title}</h3>
-                    <h4 className="university">
-                      {item.institution} {item.location && <span className="timeline-location">• {item.location}</span>}
-                    </h4>
-                    <div className={`grade-badge ${item.badgeType === 'work' ? 'work-badge' : 'edu-badge'}`}>
-                      {item.badge}
-                    </div>
-                    {item.description && <p className="timeline-desc">{item.description}</p>}
-                    <ul className="studies-list">
-                      {item.achievements.map((achievement, idx) => (
-                        <li key={idx}>{achievement}</li>
-                      ))}
-                    </ul>
+          <div className="timeline-wrapper">
+            <div className="timeline">
+              {CAREER_JOURNEY.map((item) => (
+                <div key={`${item.institution}-${item.title}`} className="timeline-card">
+                  <div className="timeline-date">{item.period}</div>
+                  <h3 className="degree-title">{item.title}</h3>
+                  <h4 className="university">
+                    {item.institution} {item.location && <span className="timeline-location">• {item.location}</span>}
+                  </h4>
+                  <div className={`grade-badge ${item.badgeType === 'work' ? 'work-badge' : 'edu-badge'}`}>
+                    {item.badge}
                   </div>
-                ))}
-              </div>
+                  <p className="timeline-summary">{item.summary}</p>
+                </div>
+              ))}
             </div>
-
           </div>
         </div>
       </section>

@@ -9,26 +9,57 @@ import Projects from './components/Projects';
 import Publications from './components/Publications';
 import Contact from './components/Contact';
 
-// Import navigation component
+// Import navigation and footer components
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+
+const VALID_SECTIONS = ['home', 'skills', 'projects', 'publications', 'contact', 'welcome'];
 
 /**
  * Main Application Component
  * 
- * This component serves as the root of the portfolio website application.
- * It manages the current active section and renders the appropriate component
- * based on user navigation.
- * 
- * Features:
- * - State management for current active section
- * - Conditional rendering of page components
- * - Navigation state management
- * - Responsive layout structure
+ * Root of the portfolio application. Manages active section state,
+ * synchronizes with browser URL hashes for deep linking and back/forward navigation,
+ * handles automatic scroll-to-top on section switch, and coordinates layout components.
  */
 function App() {
-  // State to track which section is currently active
-  // Default directly to 'home' to pass the 5-second recruiter test
-  const [currentSection, setCurrentSection] = useState('home');
+  // Initialize section from URL hash if valid, otherwise default directly to 'home'
+  const [currentSection, setCurrentSection] = useState(() => {
+    if (typeof window !== 'undefined' && window.location.hash) {
+      const hash = window.location.hash.replace(/^#\/?/, '').toLowerCase();
+      if (VALID_SECTIONS.includes(hash)) return hash;
+    }
+    return 'home';
+  });
+
+  // Synchronize state with browser back/forward buttons (hashchange event)
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace(/^#\/?/, '').toLowerCase();
+      if (VALID_SECTIONS.includes(hash)) {
+        setCurrentSection(hash);
+      }
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
+  // Update both state and URL hash when user triggers navigation
+  const handleSectionChange = (sectionId) => {
+    setCurrentSection(sectionId);
+    if (typeof window !== 'undefined') {
+      const cleanHash = window.location.hash.replace(/^#\/?/, '').toLowerCase();
+      if (cleanHash !== sectionId) {
+        window.history.pushState(null, '', `#${sectionId}`);
+      }
+    }
+  };
+
+  // Usability: Smoothly reset scroll position to top whenever active section changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [currentSection]);
 
   // Scroll-reveal observer setup
   const ioRef = useRef(null);
@@ -53,16 +84,13 @@ function App() {
 
   /**
    * Renders the appropriate component based on the current section
-   * Each section represents a different page of the portfolio
-   * 
-   * @returns {JSX.Element} The component corresponding to the current section
    */
   const renderCurrentSection = () => {
     switch (currentSection) {
       case 'welcome':
-        return <Welcome />;
+        return <Welcome setCurrentSection={handleSectionChange} />;
       case 'home':
-        return <Home setCurrentSection={setCurrentSection} />;
+        return <Home setCurrentSection={handleSectionChange} />;
       case 'skills':
         return <Skills />;
       case 'projects':
@@ -72,45 +100,33 @@ function App() {
       case 'contact':
         return <Contact />;
       default:
-        return <Welcome />; // Default to welcome page
+        return <Home setCurrentSection={handleSectionChange} />;
     }
   };
 
   return (
     <div className="App">
-      {/* Show Welcome page without navbar */}
+      {/* Show Welcome page without navbar if explicitly visited */}
       {currentSection === 'welcome' ? (
-        <Welcome setCurrentSection={setCurrentSection} />
+        <Welcome setCurrentSection={handleSectionChange} />
       ) : (
         <>
           {/* Navigation Bar */}
-          {/* 
-            The Navbar component handles:
-            - Navigation between different sections
-            - Active state highlighting
-            - Responsive mobile navigation
-            - Brand/logo display
-          */}
           <Navbar 
             currentSection={currentSection} 
-            setCurrentSection={setCurrentSection} 
+            setCurrentSection={handleSectionChange} 
           />
           
           {/* Main Content Area */}
-          {/* 
-            This div contains the main content that changes based on navigation.
-            Each section component is rendered here when selected.
-            
-            Available sections:
-            - Home: Introduction, about me, education, CV download
-            - Skills: Technical skills, tools, certifications
-            - Projects: Work experience and engineering projects
-            - Publications: Research papers and academic work
-            - Contact: Contact information and social links
-          */}
           <main className="main-content">
             {renderCurrentSection()}
           </main>
+
+          {/* Unified Modern Footer */}
+          <Footer 
+            currentSection={currentSection} 
+            setCurrentSection={handleSectionChange} 
+          />
         </>
       )}
     </div>

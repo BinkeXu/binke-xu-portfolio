@@ -9,6 +9,11 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import App from './App';
 
 describe('Binke Xu Portfolio Test Suite', () => {
+  beforeEach(() => {
+    window.location.hash = '';
+    jest.clearAllMocks();
+  });
+
   test('renders home page directly with key recruiter signals and NZ work rights', () => {
     render(<App />);
 
@@ -24,6 +29,13 @@ describe('Binke Xu Portfolio Test Suite', () => {
     expect(screen.getByText('Research Assistant')).toBeInTheDocument();
     expect(screen.getAllByText(/access community health/i).length).toBeGreaterThan(0);
     expect(screen.getAllByText(/60 quotes/i).length).toBeGreaterThan(0);
+
+    // Check stats bar updates
+    expect(screen.getByText('MS Azure Certified')).toBeInTheDocument();
+    expect(screen.getByText('2 Publications')).toBeInTheDocument();
+
+    // Check dark mode is default
+    expect(document.documentElement.getAttribute('data-theme')).toBe('dark');
   });
 
   test('navigates to Projects section and verifies Flagship showcase and interaction', () => {
@@ -51,10 +63,20 @@ describe('Binke Xu Portfolio Test Suite', () => {
     // Verify research project appears
     expect(screen.getByText(/machine learning for tree image segmentation/i)).toBeInTheDocument();
 
-    // Click project card to test card expansion
+    // Click project card to test centered modal popup
     const researchCard = screen.getByText(/machine learning for tree image segmentation/i).closest('.project-card');
     fireEvent.click(researchCard);
-    expect(screen.getByText('★ EXPANDED')).toBeInTheDocument();
+
+    // Verify modal dialog opened
+    const modalDialog = screen.getByRole('dialog');
+    expect(modalDialog).toBeInTheDocument();
+    expect(screen.getByText(/key engineering features/i)).toBeInTheDocument();
+    expect(screen.getByText(/measurable highlights & business impact/i)).toBeInTheDocument();
+
+    // Verify close button returns to clean grid layout
+    const closeBtn = screen.getByRole('button', { name: /close project details modal/i });
+    fireEvent.click(closeBtn);
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
   });
 
   test('navigates to Skills section and verifies 3-pillar matrix and certifications', () => {
@@ -91,5 +113,50 @@ describe('Binke Xu Portfolio Test Suite', () => {
     expect(screen.getByText(/ensemble learning based on neural networks for tree image segmentation/i)).toBeInTheDocument();
     expect(screen.getByText(/automatically designing u-nets using a genetic algorithm/i)).toBeInTheDocument();
     expect(screen.getAllByText(/view paper on ieee xplore ↗/i).length).toBe(2);
+  });
+
+  test('navigates to Contact section and verifies quick copy interaction and channels', () => {
+    // Mock navigator.clipboard
+    Object.assign(navigator, {
+      clipboard: {
+        writeText: jest.fn().mockImplementation(() => Promise.resolve()),
+      },
+    });
+
+    render(<App />);
+
+    // Click Contact in Navbar
+    const contactNavBtn = screen.getByRole('button', { name: /navigate to contact section/i });
+    fireEvent.click(contactNavBtn);
+
+    // Verify contact methods
+    expect(screen.getByRole('heading', { name: /get in touch/i })).toBeInTheDocument();
+    expect(screen.getByText('Binkexu@gmail.com')).toBeInTheDocument();
+    expect(screen.getByText('+64 022 154 6027')).toBeInTheDocument();
+
+    // Verify copy buttons
+    const copyEmailBtn = screen.getByRole('button', { name: /copy email address/i });
+    fireEvent.click(copyEmailBtn);
+    expect(navigator.clipboard.writeText).toHaveBeenCalledWith('Binkexu@gmail.com');
+    expect(screen.getByText('Copied! ✓')).toBeInTheDocument();
+  });
+
+  test('renders unified footer with navigation links and back-to-top button', () => {
+    render(<App />);
+
+    // Verify Footer presence
+    expect(screen.getByText(/built with react/i)).toBeInTheDocument();
+    expect(screen.getAllByText(/wellington, nz/i).length).toBeGreaterThan(0);
+
+    // Verify Back to Top button
+    const backToTopBtn = screen.getByRole('button', { name: /scroll back to top of page/i });
+    expect(backToTopBtn).toBeInTheDocument();
+    fireEvent.click(backToTopBtn);
+    expect(window.scrollTo).toHaveBeenCalled();
+
+    // Verify Navbar brand button navigates home
+    const brandBtn = screen.getByRole('button', { name: /return to home section/i });
+    fireEvent.click(brandBtn);
+    expect(screen.getByRole('heading', { name: /software & data engineer/i, level: 2 })).toBeInTheDocument();
   });
 });

@@ -77,6 +77,21 @@ const SvgIcon = ({ type }) => {
           <line x1="8.12" y1="8.12" x2="15.88" y2="15.88"></line>
         </svg>
       );
+    case 'js-ts':
+      return (
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+          <polyline points="16 18 22 12 16 6" />
+          <polyline points="8 6 2 12 8 18" />
+        </svg>
+      );
+    case 'api':
+      return (
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+          <path d="m10 13-2 2a3 3 0 0 1-4-4l2-2a3 3 0 0 1 4 0l1 1" />
+          <path d="m14 11 2-2a3 3 0 0 1 4 4l-2 2a3 3 0 0 1-4 0l-1-1" />
+          <line x1="10" y1="14" x2="14" y2="10" />
+        </svg>
+      );
     case 'ai-chip':
     default:
       return (
@@ -147,9 +162,9 @@ const skillCategories = [
       { name: 'React 18 & Vite', icon: <img src={reactLogo} alt="React" /> },
       { name: 'FastAPI (Python)', icon: <div className="svg-icon-wrap"><SvgIcon type="fastapi" /></div> },
       { name: 'Node.js & Express', icon: <img src={nodejsLogo} alt="Node.js" /> },
-      { name: 'JavaScript / TS', icon: <img src={reactLogo} alt="JavaScript" /> },
+      { name: 'JavaScript / TS', icon: <div className="svg-icon-wrap"><SvgIcon type="js-ts" /></div> },
       { name: 'Java', icon: <img src={javaLogo} alt="Java" /> },
-      { name: 'RESTful API Design', icon: <div className="svg-icon-wrap"><SvgIcon type="fastapi" /></div> },
+      { name: 'RESTful API Design', icon: <div className="svg-icon-wrap"><SvgIcon type="api" /></div> },
       { name: 'Git & GitHub', icon: <img src={gitLogo} alt="Git" /> },
       { name: 'Agile & Scrum', icon: <img src={agileLogo} alt="Agile" /> }
     ]
