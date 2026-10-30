@@ -25,7 +25,7 @@ const featuredProject = {
     year: "2026",
     demoLink: "https://nz-labour-dashboard.vercel.app/",
     codeLink: "https://github.com/BinkeXu/New-Zealand-Labour-Market-Income-Intelligence-Dashboard.git",
-    technologies: ["React 18", "Vite", "Python 3.11", "Pandas", "Recharts", "Vercel CI/CD", "Big Data ETL"],
+    technologies: ["React 19", "Vite", "Python 3.11 ETL", "Recharts", "GitHub Actions", "Vercel", "Big Data ETL"],
     caseStudy: {
       challenge: "Macroeconomic employment and income datasets across MBIE, Stats NZ, and IRD were siloed in disparate formats, making comparative regional analysis and income benchmarking difficult for job seekers and economic analysts.",
       solution: "Engineered an executive intelligence platform ingesting 280MB+ of official raw government data (230 monthly MBIE job series, 25-year IRD PAYE deciles, and Stats NZ LEED data). Developed algorithms for regional Net Discretionary Income ($/wk) and an annual Job Volume Estimator across all 10 NZ regions.",
@@ -37,6 +37,29 @@ const featuredProject = {
    * Curated Project Catalog
    */
   const projects = [
+    {
+      title: "New Zealand Labour Market & Income Intelligence Dashboard",
+      type: "Lead Full-Stack & Data Engineer",
+      category: "data-ml",
+      year: "2026",
+      description: "Executive macroeconomic intelligence platform analysing 280MB+ of official NZ government data across MBIE, Stats NZ, and IRD with interactive regional benchmarking.",
+      technologies: ["React 19", "Vite", "Python 3.11 ETL", "Recharts", "GitHub Actions", "Vercel", "Pandas"],
+      features: [
+        "Automated Python 3.11 ETL pipelines ingesting and normalising 280MB+ of raw data (230 monthly MBIE series, 25-year IRD deciles, Stats NZ LEED)",
+        "Proprietary regional Net Discretionary Income ($/wk) algorithm and annual Job Volume Estimator across all 10 NZ regions",
+        "High-performance interactive data visualisations with Recharts and memoised aggregations",
+        "React.lazy() route splitting and context decomposition, slashing bundle size by 70% (700 kB to 210 kB)",
+        "Automated CI/CD workflows via GitHub Actions and instant production deployments on Vercel"
+      ],
+      highlights: [
+        "Processed 280MB+ official macroeconomic government records with 100% ETL test pass rate",
+        "70% bundle size reduction (slashed from 700 kB to 210 kB) with dynamic code splitting",
+        "Interactive regional benchmarking covering all 10 New Zealand territorial regions",
+        "Live production platform deployed on Vercel with GitHub Actions automated CI"
+      ],
+      codeLink: "https://github.com/BinkeXu/New-Zealand-Labour-Market-Income-Intelligence-Dashboard.git",
+      demoLink: "https://nz-labour-dashboard.vercel.app/"
+    },
     {
       title: "E-Commerce Customer Churn Prediction",
       type: "Cloud Data Engineering & MLOps",
