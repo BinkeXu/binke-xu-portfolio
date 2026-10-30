@@ -7,6 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.2.0] - 2026-10-31
+
+### Changed
+- **New Zealand Labour Market Dashboard Feature & Architecture Update**:
+  - Integrated the authoritative Immigration New Zealand (INZ) Green List Engine mapping 4-digit ANZSCO unit groups to INZ Operational Manual Appendices 13 & 14 (expanding verified fast-track residency occupations from 5 to 65 across Tier 1, Tier 2, and Sector agreements).
+  - Modeled the official New Zealand PAYE & ACC Tax Calculator (`calculateNZTakeHomePay`) covering all 5 statutory brackets and the 1.60% ACC earner levy, powering real-world gross vs. net take-home pay comparisons.
+  - Added head-to-head regional relocation benchmarking and 1-click pre-filtered career action search buttons for SEEK NZ and TradeMe Jobs.
+  - Verified multi-tier automated test suite passing 24/24 tests (10 JS tests via Node 24 native runner in ~14ms + 14 Python ETL tests).
+- **Job Application Lifecycle Manager (JALM) Feature & Performance Update**:
+  - Introduced headless CLI interface (`cli.py`) designed for autonomous AI agent workflows (Antigravity) with structured `--json` subcommands (`add`, `list`, `get`, `set-status`, `set-jd`, `stats`).
+  - Added dedicated Job Description viewer modal with scrollable editor, clipboard actions, and dual-persistence to SQLite and disk (`job_description.txt`).
+  - Integrated local Ollama LLM role categorisation with toolbar bypass toggle and in-flight stream cancellation controls.
+  - Engineered 75 FPS smooth window resizing by debouncing geometry updates to 40ms and freezing canvas widget propagation (`pack_propagate(False)`), slashing resize latency from 357.7ms to 13.3ms (96% drop).
+  - Hardened database reliability with native Python dictionary conversions for SQLite rows and safe fallback handling for relocated workspace paths.
+
+---
+
 ## [2.1.0] - 2026-10-29
 
 ### Added

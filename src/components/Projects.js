@@ -25,11 +25,11 @@ const featuredProject = {
     year: "2026",
     demoLink: "https://nz-labour-dashboard.vercel.app/",
     codeLink: "https://github.com/BinkeXu/New-Zealand-Labour-Market-Income-Intelligence-Dashboard.git",
-    technologies: ["React 19", "Vite", "Python 3.11 ETL", "Recharts", "GitHub Actions", "Vercel", "Big Data ETL"],
+    technologies: ["React 19", "Vite", "Python 3.11 ETL", "Recharts", "INZ Green List Engine", "GitHub Actions", "Vercel"],
     caseStudy: {
-      challenge: "Macroeconomic employment and income datasets across MBIE, Stats NZ, and IRD were siloed in disparate formats, making comparative regional analysis and income benchmarking difficult for job seekers and economic analysts.",
-      solution: "Engineered an executive intelligence platform ingesting 280MB+ of official raw government data (230 monthly MBIE job series, 25-year IRD PAYE deciles, and Stats NZ LEED data). Developed algorithms for regional Net Discretionary Income ($/wk) and an annual Job Volume Estimator across all 10 NZ regions.",
-      architectureWin: "Architected frontend with React.lazy() dynamic route splitting, context decomposition, and memoized aggregations, slashing JavaScript bundle size by 70% (700 kB down to 210 kB). Backed by automated Python ETL validation tests with a 100% pass rate."
+      challenge: "Macroeconomic employment, income, and immigration datasets across MBIE, Stats NZ, IRD, and INZ were siloed in disparate formats, making comparative regional analysis, real take-home pay benchmarking, and fast-track residency pathway planning difficult for job seekers and analysts.",
+      solution: "Engineered an executive intelligence platform ingesting 280MB+ of official raw government data. Architected an authoritative INZ Green List & Residency Engine (65 ANZSCO occupations mapped to Immigration NZ Op Manual Appendices 13 & 14), an official NZ PAYE/ACC tax calculator, a head-to-head regional relocation comparator, and 1-click pre-filtered career action links to SEEK and TradeMe.",
+      architectureWin: "Automated multi-tier test architecture with 24/24 passing tests (10 JS tests in ~14ms via native Node 24 runner + 14 Python ETL validation tests). Slashed client bundle size by 70% (700 kB down to 210 kB) with React.lazy() dynamic route splitting."
     }
   };
 
@@ -42,20 +42,20 @@ const featuredProject = {
       type: "Lead Full-Stack & Data Engineer",
       category: "data-ml",
       year: "2026",
-      description: "Executive macroeconomic intelligence platform analysing 280MB+ of official NZ government data across MBIE, Stats NZ, and IRD with interactive regional benchmarking.",
-      technologies: ["React 19", "Vite", "Python 3.11 ETL", "Recharts", "GitHub Actions", "Vercel", "Pandas"],
+      description: "Executive macroeconomic intelligence platform analysing 280MB+ of official NZ government data with an INZ Green List residency engine, official PAYE/ACC take-home pay modeling, and regional relocation benchmarking.",
+      technologies: ["React 19", "Vite", "Python 3.11 ETL", "Recharts", "INZ Green List Engine", "GitHub Actions", "Vercel"],
       features: [
+        "Authoritative INZ Green List Engine mapping 4-digit ANZSCO unit groups to Immigration NZ Op Manual Appendices 13 & 14 (38 Tier 1, 23 Tier 2, 4 Sector roles) with 1-click residency filters",
+        "Official NZ PAYE & ACC Tax Calculator modeling 5 income brackets and 1.60% ACC earner levy, powering gross vs net take-home pay analysis",
+        "Head-to-head regional relocation comparator evaluating two regions side by side across wages, rents, take-home pay, and annual savings",
         "Automated Python 3.11 ETL pipelines ingesting and normalising 280MB+ of raw data (230 monthly MBIE series, 25-year IRD deciles, Stats NZ LEED)",
-        "Proprietary regional Net Discretionary Income ($/wk) algorithm and annual Job Volume Estimator across all 10 NZ regions",
-        "High-performance interactive data visualisations with Recharts and memoised aggregations",
-        "React.lazy() route splitting and context decomposition, slashing bundle size by 70% (700 kB to 210 kB)",
-        "Automated CI/CD workflows via GitHub Actions and instant production deployments on Vercel"
+        "1-click pre-filtered career search buttons routing directly to live vacancies on SEEK NZ and TradeMe Jobs"
       ],
       highlights: [
-        "Processed 280MB+ official macroeconomic government records with 100% ETL test pass rate",
-        "70% bundle size reduction (slashed from 700 kB to 210 kB) with dynamic code splitting",
-        "Interactive regional benchmarking covering all 10 New Zealand territorial regions",
-        "Live production platform deployed on Vercel with GitHub Actions automated CI"
+        "Expanded verified residency occupation coverage by 1200% (from 5 to 65 official INZ Green List roles)",
+        "24/24 multi-tier test suite passing: 10 JS tests executing in ~14ms (Node 24 native runner) + 14 Python ETL tests",
+        "70% bundle size reduction (slashed from 700 kB to 210 kB) with dynamic code splitting and memoised aggregations",
+        "Live production platform on Vercel backed by continuous automated GitHub Actions integration"
       ],
       codeLink: "https://github.com/BinkeXu/New-Zealand-Labour-Market-Income-Intelligence-Dashboard.git",
       demoLink: "https://nz-labour-dashboard.vercel.app/"
@@ -131,20 +131,20 @@ const featuredProject = {
       type: "Systems Automation & Full-Stack",
       category: "fullstack",
       year: "2026",
-      description: "High-performance hybrid desktop automation platform featuring a C# .NET 8.0 background service, real-time filesystem synchronization with debouncing, SQLite WAL mode, and headless document generation.",
-      technologies: ["Python", "CustomTkinter", ".NET 8.0 (C#)", "SQLite (WAL Mode)", "OpenXML SDK", "PyInstaller"],
+      description: "High-performance hybrid desktop automation platform featuring headless CLI workflows for autonomous AI coding agents, in-app Job Description editing, local Ollama LLM integration, and a debounced 75 FPS UI architecture.",
+      technologies: ["Python", "CustomTkinter", ".NET 8.0 (C#)", "SQLite (WAL Mode)", "Headless CLI (AI Agents)", "Ollama LLM", "OpenXML SDK"],
       features: [
-        "Hybrid architecture combining a Python GUI with a C# .NET background service for real-time filesystem monitoring",
-        "Intelligent 500ms debouncing logic for tracking application folder modifications without UI lag",
-        "Automated headless CV and Cover Letter customization utilizing OpenXML SDK for instant metadata replacement",
-        "Multi-process analytics engine for ghosting detection and application pipeline tracking",
-        "SQLite Write-Ahead Logging (WAL) for safe multi-process concurrent read/write transactions"
+        "Headless CLI interface (cli.py) engineered for autonomous AI agent workflows (Antigravity) with structured --json output across add, list, set-status, set-jd, and stats",
+        "Dedicated Job Description modal with scrollable editor, right-click context menu, and dual-persistence synchronization to SQLite and local disk (job_description.txt)",
+        "Local LLM integration via Ollama for intelligent role categorisation, with toolbar bypass and in-flight cancellation controls",
+        "Hybrid desktop architecture combining a Python CustomTkinter GUI with a C# .NET 8.0 background service for real-time filesystem tracking",
+        "Automated headless CV and Cover Letter customization utilizing OpenXML SDK for instantaneous template generation"
       ],
       highlights: [
-        "Real-time folder monitoring with 500ms debounce syncing into SQLite WAL",
-        "Headless document generation using OpenXML SDK bypassing heavy office suites",
+        "75 FPS window resizing: slashed redraw latency from 357.7ms to 13.3ms (96% drop) via geometry debouncing and canvas freezing",
+        "Headless AI agent automation enabling external LLMs and scripts to manage application pipelines programmatically",
         "Multi-process orchestration bundled into a portable single-binary desktop workflow",
-        "Zero-dependency workspace mobility allowing users to run anywhere"
+        "100% dictionary compatibility hardening and fault-tolerant database connection fallbacks"
       ],
       codeLink: "https://github.com/BinkeXu/Job-Application-Lifecycle-Manager"
     },
